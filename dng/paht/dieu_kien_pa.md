@@ -1,0 +1,128 @@
+# Cập nhật yêu cầu phân tích dữ liệu phản ánh hiện trường
+**Ngày cập nhật:** 16/06/2026
+
+## 1. Vấn đề nổi cộm chi tiết trong lĩnh vực được phản ánh nhiều nhất
+
+**Mục tiêu:** 
+- Xác định các vấn đề cụ thể đang được người dân phản ánh nhiều nhất trong lĩnh vực có số lượng phản ánh cao nhất. 
+- Xác định các vấn đề nổi bật trong thời gian ngắn. Chẳng hạn các phản ánh tắc đường do sự kiện Ironman phản ánh liên tục trong vòng 3 ngày
+-Bổ sung thêm xác định các vấn đề nổi bật trong 1 thời gian ngắn (~1 tuần). Nếu trùng với vấn đề nổi cộm (30 ngày) thì không hiển thị.
+
+**Ví dụ:**
+- Lĩnh vực: Môi trường
+- Vấn đề nổi cộm: Đổ rác bừa bãi, tập kết rác sai quy định,...
+
+**Phạm vi dữ liệu:**
+- Đối với vấn đề được phản ánh nhiều nhất: Lấy toàn bộ phản ánh trong **30 ngày gần nhất**.
+- Đối với vấn đề nổi bật trong thời gian ngắn: Lấy toàn bộ phản ánh trong **1 tuần gần nhất**.
+
+**Điều kiện:**
+- Mỗi phản ánh chỉ được gán với 1 vấn đề (sub-category tag) duy nhất
+
+---
+
+## 2. Phản ánh tồn đọng kéo dài, lặp lại nhiều lần
+
+**Mục tiêu:** 
+- Phát hiện các vụ việc tồn đọng chưa được cơ quan chức năng xử lý triệt để, dẫn đến việc người dân tiếp tục phản ánh nhiều lần về cùng một đối tượng hoặc cùng một vị trí (Lấy thông tin từ nội dung phản ánh).
+
+**Điều kiện:**
+- Chỉ lấy các phản ánh **chưa được xử lý**.
+- Phản ánh phát sinh trong **30 ngày gần nhất**.
+- Nội dung hoặc nhóm vấn đề đã xuất hiện **từ 3 lần trở lên** kể từ đầu năm đến thời điểm hiện tại, nên lấy theo vị trí phản ánh
+
+**Yêu cầu:**
+- Hiển thị danh sách các vấn đề chưa được xử lý triệt để.
+
+---
+
+## 3. Phản ánh trễ hạn nghiêm trọng
+
+**Mục tiêu:** 
+- Cảnh báo các phản ánh có thời gian xử lý vượt quá ngưỡng cho phép. Thống kê theo đơn vị hành chính để thấy rõ tồn ở đơn vị nào.
+
+**Điều kiện:**
+- Chỉ lấy các phản ánh **trễ hạn**, **chưa được xử lý** hoặc **đang xử lý** mà đã bị quá hạn.
+- Phản ánh phát sinh trong 6 tháng gần nhất.
+- Phân loại thành 2 mức độ:
+  - Trễ hạn trên **15 ngày**.
+  - Trễ hạn trên **30 ngày**.
+
+**Yêu cầu:**
+- Hiển thị số lượng chi tiết bao nhiêu phản ánh **trễ hạn** và bao nhiêu phản ánh **quá hạn chưa xử lý/ đang xử lý** 
+
+---
+
+## 4. Phản ánh liên quan đến thủ tục hành chính và đạo đức công vụ
+
+**Mục tiêu:** Phát hiện sớm các vấn đề nhạy cảm liên quan đến chất lượng phục vụ người dân.
+
+**Điều kiện:**
+- Chỉ lấy các phản ánh **chưa được xử lý**.
+- Phản ánh phát sinh trong **30 ngày gần nhất**.
+- Phân tích và tổng hợp các vấn đề nổi cộm thuộc nhóm:
+  - Thủ tục hành chính.
+  - Đạo đức công vụ.
+
+**Yêu cầu:**
+- Nếu phát hiện vấn đề nổi cộm, hệ thống cần sinh cảnh báo.
+- Hiển thị danh sách chi tiết các phản ánh liên quan đến đạo đức công vụ.
+- Hiển thị số chi tiết bao nhiêu chưa xử lý trong hạn và bao nhiêu đã trễ hạn
+---
+
+## 5. Đơn vị có số lượng phản ánh tăng bất thường
+
+**Mục tiêu:** Phát hiện các đơn vị có xu hướng phát sinh phản ánh đột biến.
+
+**Điều kiện:**
+- Thống kê số lượng phản ánh theo tuần.
+- So sánh với các tuần trước để xác định mức tăng trưởng.
+
+**Ngưỡng cảnh báo:**
+- Xác định ngưỡng % dựa trên số phản ánh trung bình từng đơn vị theo lịch sử Ví dụ: trung bình 1 đơn vị 100 phản ánh/ tuần và biến động 5% thì ngưỡng cảnh báo có thể là 20%, nhưng 1 đơn vị ít ~ 10 phản ánh/ tuần và biến động 30% thì ngưỡng cảnh báo có thể là 100%
+
+**Lưu ý:**
+- Bỏ qua các trường hợp có tỷ lệ tăng cao nhưng số lượng phản ánh thực tế quá nhỏ, không có ý nghĩa thống kê.
+
+---
+
+## 6. Đơn vị có tỷ lệ phản ánh trễ hạn rất cao
+
+**Mục tiêu:** Xác định các đơn vị có dấu hiệu chậm xử lý phản ánh kéo dài.
+
+**Phạm vi dữ liệu:**
+- Từ đầu năm đến thời điểm hiện tại.
+- Lấy những phản ánh **trễ hạn** và **quá hạn**
+
+**Ngưỡng cảnh báo:**
+- Lớn hơn ngưỡng 80%
+
+**Lưu ý:**
+- Bỏ qua các đơn vị có tổng số lượng phản ánh quá nhỏ để tránh sai lệch kết quả đánh giá.
+
+---
+
+## Ghi Chú
+
+- Không tính Trung tâm Thông tin và Giám sát, Điều hành Thông mình Đà Nẵng là 1 đơn vị xử lý
+- Không tính các phản ánh thuộc Lĩnh vực Ý kiến danh nghiệp vào
+- Các bảng chỉ nên có tối đa 4 cột
+- **Summary** cần ngắn gọn, tối đa 20 chữ. Sử dụng phong cách báo cáo điều hành, tập trung vào vấn đề nổi cộm.
+
+  Ví dụ:
+
+  - **Đầu vào:**  
+    Tháng 5/2026, lĩnh vực Môi trường dẫn đầu với 738 phản ánh (26,2% tổng số); rác thải là vấn đề được phản ánh nhiều nhất với 478 lượt  
+    **Summary:** Rác thải là vấn đề nổi cộm trong lĩnh vực môi trường tháng 5/2026
+
+  - **Đầu vào:**  
+    Trong 6 tháng gần nhất, có 1.994 phản ánh còn mở đang trễ hạn xử lý; lĩnh vực Công vụ – Công chức dẫn đầu số phản ánh trễ từ đầu năm với 141 trường hợp  
+    **Summary:** Công vụ – Công chức là lĩnh vực có nhiều phản ánh trễ hạn xử lý nhất từ đầu năm
+
+  - **Đầu vào:**  
+    Phát hiện 53 nhóm vấn đề tái diễn tại cùng địa điểm từ đầu năm (mỗi nhóm lặp ≥ 3 lần) còn phản ánh chưa xử lý trong tháng 5; rác thải tại Phường Thanh Khê dẫn đầu với 23 phản ánh chưa xử lý  
+    **Summary:** Nhiều vấn đề tái diễn chưa được xử lý dứt điểm, nổi bật là rác thải tại Phường Thanh Khê
+
+  - **Đầu vào:**  
+    Tháng 5/2026, có 79 phản ánh về thủ tục hành chính và đạo đức công vụ chưa xử lý; Sở Nông nghiệp và Môi trường là đơn vị có số phản ánh nhóm này cao nhất  
+    **Summary:** Thủ tục hành chính và đạo đức công vụ còn nhiều phản ánh chưa xử lý, tập trung tại Sở Nông nghiệp và Môi trường
