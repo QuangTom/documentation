@@ -27,12 +27,15 @@
 - Phát hiện các vụ việc tồn đọng chưa được cơ quan chức năng xử lý triệt để, dẫn đến việc người dân tiếp tục phản ánh nhiều lần về cùng một đối tượng hoặc cùng một vị trí (Lấy thông tin từ nội dung phản ánh).
 
 **Điều kiện:**
-- Chỉ lấy các phản ánh **chưa được xử lý**.
-- Phản ánh phát sinh trong **30 ngày gần nhất**.
+- Chỉ lấy các phản ánh **chưa được xử lý** và phát sinh trong **30 ngày gần nhất**.
+- Các phản ánh trước đó **đã được xử lý**.
 - Nội dung hoặc nhóm vấn đề đã xuất hiện **từ 3 lần trở lên** kể từ đầu năm đến thời điểm hiện tại, nên lấy theo vị trí phản ánh
 
 **Yêu cầu:**
 - Hiển thị danh sách các vấn đề chưa được xử lý triệt để.
+
+**Ví dụ:**
+Đầu năm, Ông A phản ánh về vấn đề xưởng cưa tạo tiếng ồn => Cơ quan chức năng đã xử lý và đóng phản ánh => Sau đó 1 thời gian, tình hình tiếng ồn lại tiếp diễn và ông A phản ánh tiếp. Tiếp tục như thế cho đến lần thứ 3 ông A tạo phản ánh thì được tính là phản ánh tồn đọng kéo dài, lặp lại nhiều lần, không được xử lý dứt điểm.
 
 ---
 
