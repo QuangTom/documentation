@@ -27,7 +27,7 @@
 - Phát hiện các vụ việc tồn đọng chưa được cơ quan chức năng xử lý triệt để, dẫn đến việc người dân tiếp tục phản ánh nhiều lần về cùng một đối tượng hoặc cùng một vị trí (Lấy thông tin từ nội dung phản ánh).
 
 **Điều kiện:**
-- Chỉ lấy các phản ánh **chưa được xử lý** và phát sinh trong **30 ngày gần nhất**.
+- Chỉ lấy các phản ánh **chưa được xử lý/đang xử lý** và phát sinh trong **30 ngày gần nhất**.
 - Các phản ánh trước đó **đã được xử lý**.
 - Nội dung hoặc nhóm vấn đề đã xuất hiện **từ 3 lần trở lên** kể từ đầu năm đến thời điểm hiện tại, nên lấy theo vị trí phản ánh
 
