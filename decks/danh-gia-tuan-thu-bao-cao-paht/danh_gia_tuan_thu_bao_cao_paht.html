@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đánh giá tuân thủ báo cáo phân tích phản ánh hiện trường</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfae7;
+      --primary: #1e2bfa;
+      --text: #111111;
+      --text-muted: #6b6b6b;
+      --text-light: #9a9a9a;
+      --accent-light: rgba(30, 43, 250, 0.08);
+      --accent-medium: rgba(30, 43, 250, 0.15);
+      --border: rgba(30, 43, 250, 0.2);
+      --card-bg: rgba(30, 43, 250, 0.04);
+      --pass: #059669;
+      --pass-bg: rgba(5, 150, 105, 0.1);
+      --partial: #d97706;
+      --partial-bg: rgba(217, 119, 6, 0.1);
+      --fail: #dc2626;
+      --fail-bg: rgba(220, 38, 38, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 3.5vw 4vw 8.5vh 4vw;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+      z-index: 10;
+    }
+
+    .slide.prev { transform: translateX(-40px); }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); font-weight: 700; }
+    h2 { font-size: clamp(1.7rem, 2.8vw, 2.4rem); margin-bottom: 1.2rem; }
+    h3 { font-size: clamp(1rem, 1.6vw, 1.35rem); font-weight: 600; line-height: 1.3; }
+    h4 {
+      font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+    }
+
+    p, li {
+      font-size: clamp(0.82rem, 1.05vw, 0.98rem);
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .slide-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2vh;
+      flex-shrink: 0;
+    }
+
+    .slide-header .tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--primary);
+      background: var(--accent-light);
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .accent-line {
+      width: 56px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .layout-cover {
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 8vw;
+    }
+
+    .layout-cover h1 {
+      max-width: 62vw;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+    }
+
+    .layout-cover .meta {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+    }
+
+    .layout-cover .cover-decoration {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 35vw;
+      height: 100vh;
+      background: var(--accent-light);
+      clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2rem;
+      margin-top: 0.5rem;
+    }
+
+    .method-card {
+      padding: 1.1rem 1.3rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+    }
+
+    .method-card h3 {
+      margin-bottom: 0.55rem;
+      color: var(--text);
+    }
+
+    .method-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .method-card li {
+      position: relative;
+      padding-left: 0.9rem;
+      font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+    }
+
+    .method-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .method-note {
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 10px;
+      background: var(--accent-light);
+      border-left: 4px solid var(--primary);
+      font-size: clamp(0.8rem, 1vw, 0.92rem);
+      color: var(--text);
+    }
+
+    .summary-blocks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .summary-block {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .summary-block h3 {
+      padding: 0.85rem 1.1rem;
+      background: var(--accent-light);
+      border-bottom: 1px solid var(--border);
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    }
+
+    .eval-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .eval-table th,
+    .eval-table td {
+      padding: 0.7rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+      vertical-align: middle;
+    }
+
+    .eval-table th {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: var(--text);
+      background: rgba(30, 43, 250, 0.03);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .eval-table tr:last-child td { border-bottom: none; }
+    .eval-table td:first-child { color: var(--text); font-weight: 500; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.28rem 0.65rem;
+      border-radius: 100px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .badge.pass { color: var(--pass); background: var(--pass-bg); }
+    .badge.partial { color: var(--partial); background: var(--partial-bg); }
+    .badge.fail { color: var(--fail); background: var(--fail-bg); }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin-top: 0.3rem;
+      min-height: 0;
+    }
+
+    .compare-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      min-height: 0;
+    }
+
+    .compare-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-card-header h3 {
+      margin: 0;
+      color: var(--text);
+    }
+
+    .evidence-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .evidence-list li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: clamp(0.76rem, 0.92vw, 0.88rem);
+      line-height: 1.5;
+    }
+
+    .evidence-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-light);
+    }
+
+    .evidence-list li.positive { color: var(--text); }
+    .evidence-list li.gap { color: var(--text-muted); }
+
+    .criteria-box {
+      margin-top: 0.8rem;
+      padding: 0.75rem 0.95rem;
+      border-radius: 10px;
+      background: var(--accent-light);
+      font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .criteria-box strong { color: var(--text); }
+
+    .slide-counter {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      position: fixed;
+      bottom: 2.5vh;
+      left: 3vw;
+      z-index: 100;
+    }
+
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: width 0.4s ease;
+      z-index: 100;
+    }
+
+    .nav-controls {
+      position: fixed;
+      bottom: 2.5vh;
+      right: 3vw;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 1.1rem;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary);
+      color: var(--bg);
+      border-color: var(--primary);
+    }
+
+    .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    .keyboard-hint {
+      position: fixed;
+      bottom: 2.5vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      color: var(--text-light);
+      z-index: 100;
+      opacity: 0.55;
+    }
+
+    @media (max-height: 700px) {
+      .slide { padding: 2.5vh 3vw 8vh 3vw; }
+      .compare-grid { gap: 1rem; }
+      .compare-card { padding: 0.9rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck">
+
+    <!-- SLIDE 1: Cover -->
+    <div class="slide layout-cover active">
+      <div class="cover-decoration"></div>
+      <div class="accent-line"></div>
+      <h1>Đánh giá tuân thủ<br>báo cáo phân tích phản ánh hiện trường</h1>
+      <p class="meta">10/07/2026</p>
+    </div>
+
+    <!-- SLIDE 2: Phương pháp -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Phương pháp đánh giá</h4>
+        <span class="tag">Kỳ 03/06 – 03/07/2026</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Căn cứ và phạm vi</h2>
+        <div class="method-grid">
+          <div class="method-card">
+            <h3>Đối tượng so sánh</h3>
+            <ul>
+              <li>Báo cáo Anh Tuấn (3 nội dung)</li>
+              <li>Báo cáo Đạt (3 nội dung tương ứng)</li>
+              <li>Kỳ dữ liệu: 03/06/2026 – 03/07/2026</li>
+            </ul>
+          </div>
+          <div class="method-card">
+            <h3>Tiêu chí 1 — Format chung</h3>
+            <ul>
+              <li>Tổng quan</li>
+              <li>Vấn đề</li>
+              <li>Nguyên nhân</li>
+              <li>Đề xuất hướng xử lý</li>
+            </ul>
+          </div>
+          <div class="method-card">
+            <h3>Tiêu chí 2 — Điều kiện nghiệp vụ</h3>
+            <ul>
+              <li>Mục 1: Vấn đề nổi cộm</li>
+              <li>Mục 2: Tồn đọng lặp lại</li>
+              <li>Mục 4: Thủ tục &amp; đạo đức công vụ</li>
+            </ul>
+          </div>
+          <div class="method-card">
+            <h3>Thang đánh giá</h3>
+            <ul>
+              <li><span class="badge pass">Đạt</span> — đáp ứng đầy đủ</li>
+              <li><span class="badge partial">Đạt một phần</span> — còn thiếu/sai một số điều kiện</li>
+              <li><span class="badge fail">Chưa đạt</span> — lệch logic hoặc thiếu trọng yếu</li>
+            </ul>
+          </div>
+        </div>
+        <p class="method-note">Phạm vi đánh giá: tuân thủ cấu trúc và điều kiện nghiệp vụ. <strong>Không so sánh số liệu</strong> giữa hai bản báo cáo. Báo cáo mang tính trung lập, không đưa khuyến nghị lựa chọn nhà cung cấp.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Bảng tổng quan -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Bảng tổng quan</h4>
+        <span class="tag">Tổng hợp</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Đánh giá theo tiêu chí</h2>
+        <div class="summary-blocks">
+          <div class="summary-block">
+            <h3>Tuân thủ format chung</h3>
+            <table class="eval-table">
+              <thead>
+                <tr>
+                  <th>Nội dung báo cáo</th>
+                  <th>Anh Tuấn</th>
+                  <th>Đạt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vấn đề nổi cộm</td>
+                  <td><span class="badge pass">Đạt</span></td>
+                  <td><span class="badge pass">Đạt</span></td>
+                </tr>
+                <tr>
+                  <td>Tồn đọng lặp lại</td>
+                  <td><span class="badge pass">Đạt</span></td>
+                  <td><span class="badge pass">Đạt</span></td>
+                </tr>
+                <tr>
+                  <td>Thủ tục &amp; đạo đức công vụ</td>
+                  <td><span class="badge pass">Đạt</span></td>
+                  <td><span class="badge pass">Đạt</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="summary-block">
+            <h3>Điều kiện nghiệp vụ</h3>
+            <table class="eval-table">
+              <thead>
+                <tr>
+                  <th>Nội dung báo cáo</th>
+                  <th>Anh Tuấn</th>
+                  <th>Đạt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vấn đề nổi cộm</td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
+                </tr>
+                <tr>
+                  <td>Tồn đọng lặp lại</td>
+                  <td><span class="badge fail">Chưa đạt</span></td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
+                </tr>
+                <tr>
+                  <td>Thủ tục &amp; đạo đức công vụ</td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
+                  <td><span class="badge pass">Đạt</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Nổi cộm — Format -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Vấn đề nổi cộm</h4>
+        <span class="tag">Tiêu chí 1 · Format</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Tuân thủ cấu trúc báo cáo</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Anh Tuấn</h3>
+              <span class="badge pass">Đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Có đủ 4 mục: Tổng quan, Vấn đề, Nguyên nhân, Đề xuất hướng xử lý</li>
+              <li class="positive">Tổng quan ngắn gọn, tập trung lĩnh vực dẫn đầu và địa bàn trọng điểm</li>
+              <li class="positive">Đề xuất có bảng việc cần làm, đơn vị, thời hạn và chỉ số theo dõi</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Đạt</h3>
+              <span class="badge pass">Đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Có đủ 4 mục theo format chung</li>
+              <li class="positive">Phần Vấn đề tách bảng 30 ngày và mục riêng cho 7 ngày gần nhất</li>
+              <li class="positive">Nguyên nhân và đề xuất được trình bày theo từng lĩnh vực</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Nổi cộm — Điều kiện -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Vấn đề nổi cộm</h4>
+        <span class="tag">Tiêu chí 2 · Mục 1</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Điều kiện nghiệp vụ</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Anh Tuấn</h3>
+              <span class="badge partial">Đạt một phần</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Xác định lĩnh vực phản ánh cao nhất và vấn đề cụ thể trong lĩnh vực đó (30 ngày)</li>
+              <li class="positive">Có phân tích vấn đề nổi bật trong 7 ngày gần nhất</li>
+              <li class="gap">Chưa chứng minh đã lọc trùng vấn đề 7 ngày với vấn đề nổi cộm 30 ngày</li>
+              <li class="gap">Không nêu rõ điều kiện mỗi phản ánh chỉ gán một nhãn vấn đề</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Đạt</h3>
+              <span class="badge partial">Đạt một phần</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Tổng quan nêu lĩnh vực dẫn đầu và vấn đề được phản ánh nhiều nhất</li>
+              <li class="positive">Có mục riêng cho vấn đề nổi bật 7 ngày gần nhất</li>
+              <li class="gap">Bảng 30 ngày liệt kê vấn đề ở nhiều lĩnh vực, chưa giới hạn theo lĩnh vực phản ánh cao nhất</li>
+              <li class="gap">Chưa chứng minh quy tắc loại trùng giữa nhóm 30 ngày và 7 ngày</li>
+            </ul>
+          </div>
+        </div>
+        <p class="criteria-box"><strong>Căn cứ mục 1:</strong> xác định vấn đề trong lĩnh vực phản ánh nhiều nhất (30 ngày); bổ sung vấn đề nổi bật ~1 tuần, không trùng với nổi cộm 30 ngày; mỗi phản ánh một nhãn vấn đề.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Tồn đọng — Format -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Tồn đọng lặp lại</h4>
+        <span class="tag">Tiêu chí 1 · Format</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Tuân thủ cấu trúc báo cáo</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Anh Tuấn</h3>
+              <span class="badge pass">Đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Có đủ 4 mục theo format chung</li>
+              <li class="positive">Vấn đề trình bày dạng bảng theo địa điểm cụ thể và số lần lặp</li>
+              <li class="positive">Đề xuất có đơn vị thực hiện, thời hạn và chỉ số theo dõi</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Đạt</h3>
+              <span class="badge pass">Đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Có đủ 4 mục theo format chung</li>
+              <li class="positive">Danh sách vấn đề theo đối tượng/vị trí, kèm mã phản ánh</li>
+              <li class="positive">Nguyên nhân trích từ dữ liệu phản ánh tái diễn</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Tồn đọng — Điều kiện -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Tồn đọng lặp lại</h4>
+        <span class="tag">Tiêu chí 2 · Mục 2</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Điều kiện nghiệp vụ</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Anh Tuấn</h3>
+              <span class="badge fail">Chưa đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="gap">Mô tả kỳ phân tích là các điểm "đã xử lý xong rồi tái diễn", lệch yêu cầu chỉ lấy phản ánh <strong>chưa được xử lý</strong></li>
+              <li class="positive">Có danh sách theo vị trí phản ánh và số lần lặp</li>
+              <li class="positive">Một số dòng đạt ngưỡng lặp từ 3 lần trở lên</li>
+              <li class="gap">Logic lọc dữ liệu không khớp điều kiện nghiệp vụ cốt lõi</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Đạt</h3>
+              <span class="badge partial">Đạt một phần</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Tập trung phản ánh chưa hoặc đang xử lý trong kỳ 30 ngày</li>
+              <li class="positive">Nhóm theo cùng đối tượng hoặc vị trí, có danh sách chi tiết</li>
+              <li class="gap">Nhiều dòng chỉ ghi 2 lần phản ánh, chưa đạt ngưỡng ≥ 3 lần từ đầu năm</li>
+              <li class="gap">Chưa làm rõ tiêu chí lọc theo vị trí từ đầu năm đến hiện tại</li>
+            </ul>
+          </div>
+        </div>
+        <p class="criteria-box"><strong>Căn cứ mục 2:</strong> chỉ lấy phản ánh chưa xử lý; phát sinh trong 30 ngày; cùng nội dung/vị trí xuất hiện ≥ 3 lần từ đầu năm; hiển thị danh sách chưa xử lý triệt để.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Thủ tục đạo đức — Format -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Thủ tục &amp; đạo đức công vụ</h4>
+        <span class="tag">Tiêu chí 1 · Format</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Tuân thủ cấu trúc báo cáo</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Anh Tuấn</h3>
+              <span class="badge pass">Đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Có đủ 4 mục theo format chung</li>
+              <li class="positive">Tách nhóm thủ tục hành chính và đạo đức công vụ trong phần Vấn đề</li>
+              <li class="positive">Mô tả nội dung cụ thể (ẩn danh) và đề xuất có thời hạn</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Đạt</h3>
+              <span class="badge pass">Đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Có đủ 4 mục theo format chung</li>
+              <li class="positive">Tách nhóm thủ tục và đạo đức; có danh sách chi tiết phản ánh đạo đức công vụ</li>
+              <li class="positive">Nguyên nhân và đề xuất gắn với từng nhóm vấn đề</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Thủ tục đạo đức — Điều kiện -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Thủ tục &amp; đạo đức công vụ</h4>
+        <span class="tag">Tiêu chí 2 · Mục 4</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Điều kiện nghiệp vụ</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Anh Tuấn</h3>
+              <span class="badge partial">Đạt một phần</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Chỉ tập trung phản ánh chưa xử lý trong kỳ 30 ngày</li>
+              <li class="positive">Phân loại hai nhóm: thủ tục hành chính và đạo đức công vụ</li>
+              <li class="gap">Chưa có cảnh báo formal khi phát hiện vấn đề nổi cộm</li>
+              <li class="gap">Chưa phân tách số lượng trong hạn và trễ hạn</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-header">
+              <h3>Đạt</h3>
+              <span class="badge pass">Đạt</span>
+            </div>
+            <ul class="evidence-list">
+              <li class="positive">Có cảnh báo khi phát hiện vấn đề nổi cộm thuộc nhóm nhạy cảm</li>
+              <li class="positive">Nêu rõ phản ánh chưa xử lý trong hạn và trễ hạn</li>
+              <li class="positive">Có danh sách chi tiết phản ánh liên quan đạo đức công vụ</li>
+              <li class="positive">Phạm vi 30 ngày và chỉ lấy phản ánh chưa xử lý</li>
+            </ul>
+          </div>
+        </div>
+        <p class="criteria-box"><strong>Căn cứ mục 4:</strong> chỉ lấy phản ánh chưa xử lý (30 ngày); tổng hợp nổi cộm hai nhóm thủ tục/đạo đức; sinh cảnh báo; hiển thị danh sách chi tiết đạo đức công vụ; thống kê trong hạn và trễ hạn.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-counter"><span id="current">1</span> / <span id="total">9</span></div>
+  <div class="keyboard-hint">Dùng phím mũi tên để chuyển slide</div>
+  <div class="progress-bar" id="progress"></div>
+  <div class="nav-controls">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" aria-label="Slide trước">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)" aria-label="Slide sau">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const currentEl = document.getElementById('current');
+    const totalEl = document.getElementById('total');
+    const progressEl = document.getElementById('progress');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let current = 0;
+    const total = slides.length;
+    totalEl.textContent = total;
+
+    function updateSlide() {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev');
+        if (i === current) slide.classList.add('active');
+        else if (i < current) slide.classList.add('prev');
+      });
+      currentEl.textContent = current + 1;
+      progressEl.style.width = ((current + 1) / total * 100) + '%';
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+    }
+
+    function changeSlide(dir) {
+      const next = current + dir;
+      if (next >= 0 && next < total) {
+        current = next;
+        updateSlide();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        changeSlide(-1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        current = 0;
+        updateSlide();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        current = total - 1;
+        updateSlide();
+      }
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+    }, { passive: true });
+
+    updateSlide();
+  </script>
+</body>
+</html>

@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo tổng quan · gpt-utils · Lowcoder → MCP</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ede8e0;
+            --bg-secondary: #e2dbd1;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --accent: #8a8178;
+            --line: #b8b0a4;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 4vh 4vw;
+            background: var(--bg-primary);
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Geometric decorations */
+        .geo-lines {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45vw;
+            height: 45vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .geo-circle {
+            position: absolute;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .geo-arc {
+            position: absolute;
+            border: 1px dashed var(--line);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 2vw;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--line);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--text-primary);
+            transform: scale(1.3);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 3vh;
+            right: 3vw;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            z-index: 100;
+        }
+
+        .nav-arrows {
+            position: fixed;
+            bottom: 3vh;
+            left: 3vw;
+            display: flex;
+            gap: 16px;
+            z-index: 100;
+        }
+
+        .nav-arrow {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--line);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+        }
+
+        h3 {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+        }
+
+        p,
+        li {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Slide 1: Title */
+        .slide-title {
+            justify-content: center;
+        }
+
+        .slide-title .content {
+            position: relative;
+            z-index: 1;
+            max-width: 65vw;
+        }
+
+        .slide-title .label {
+            margin-bottom: 3vh;
+        }
+
+        .slide-title h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            margin-bottom: 2vh;
+        }
+
+        .slide-title .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 1.5vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 40vw;
+        }
+
+        /* All geo-decoration instances are decorative overlays, not flex
+           items — they must be absolutely positioned in their slide. The
+           slide-statement instance uses inline left/top/width/height to
+           override the defaults below. */
+        .geo-decoration {
+            position: absolute;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .slide-title .geo-decoration {
+            right: 5vw;
+            bottom: 10vh;
+            width: 30vw;
+            height: 30vw;
+            opacity: 0.4;
+        }
+
+        .slide-title .geo-decoration::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            border: 1px dashed var(--line);
+            border-radius: 50%;
+        }
+
+        /* Slide 2: Agenda */
+        .slide-agenda .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6vw;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-agenda .left-col h2 {
+            margin-bottom: 3vh;
+        }
+
+        .slide-agenda .left-col p {
+            max-width: 30vw;
+        }
+
+        .slide-agenda .agenda-list {
+            list-style: none;
+        }
+
+        .slide-agenda .agenda-list li {
+            padding: 2vh 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: baseline;
+            gap: 2vw;
+        }
+
+        .slide-agenda .agenda-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            min-width: 3vw;
+        }
+
+        .slide-agenda .agenda-list-cols {
+            column-count: 2;
+            column-gap: 3vw;
+        }
+
+        .slide-agenda .agenda-list-cols li {
+            break-inside: avoid;
+            padding: 1.2vh 0;
+        }
+
+        /* Slide 3: Statement */
+        .slide-statement {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-statement .content {
+            max-width: 60vw;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .slide-statement .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--line);
+            opacity: 0.5;
+            display: block;
+            margin-bottom: 2vh;
+        }
+
+        .slide-statement h2 {
+            font-style: italic;
+            margin-bottom: 3vh;
+        }
+
+        .slide-statement .attribution {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Slide 4: Bar Chart */
+        .slide-barchart .content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5vw;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-barchart .left-col h2 {
+            margin-bottom: 2vh;
+        }
+
+        .slide-barchart .chart-container {
+            position: relative;
+            height: 55vh;
+            width: 100%;
+        }
+
+        /* Slide 5: Two Column */
+        .slide-twocol .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5vw;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-twocol .image-placeholder {
+            width: 100%;
+            height: 60vh;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-twocol .image-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 1px;
+            background: var(--line);
+            transform: rotate(-30deg);
+        }
+
+        .slide-twocol .image-placeholder::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 1px;
+            background: var(--line);
+            transform: rotate(30deg);
+        }
+
+        .slide-twocol .image-label {
+            position: relative;
+            z-index: 1;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .slide-twocol .right-col h2 {
+            margin-bottom: 2vh;
+        }
+
+        .slide-twocol .right-col p {
+            margin-bottom: 2vh;
+        }
+
+        .slide-twocol .stats {
+            display: flex;
+            gap: 3vw;
+            margin-top: 4vh;
+            padding-top: 3vh;
+            border-top: 1px solid var(--line);
+        }
+
+        .slide-twocol .stat-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5vh;
+        }
+
+        .slide-twocol .stat-item span {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Slide 6: Three Cards */
+        .slide-cards {
+            justify-content: center;
+        }
+
+        .slide-cards .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-cards .header {
+            text-align: center;
+            margin-bottom: 6vh;
+        }
+
+        .slide-cards .header h2 {
+            margin-bottom: 1vh;
+        }
+
+        .slide-cards .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3vw;
+        }
+
+        .slide-cards .cards-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .slide-cards .card {
+            border: 1px solid var(--line);
+            padding: 4vh 2vw;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .slide-cards .card-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3vh;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .slide-cards .card h3 {
+            margin-bottom: 2vh;
+            font-size: 1.3rem;
+        }
+
+        .slide-cards .card p {
+            font-size: 0.9rem;
+        }
+
+        /* Merged architecture + layer responsibilities */
+        .slide-arch-layers .header {
+            margin-bottom: 4vh;
+        }
+
+        .slide-arch-layers .cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3vw;
+            align-items: stretch;
+        }
+
+        .slide-arch-layers .card {
+            padding: 3.5vh 2vw;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .slide-arch-layers .card-icon {
+            width: 36px;
+            height: 36px;
+            margin-bottom: 2vh;
+            font-size: 0.9rem;
+        }
+
+        .slide-arch-layers .card h3 {
+            margin-bottom: 1vh;
+            font-size: 1.15rem;
+        }
+
+        .slide-arch-layers .card-role {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5vh;
+            line-height: 1.4;
+        }
+
+        .slide-arch-layers .card p {
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        .slide-arch-layers .card p+p {
+            margin-top: 1vh;
+        }
+
+        /* Slide 7: Line Chart */
+        .slide-linechart .content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-linechart .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4vh;
+        }
+
+        .slide-linechart .chart-wrapper {
+            flex: 1;
+            position: relative;
+            min-height: 0;
+        }
+
+        .slide-linechart .chart-wrapper canvas {
+            max-height: 100%;
+        }
+
+        /* Slide 8: Timeline */
+        .slide-timeline .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-timeline .header {
+            margin-bottom: 6vh;
+        }
+
+        .slide-timeline .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 3vh;
+        }
+
+        .slide-timeline .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--line);
+        }
+
+        .slide-timeline .timeline-item {
+            flex: 1;
+            padding-right: 3vw;
+            position: relative;
+        }
+
+        /* Phase markers removed — the labels alone provide enough structure
+           and the small circles were colliding with the start of each label. */
+        .slide-timeline .timeline-item::before {
+            content: none;
+        }
+
+        .slide-timeline .timeline-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1vh;
+            margin-top: 2vh;
+        }
+
+        .slide-timeline .timeline-item .year {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1vh;
+        }
+
+        .slide-timeline .timeline-item p {
+            font-size: 0.85rem;
+        }
+
+        /* Slide 9: Team */
+        .slide-team .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-team .header {
+            text-align: center;
+            margin-bottom: 6vh;
+        }
+
+        .slide-team .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4vw;
+        }
+
+        .slide-team .team-member {
+            text-align: center;
+        }
+
+        .slide-team .member-photo {
+            width: 12vw;
+            height: 12vw;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            margin: 0 auto 2vh;
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .slide-team .team-member h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5vh;
+        }
+
+        .slide-team .team-member span {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Slide 10: Closing */
+        .slide-closing {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-closing .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-closing h1 {
+            margin-bottom: 3vh;
+        }
+
+        .slide-closing p {
+            margin-bottom: 4vh;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+        }
+
+        .slide-closing .geo-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 50vw;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .slide-closing .geo-ring::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 70%;
+            border: 1px dashed var(--line);
+            border-radius: 50%;
+        }
+
+        /* Vertical line decoration */
+        .vertical-line {
+            position: absolute;
+            left: 8vw;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: var(--line);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        /* Horizontal accent */
+        .horizontal-accent {
+            position: absolute;
+            bottom: 15vh;
+            left: 0;
+            width: 20vw;
+            height: 1px;
+            background: var(--text-primary);
+            z-index: 0;
+        }
+
+        /* Architecture diagram — vertical flow */
+        .arch-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            width: 100%;
+            max-height: 72vh;
+            overflow-y: auto;
+            padding: 1vh 0;
+        }
+
+        .arch-node {
+            width: 100%;
+            max-width: 22vw;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.35);
+            padding: 1.8vh 1.2vw;
+            text-align: center;
+        }
+
+        .arch-node h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+            font-weight: 400;
+            margin-bottom: 0.4vh;
+        }
+
+        .arch-node p {
+            font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        .arch-node.wide {
+            max-width: 28vw;
+        }
+
+        .arch-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.8vh 0;
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.65rem, 0.75vw, 0.72rem);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .arch-arrow::before {
+            content: '';
+            width: 1px;
+            height: 2vh;
+            background: var(--line);
+        }
+
+        .arch-arrow::after {
+            content: '▼';
+            font-size: 0.55rem;
+            line-height: 1;
+            margin-top: 0.3vh;
+            color: var(--text-primary);
+        }
+
+        /* Operational notes list */
+        .slide-ops .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            max-width: 72vw;
+            margin: 0 auto;
+        }
+
+        .slide-ops .header {
+            margin-bottom: 4vh;
+        }
+
+        .ops-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+        }
+
+        .ops-list li {
+            padding: 2vh 0 2vh 2vw;
+            border-left: 2px solid var(--text-primary);
+            padding-left: 2vw;
+        }
+
+        .slide-agenda .agenda-list li {
+            padding: 1.5vh 0;
+        }
+
+        .slide-latency .latency-steps li {
+            padding: 1.2vh 0;
+            font-size: clamp(0.82rem, 1vw, 0.95rem);
+        }
+
+        .slide-latency .latency-steps code {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85em;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.45);
+            padding: 0.1em 0.35em;
+            border: 1px solid var(--line);
+        }
+
+        .slide-latency .left-col .stats .stat-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5vh;
+        }
+
+        .slide-latency .left-col .stats .stat-item span {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hiện trạng — pain point table */
+        .slide-pain-points .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .slide-pain-points .header {
+            text-align: center;
+            margin-bottom: 4vh;
+        }
+
+        .slide-pain-points .header h2 {
+            max-width: 72vw;
+            margin: 0 auto 1vh;
+        }
+
+        .slide-pain-points .header p {
+            max-width: 58vw;
+            margin: 0 auto;
+        }
+
+        .pain-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pain-table th,
+        .pain-table td {
+            border: 1px solid var(--line);
+            padding: 1.6vh 1.4vw;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .pain-table thead th {
+            background: rgba(255, 255, 255, 0.4);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .pain-table tbody td {
+            font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .pain-table tbody td:first-child {
+            color: var(--text-primary);
+            width: 58%;
+            font-weight: 500;
+        }
+
+        .pain-table tbody tr:nth-child(even) td {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Transition — problem → solution bridge */
+        .slide-transition .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            max-width: 78vw;
+            margin: 0 auto;
+        }
+
+        .slide-transition .header {
+            margin-bottom: 4vh;
+        }
+
+        .slide-transition .transition-lead {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+            color: var(--text-primary);
+            line-height: 1.45;
+            margin-bottom: 4vh;
+            padding-bottom: 3vh;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .slide-transition .transition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4vw;
+            align-items: start;
+        }
+
+        .slide-transition .sub-label {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1.5vh;
+        }
+
+        .slide-transition .transition-input p {
+            font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+            color: var(--text-primary);
+            line-height: 1.55;
+        }
+
+        .slide-transition .transition-flow ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2vh;
+        }
+
+        .slide-transition .transition-flow li {
+            padding: 1.2vh 0 1.2vh 2vw;
+            border-left: 2px solid var(--text-primary);
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
+            color: var(--text-secondary);
+        }
+
+        /* Giá trị mang lại — before / after */
+        .slide-value .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-value .header {
+            text-align: center;
+            margin-bottom: 3.5vh;
+        }
+
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 3vh;
+        }
+
+        .value-table th,
+        .value-table td {
+            border: 1px solid var(--line);
+            padding: 1.4vh 1.3vw;
+            text-align: left;
+            vertical-align: middle;
+            font-size: clamp(0.78rem, 0.92vw, 0.88rem);
+            line-height: 1.45;
+        }
+
+        .value-table thead th {
+            background: rgba(255, 255, 255, 0.4);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .value-table tbody td:first-child {
+            color: var(--text-secondary);
+            width: 42%;
+        }
+
+        .value-table tbody td:last-child {
+            color: var(--text-primary);
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .slide-value .value-conclusion {
+            font-size: clamp(0.82rem, 1vw, 0.92rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 72vw;
+            margin: 0 auto;
+            padding-top: 2vh;
+            border-top: 1px solid var(--line);
+        }
+
+        /* Vai trò AI — pipeline diagram */
+        .slide-pipeline .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-pipeline .header {
+            margin-bottom: 2.5vh;
+        }
+
+        .pipeline-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3vw;
+            align-items: start;
+        }
+
+        .v-pipeline {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .v-pipeline li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .v-pipeline .pipe-step {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.35);
+            padding: 1vh 1.2vw;
+            font-size: clamp(0.78rem, 0.92vw, 0.88rem);
+            color: var(--text-primary);
+            width: 100%;
+            max-width: 28vw;
+        }
+
+        .v-pipeline .pipe-arrow {
+            color: var(--accent);
+            font-size: 1rem;
+            line-height: 1;
+            padding: 0.4vh 0;
+        }
+
+        .example-chain {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.22);
+            padding: 2vh 1.5vw;
+        }
+
+        .example-chain .sub-label {
+            display: block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1.5vh;
+        }
+
+        .example-row {
+            display: grid;
+            grid-template-columns: 5.5rem 1fr;
+            gap: 0.8vw;
+            align-items: baseline;
+            padding: 0.7vh 0;
+            font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+        }
+
+        .example-row .ex-key {
+            color: var(--accent);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .example-row .ex-val {
+            color: var(--text-primary);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .example-row .ex-val.mono {
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+        }
+
+        /* Inline AI role block inside "Giải pháp mới" */
+        .slide-solution-airole {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5vw;
+            margin: 3vh 0 4vh;
+            align-items: start;
+        }
+
+        .slide-solution-airole .pipe-step {
+            max-width: 100%;
+            padding: 0.9vh 1vw;
+            font-size: clamp(0.74rem, 0.88vw, 0.84rem);
+        }
+
+        .slide-solution-airole .example-row {
+            grid-template-columns: 5.2rem 1fr;
+        }
+
+        .slide-solution-airole .example-row .ex-val {
+            font-style: normal;
+        }
+
+        .slide-solution-airole .example-row .ex-val.quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Demo flow — Q&A with real answer */
+        .slide-demo-flow .content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-demo-flow .header {
+            margin-bottom: 2.5vh;
+        }
+
+        .slide-demo-flow .header h2 {
+            font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+        }
+
+        .slide-demo-flow .demo-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 3vw;
+            flex: 1;
+            min-height: 0;
+            align-items: stretch;
+        }
+
+        .slide-demo-flow .demo-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+        }
+
+        .slide-demo-flow .demo-question {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.35);
+            padding: 2vh 1.5vw;
+        }
+
+        .slide-demo-flow .demo-question p {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: var(--text-primary);
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .slide-demo-flow .demo-question span {
+            display: block;
+            margin-top: 1vh;
+            font-size: 0.72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-style: normal;
+        }
+
+        .slide-demo-flow .demo-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5vw;
+        }
+
+        .slide-demo-flow .demo-stats .stat-item {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.25);
+            padding: 1.8vh 1.2vw;
+        }
+
+        .slide-demo-flow .demo-stats .stat-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 2vw, 1.8rem);
+            margin-bottom: 0.4vh;
+        }
+
+        .slide-demo-flow .demo-stats .stat-item span {
+            font-size: 0.72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slide-demo-flow .demo-answer {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.35);
+            padding: 2vh 1.8vw;
+            overflow-y: auto;
+            max-height: 62vh;
+        }
+
+        .slide-demo-flow .demo-answer h3 {
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            margin-bottom: 1.5vh;
+        }
+
+        .slide-demo-flow .demo-answer ul {
+            list-style: disc;
+            padding-left: 1.4em;
+            margin-bottom: 1.5vh;
+        }
+
+        .slide-demo-flow .demo-answer li {
+            font-size: clamp(0.78rem, 0.95vw, 0.88rem);
+            line-height: 1.55;
+            padding: 0.55vh 0;
+            color: var(--text-secondary);
+        }
+
+        .slide-demo-flow .demo-answer .answer-lead {
+            font-size: clamp(0.82rem, 1vw, 0.92rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5vh;
+        }
+
+        .slide-demo-flow .demo-answer .answer-section-title {
+            font-size: clamp(0.82rem, 1vw, 0.92rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 1.2vh 0 0.8vh;
+        }
+
+        .slide-demo-flow .demo-answer li strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .slide-demo-flow .demo-summary {
+            font-size: clamp(0.78rem, 0.95vw, 0.88rem);
+            line-height: 1.55;
+            color: var(--text-secondary);
+            padding-top: 1.5vh;
+            border-top: 1px solid var(--line);
+            font-style: italic;
+        }
+
+        /* Demo screenshots — mobile app in action */
+        .slide-demo-screenshots .content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-demo-screenshots .header {
+            margin-bottom: 3vh;
+        }
+
+        .slide-demo-screenshots .header h2 {
+            margin-top: 1vh;
+        }
+
+        .slide-demo-screenshots .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2vw;
+            flex: 1;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .slide-demo-screenshots .phone-frame {
+            position: relative;
+            max-height: 72vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5vh;
+        }
+
+        .slide-demo-screenshots .phone-frame img {
+            max-height: 66vh;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border: 1px solid var(--line);
+            background: #fff;
+            box-shadow: 0 8px 32px rgba(26, 26, 26, 0.08);
+        }
+
+        .slide-demo-screenshots .phone-caption {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        /* Evaluation — benchmark metrics + latency chart */
+        .slide-evaluation .content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-evaluation .header {
+            margin-bottom: 2.5vh;
+        }
+
+        .slide-evaluation .header h2 {
+            margin-bottom: 0.5vh;
+        }
+
+        .slide-evaluation .eval-metrics {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.2vw;
+            margin-bottom: 2.5vh;
+        }
+
+        .slide-evaluation .eval-metric {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.35);
+            padding: 1.8vh 1vw;
+            text-align: center;
+        }
+
+        .slide-evaluation .eval-metric .metric-label {
+            display: block;
+            font-size: 0.68rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8vh;
+        }
+
+        .slide-evaluation .eval-metric .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 2vw, 1.9rem);
+            color: var(--text-primary);
+        }
+
+        .slide-evaluation .eval-chart {
+            flex: 1;
+            min-height: 0;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.25);
+            padding: 1.5vh 1.2vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-evaluation .eval-chart h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.82rem, 1vw, 0.95rem);
+            font-weight: 500;
+            margin-bottom: 1vh;
+            color: var(--text-primary);
+        }
+
+        .slide-evaluation .eval-chart img {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            object-fit: contain;
+            object-position: left center;
+        }
+
+        @media (max-aspect-ratio: 4/3) {
+
+            .slide-agenda .content,
+            .slide-barchart .content,
+            .slide-twocol .content {
+                grid-template-columns: 1fr;
+                gap: 3vh;
+            }
+
+            .slide-agenda .agenda-list-cols {
+                column-count: 1;
+            }
+
+            .slide-cards .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-arch-layers .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-pain-points .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-transition .transition-grid {
+                grid-template-columns: 1fr;
+                gap: 3vh;
+            }
+
+            .pain-table tbody td:first-child,
+            .value-table tbody td:first-child {
+                width: auto;
+            }
+
+            .slide-demo-flow .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-demo-flow .demo-answer {
+                max-height: 40vh;
+            }
+
+            .slide-demo-screenshots .screenshots-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1.5vw;
+            }
+
+            .slide-demo-screenshots .phone-frame img {
+                max-height: 58vh;
+            }
+
+            .slide-evaluation .eval-metrics {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pipeline-body {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-solution-airole {
+                grid-template-columns: 1fr;
+                margin: 2vh 0 3vh;
+            }
+
+            .slide-timeline .timeline {
+                flex-direction: column;
+                gap: 3vh;
+            }
+
+            .slide-timeline .timeline::before {
+                display: none;
+            }
+
+            .slide-team .team-grid {
+                flex-direction: column;
+                gap: 3vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Cover -->
+        <div class="slide slide-title active">
+            <div class="geo-decoration"></div>
+            <div class="content">
+                <div class="label">Báo cáo tổng quan · 08/07/2026</div>
+                <h1>Báo cáo kết quả nghiên cứu Luồng tra cứu dữ liệu Dashboard</h1>
+            </div>
+        </div>
+
+        <!-- Slide 2: Agenda -->
+        <div class="slide slide-agenda">
+            <div class="content">
+                <div class="left-col">
+                    <div class="label">Mục lục</div>
+                    <h2>Nội dung báo cáo</h2>
+                    <p>Báo cáo kết quả nghiên cứu — vấn đề người dùng, giải pháp tra cứu dashboard bằng AI, và đánh giá
+                        sẵn sàng triển khai.</p>
+                </div>
+                <div class="right-col">
+                    <ul class="agenda-list agenda-list-cols">
+                        <li><span class="agenda-number">01</span> Hiện trạng</li>
+                        <li><span class="agenda-number">02</span> Hướng giải quyết</li>
+                        <li><span class="agenda-number">03</span> Các giải pháp đã có</li>
+                        <li><span class="agenda-number">04</span> Ý tưởng</li>
+                        <li><span class="agenda-number">05</span> Ưu nhược điểm của giải pháp mới</li>
+                        <li><span class="agenda-number">06</span> Giá trị mang lại</li>
+                        <li><span class="agenda-number">07</span> Kiến trúc &amp; trách nhiệm từng tầng</li>
+                        <li><span class="agenda-number">08</span> Sơ đồ &amp; ranh giới dữ liệu</li>
+                        <li><span class="agenda-number">09</span> Kết quả</li>
+                        <li><span class="agenda-number">10</span> Demo trên app mobile</li>
+                        <li><span class="agenda-number">11</span> Chi phí dự kiến</li>
+                        <li><span class="agenda-number">12</span> Thời gian trả lời trung bình</li>
+                        <li><span class="agenda-number">13</span> Evaluation</li>
+                        <li><span class="agenda-number">14</span> Hướng xử lý tiếp theo</li>
+                        <li><span class="agenda-number">15</span> Kết luận</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Hiện trạng -->
+        <div class="slide slide-cards slide-pain-points">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Hiện trạng</div>
+                    <h2>Dữ liệu đã có — nhưng chi phí khai thác còn cao</h2>
+                    <p
+                        style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
+                        Hệ thống không thiếu số liệu; vấn đề nằm ở cách người dùng phải điều hướng Dashboard để lấy câu
+                        trả lời</p>
+                </div>
+                <table class="pain-table">
+                    <thead>
+                        <tr>
+                            <th>Hiện trạng</th>
+                            <th>Hệ quả</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Phải nhớ dashboard, menu và tab chứa dữ liệu</td>
+                            <td>Khó sử dụng với người ít thao tác hệ thống</td>
+                        </tr>
+                        <tr>
+                            <td>Một câu hỏi cần nhiều bước: mở dashboard → chọn năm/tháng → đọc KPI &amp; biểu đồ → tự
+                                tổng hợp</td>
+                            <td>Mất thời gian khi cần báo cáo nhanh</td>
+                        </tr>
+                        <tr>
+                            <td>Dashboard chỉ trả lời những gì đã được thiết kế sẵn</td>
+                            <td>Không trả lời được câu hỏi phát sinh (so sánh, xu hướng, đơn vị cải thiện…)</td>
+                        </tr>
+                        <tr>
+                            <td>Người dùng phải tự đọc và phân tích số liệu</td>
+                            <td>Dễ bỏ sót thông tin, diễn giải không nhất quán</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide: Hướng giải quyết — chuyển tiếp -->
+        <div class="slide slide-transition">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Hướng giải quyết</div>
+                    <h2>Tra cứu theo ngôn ngữ tự nhiên</h2>
+                </div>
+                <p class="transition-lead">Người dùng cần một cách khai thác dữ liệu theo đúng cách họ đặt câu hỏi, thay
+                    vì phải học cấu trúc Dashboard.</p>
+                <div class="transition-grid">
+                    <div class="transition-input">
+                        <span class="sub-label">Đầu vào</span>
+                        <p>Người dùng chỉ cần nhập câu hỏi bằng ngôn ngữ tự nhiên.</p>
+                    </div>
+                    <div class="transition-flow">
+                        <span class="sub-label">Hệ thống sẽ</span>
+                        <ul>
+                            <li>Hiểu ý định</li>
+                            <li>Xác định Dashboard phù hợp</li>
+                            <li>Tự chọn tham số</li>
+                            <li>Truy vấn dữ liệu</li>
+                            <li>Tổng hợp thành câu trả lời</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Các giải pháp đã có -->
+        <div class="slide slide-cards">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Giải pháp đã có</div>
+                    <h2>Những hướng tiếp cận đã thử</h2>
+                    <p
+                        style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
+                        Mỗi giải pháp có điểm mạnh riêng nhưng còn rào cản khi triển khai rộng</p>
+                </div>
+                <div class="cards-grid two-col">
+                    <div class="card">
+                        <div class="card-icon">01</div>
+                        <h3>AI “hiểu” DB và tự sinh SQL</h3>
+                        <p><strong>Ưu điểm:</strong> Dynamic — AI hiểu DB nên có thể sinh SQL phù hợp, không bị giới hạn
+                            theo
+                            tập query cố định.</p>
+                        <p><strong>Nhược điểm:</strong> Dễ bị hallucination; cần training để tránh sai lệch.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">02</div>
+                        <h3>Vtadchat</h3>
+                        <p><strong>Ưu điểm:</strong> Có khả năng nhận định và phân tích.</p>
+                        <p><strong>Nhược điểm:</strong> Thời gian phản hồi lâu (~ 15–30s).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Statement — Ý tưởng -->
+        <div class="slide slide-statement">
+            <div class="content">
+                <div class="attribution">Ý tưởng</div>
+                <h2>Tận dụng các truy vấn/dashboard đã có trên Lowcoder, chuẩn hoá mô tả và domain trên trang
+                    admin, rồi cho AI tra cứu &amp; trả lời qua MCP — ưu tiên tốc độ và độ ổn định.</h2>
+
+            </div>
+            <div class="geo-decoration" style="left: -10vw; top: 10vh; width: 40vw; height: 40vw; opacity: 0.2;"></div>
+        </div>
+
+        <!-- Slide 6: Sự khác biệt của giải pháp mới -->
+        <div class="slide slide-cards">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Giải pháp mới</div>
+                    <h2>Sự khác biệt của hướng Lowcoder</h2>
+                    <p
+                        style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
+                        Ưu tiên tính ổn định và tốc độ khi trả lời theo “catalog truy vấn” đã được chuẩn hoá</p>
+                </div>
+                <div class="slide-solution-airole">
+                    <ul class="v-pipeline">
+                        <li><span class="pipe-step">Người dùng đặt câu hỏi</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">AI hiểu ý định</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">Xác định Dashboard phù hợp</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">Chọn Query phù hợp</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">MCP Execute</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">LLM tổng hợp kết quả</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">Trả lời người dùng</span></li>
+                    </ul>
+                    <div class="example-chain">
+                        <span class="sub-label">Ví dụ</span>
+                        <div class="example-row"><span class="ex-key">Câu hỏi</span><span class="ex-val quote">“Tóm tắt
+                                dịch vụ công tháng 1 năm 2025”</span></div>
+                        <div class="example-row"><span class="ex-key">Dashboard</span><span class="ex-val mono">DVC</span>
+                        </div>
+                        <div class="example-row"><span class="ex-key">Query</span><span
+                                class="ex-val mono">summary_month</span></div>
+                        <div class="example-row"><span class="ex-key">Parameter</span><span
+                                class="ex-val mono">month=1 · year=2025</span></div>
+                        <div class="example-row"><span class="ex-key">Execute</span><span class="ex-val mono">MCP →
+                                SQL</span></div>
+                        <div class="example-row"><span class="ex-key">Kết quả</span><span class="ex-val">AI sinh câu trả
+                                lời</span></div>
+                    </div>
+                </div>
+                <div class="cards-grid two-col">
+                    <div class="card">
+                        <div class="card-icon">+</div>
+                        <h3>Ưu điểm</h3>
+                        <p><strong>Thời gian phản hồi ngắn:</strong> khai thác truy vấn đã cấu hình sẵn, giảm vòng suy
+                            luận.</p>
+                        <p><strong>Tỉ lệ chính xác cao:</strong> hạn chế sai lệch do “tự sinh SQL” (hallucination), kết
+                            quả bám
+                            vào dữ liệu dashboard.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">−</div>
+                        <h3>Nhược điểm</h3>
+                        <p><strong>Phụ thuộc vào SQL trên Lowcoder:</strong> chất lượng câu trả lời phụ thuộc tập truy
+                            vấn hiện có.</p>
+                        <p><strong>Phụ thuộc description trên trang admin:</strong> mô tả/domain càng chuẩn thì AI càng
+                            chọn đúng
+                            query để trả lời.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide: Giá trị mang lại -->
+        <div class="slide slide-value">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Giá trị</div>
+                    <h2>Giá trị mang lại cho người dùng</h2>
+                </div>
+                <table class="value-table">
+                    <thead>
+                        <tr>
+                            <th>Hiện tại</th>
+                            <th>Sau AI Lookup Dashboard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tự tìm Dashboard</td>
+                            <td>Chỉ cần đặt câu hỏi</td>
+                        </tr>
+                        <tr>
+                            <td>Tự chọn bộ lọc</td>
+                            <td>AI tự xác định tham số</td>
+                        </tr>
+                        <tr>
+                            <td>Đọc nhiều biểu đồ</td>
+                            <td>AI tổng hợp thành câu trả lời</td>
+                        </tr>
+                        <tr>
+                            <td>Chỉ xem dữ liệu đã thiết kế</td>
+                            <td>Có thể hỏi linh hoạt theo nhu cầu</td>
+                        </tr>
+                        <tr>
+                            <td>Mất vài phút tra cứu</td>
+                            <td>Có kết quả trong vài giây</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="value-conclusion">AI Lookup Dashboard không thay thế Dashboard hiện có mà bổ sung một lớp tra
+                    cứu bằng ngôn ngữ tự nhiên — giúp người dùng khai thác dữ liệu nhanh hơn, ít thao tác hơn và phù hợp
+                    với cách đặt câu hỏi của người dùng.</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Kiến trúc & trách nhiệm từng tầng -->
+        <div class="slide slide-cards slide-arch-layers">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Kiến trúc</div>
+                    <h2>Ba thành phần bổ sung cho nhau</h2>
+                    <p
+                        style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
+                        Trách nhiệm từng tầng trong hệ thống</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">A</div>
+                        <h3>Admin</h3>
+                        <span class="card-role">Lớp giao diện · Quản trị viên</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">B</div>
+                        <h3>Backend/AI Orchestrator</h3>
+                        <span class="card-role">Lớp trung tâm · Điều phối Agent</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">M</div>
+                        <h3>MCP Server</h3>
+                        <span class="card-role">Lớp thực thi · SQL/GraphQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Architecture diagram + data boundary -->
+        <div class="slide slide-twocol">
+            <div class="content">
+                <div class="left-col">
+                    <div class="arch-flow">
+                        <div class="arch-node">
+                            <h4>Admin</h4>
+                            <p>Cấu hình</p>
+                        </div>
+                        <div class="arch-arrow">REST API</div>
+                        <div class="arch-node">
+                            <h4>Backend</h4>
+                            <p>Lưu + sync</p>
+                        </div>
+                        <div class="arch-arrow">Đồng bộ mirror</div>
+                        <div class="arch-node">
+                            <h4>MySQL / Postgres</h4>
+                            <p>Catalog mirror</p>
+                        </div>
+                        <div class="arch-arrow">Đọc</div>
+                        <div class="arch-node wide">
+                            <h4>IOC Lookup Dashboard</h4>
+                            <p>MCP Server · Execute</p>
+                        </div>
+                        <div class="arch-arrow">Gọi tool MCP</div>
+                        <div class="arch-node">
+                            <h4>AI Agent</h4>
+                            <p>Qua Orchestrator</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <div class="label">Dữ liệu nằm ở đâu?</div>
+                    <h2>Hai luồng: cấu hình và tra cứu</h2>
+                    <p><strong>Luồng cấu hình (ghi):</strong> Admin nhập mô tả, domain, gán MCP → Backend lưu lại →
+                        Backend đồng
+                        bộ sang bảng catalog trên MySQL/Postgres.</p>
+                    <p><strong>Nguồn query gốc:</strong> Lowcoder (MongoDB). Backend chỉ đọc khi đồng bộ, không phải lúc
+                        agent hỏi.</p>
+                    <p><strong>Luồng tra cứu (đọc):</strong> MCP server chỉ đọc bảng catalog đã mirror — không gọi lại
+                        Admin hay Backend.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>Admin</h4>
+                            <span>Cấu hình → Backend → mirror</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>MCP</h4>
+                            <span>Chỉ đọc mirror</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>Lợi ích</h4>
+                            <span>Agent trả lời nhanh, không phụ thuộc Backend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Kết quả -->
+        <div class="slide slide-demo-flow">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Kết quả</div>
+                </div>
+                <div class="demo-grid">
+                    <div class="demo-left">
+                        <div class="demo-question">
+                            <p>“Tóm tắt ngắn gọn tổng quan dịch vụ công tháng 1 năm 2025”</p>
+                            <span>Câu hỏi từ người dùng cuối</span>
+                        </div>
+                        <div class="demo-stats">
+                            <div class="stat-item">
+                                <h4>~8s</h4>
+                                <span>Thời gian phản hồi</span>
+                            </div>
+                            <div class="stat-item">
+                                <h4>~8k = ~40 VNĐ</h4>
+                                <span>Token</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-answer">
+                        <div class="label">Câu trả lời</div>
+                        <h3>Tổng quan dịch vụ công tháng 1/2025</h3>
+                        <p class="answer-lead">
+                            Tháng 1/2025, dịch vụ công ghi nhận <strong>31.091 hồ sơ tiếp nhận</strong>, trong đó
+                            <strong>30.784 hồ sơ đã xử lý</strong>; <strong>24.264 hồ sơ một phần</strong>,
+                            <strong>1.463 hồ sơ còn lại</strong>, và <strong>chưa có hồ sơ quá hạn</strong>. Kênh tiếp
+                            nhận chủ yếu là <strong>trực tiếp (21.549)</strong>, tiếp theo là
+                            <strong>trực tuyến (9.057)</strong> và <strong>bưu điện (485)</strong>.
+                        </p>
+                        <p class="answer-section-title">Một số điểm nổi bật:</p>
+                        <ul>
+                            <li><strong>20.721</strong> hồ sơ xử lý đúng hạn, <strong>10.028</strong> hồ sơ xử lý trước
+                                hạn</li>
+                            <li>Lĩnh vực tiếp nhận nhiều nhất là <strong>Hộ tịch (3.869)</strong>, sau đó là
+                                <strong>Bảo trợ xã hội (1.660)</strong> và <strong>Hoạt động xây dựng (943)</strong></li>
+                            <li>Thủ tục người dân nộp nhiều nhất là <strong>chứng thực bản sao</strong>, <strong>chứng
+                                    thực chữ ký</strong>, và <strong>cấp giấy xác nhận tình trạng hôn nhân</strong></li>
+                            <li>Doanh nghiệp nộp nhiều nhất là <strong>Thông báo hoạt động khuyến mại</strong> (159 hồ
+                                sơ)</li>
+                        </ul>
+                        <p class="demo-summary">Nếu cần, tôi có thể tóm tắt ngắn hơn nữa theo kiểu 1–2 câu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Demo trên app mobile -->
+        <div class="slide slide-demo-screenshots">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Demo</div>
+                    <h2>Trải nghiệm thực tế trên app mobile</h2>
+                </div>
+                <div class="screenshots-grid">
+                    <div class="phone-frame">
+                        <img src="demo-mobile-1.png" alt="1">
+                        <span class="phone-caption">Tóm tắt tình hình dịch vụ công tháng 1/2025 (1)</span>
+                    </div>
+                    <div class="phone-frame">
+                        <img src="demo-mobile-2.png" alt="2">
+                        <span class="phone-caption">Tóm tắt tình hình dịch vụ công tháng 1/2025 (2)</span>
+                    </div>
+                    <div class="phone-frame">
+                        <img src="demo-mobile-3.png" alt="3">
+                        <span class="phone-caption">Speech to text (3)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Chi phí dự kiến -->
+        <div class="slide slide-twocol">
+            <div class="content">
+                <div class="left-col">
+                    <div class="label">Vận hành</div>
+                    <h2>Chi phí dự kiến</h2>
+                    <p>Với model hiện tại đang sử dụng <strong>GPT-4o Mini</strong>, mỗi câu hỏi thường tốn chưa đến
+                        <strong>10k token</strong> (input + output + tool calls).
+                    </p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>
+                                < 10k</h4>
+                                    <span>Token / câu hỏi</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>40–80</h4>
+                            <span>VNĐ / câu hỏi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <div class="label">Ước tính</div>
+                    <h2>Chi phí theo từng lượt hỏi</h2>
+                    <p><strong>Model:</strong> GPT-4o Mini — cân bằng giữa chất lượng suy luận và chi phí cho luồng
+                        agent đa bước (chọn sub-agent, MCP, tool).</p>
+                    <p><strong>Mức tiêu thụ:</strong> Một câu hỏi dashboard/báo cáo điển hình tiêu tốn chưa đến 10.000
+                        token,
+                        bao gồm prompt hệ thống, lịch sử hội thoại ngắn và các vòng gọi tool MCP.</p>
+                    <p><strong>Quy đổi:</strong> Tương đương khoảng <strong>40–80 VNĐ</strong> mỗi câu hỏi, tuỳ độ
+                        dài ngữ cảnh và số lần gọi tool trong phiên.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Thời gian trả lời trung bình -->
+        <div class="slide slide-agenda slide-latency">
+            <div class="content">
+                <div class="left-col">
+                    <div class="label">Hiệu năng</div>
+                    <h2>Thời gian trả lời trung bình</h2>
+                    <p>Giao động <strong>5-10 giây</strong> cho một câu hỏi tra cứu dashboard điển hình — phần lớn thời
+                        gian nằm ở chuỗi quyết định của agent và các vòng gọi tool MCP.</p>
+                    <div class="stats" style="margin-top: 4vh; padding-top: 3vh; border-top: 1px solid var(--line);">
+                        <div class="stat-item">
+                            <h4>5-10</h4>
+                            <span>Trung bình / câu hỏi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <div class="label">Các bước xử lý</div>
+                    <ul class="agenda-list latency-steps">
+                        <li><span class="agenda-number">01</span> Agent chọn sub-agent phù hợp</li>
+                        <li><span class="agenda-number">02</span> Chọn MCP server và thực thi truy vấn</li>
+                        <li><span class="agenda-number">03</span> Tổng hợp kết quả trả lời người dùng</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide: Evaluation -->
+        <div class="slide slide-evaluation">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Đánh giá</div>
+                    <h2>Evaluation</h2>
+                    <p>Kết quả benchmark trên 31 câu hỏi mẫu - được đánh giá trên routing quality, result quality, avg time và run latency p50.</p>
+                </div>
+                <div class="eval-metrics">
+                    <div class="eval-metric">
+                        <span class="metric-label">Pass rate</span>
+                        <span class="metric-value">93.5%</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Avg time (29/31)</span>
+                        <span class="metric-value">8.06s</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Avg time (31/31)</span>
+                        <span class="metric-value">9.49s</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Run latency p50</span>
+                        <span class="metric-value">7.44s</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Examples</span>
+                        <span class="metric-value">31</span>
+                    </div>
+                </div>
+                <div class="eval-chart">
+                    <h3>Latency theo câu (p50)</h3>
+                    <img src="assets/evaluation-latency-chart.png"
+                        alt="Biểu đồ latency p50 theo từng câu hỏi (#1–#31)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Next steps -->
+        <div class="slide slide-cards">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Tiếp theo</div>
+                    <h2>Hướng xử lý tiếp theo</h2>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">I</div>
+                        <h3>Hỗ trợ gen SQL mở rộng</h3>
+                        <p>Sử dụng bộ SQL từ Lowcoder để training cho DB Sub-agent, nâng cao chất lượng câu trả lời và
+                            giảm thiểu tỉ lệ sai sót khi generate SQL</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">II</div>
+                        <h3>Hỗ trợ multi DB connection</h3>
+                        <p>Cho phép một MCP server kết nối đồng thời nhiều CSDL thực thi, chỉ định rõ
+                            connection khi agent thực thi query.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">III</div>
+                        <h3>Hỗ trợ GraphQL</h3>
+                        <p>Mở rộng khả năng thực thi truy vấn GraphQL bên cạnh SQL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Closing -->
+        <div class="slide slide-closing">
+            <div class="geo-ring"></div>
+            <div class="content">
+                <div class="label">Kết luận</div>
+                <h1>Cảm ơn</h1>
+                <p>Thảo luận &amp; Q&amp;A</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+        <div class="nav-dot" data-slide="6"></div>
+        <div class="nav-dot" data-slide="7"></div>
+        <div class="nav-dot" data-slide="8"></div>
+        <div class="nav-dot" data-slide="9"></div>
+        <div class="nav-dot" data-slide="10"></div>
+        <div class="nav-dot" data-slide="11"></div>
+        <div class="nav-dot" data-slide="12"></div>
+        <div class="nav-dot" data-slide="13"></div>
+        <div class="nav-dot" data-slide="14"></div>
+        <div class="nav-dot" data-slide="15"></div>
+        <div class="nav-dot" data-slide="16"></div>
+    </div>
+
+    <div class="nav-arrows">
+        <button class="nav-arrow" id="prevBtn">&#8592;</button>
+        <button class="nav-arrow" id="nextBtn">&#8594;</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">01</span> / <span id="totalSlides">17</span>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = String(totalSlides).padStart(2, '0');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            document.getElementById('currentSlide').textContent = String(index + 1).padStart(2, '0');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % totalSlides;
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(prev);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.slide));
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+    </script>
+</body>
+
+</html>
