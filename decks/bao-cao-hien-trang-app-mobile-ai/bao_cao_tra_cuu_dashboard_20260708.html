@@ -1550,26 +1550,20 @@
                 <div class="left-col">
                     <div class="label">Mục lục</div>
                     <h2>Nội dung báo cáo</h2>
-                    <p>Báo cáo kết quả nghiên cứu — vấn đề người dùng, giải pháp tra cứu dashboard bằng AI, và đánh giá
-                        sẵn sàng triển khai.</p>
+                    <p>Từ hiện trạng khai thác dữ liệu đến giải pháp AI Lookup Dashboard, giá trị mang lại và mức độ sẵn
+                        sàng triển khai.</p>
                 </div>
                 <div class="right-col">
                     <ul class="agenda-list agenda-list-cols">
                         <li><span class="agenda-number">01</span> Hiện trạng</li>
-                        <li><span class="agenda-number">02</span> Hướng giải quyết</li>
-                        <li><span class="agenda-number">03</span> Các giải pháp đã có</li>
-                        <li><span class="agenda-number">04</span> Ý tưởng</li>
-                        <li><span class="agenda-number">05</span> Ưu nhược điểm của giải pháp mới</li>
-                        <li><span class="agenda-number">06</span> Giá trị mang lại</li>
-                        <li><span class="agenda-number">07</span> Kiến trúc &amp; trách nhiệm từng tầng</li>
-                        <li><span class="agenda-number">08</span> Sơ đồ &amp; ranh giới dữ liệu</li>
-                        <li><span class="agenda-number">09</span> Kết quả</li>
-                        <li><span class="agenda-number">10</span> Demo trên app mobile</li>
-                        <li><span class="agenda-number">11</span> Chi phí dự kiến</li>
-                        <li><span class="agenda-number">12</span> Thời gian trả lời trung bình</li>
-                        <li><span class="agenda-number">13</span> Evaluation</li>
-                        <li><span class="agenda-number">14</span> Hướng xử lý tiếp theo</li>
-                        <li><span class="agenda-number">15</span> Kết luận</li>
+                        <li><span class="agenda-number">02</span> Các giải pháp hiện có</li>
+                        <li><span class="agenda-number">03</span> Giải pháp đề xuất</li>
+                        <li><span class="agenda-number">04</span> Giá trị mang lại</li>
+                        <li><span class="agenda-number">05</span> Kiến trúc hệ thống</li>
+                        <li><span class="agenda-number">06</span> Kết quả đánh giá</li>
+                        <li><span class="agenda-number">07</span> Chi phí &amp; Hiệu năng</li>
+                        <li><span class="agenda-number">08</span> Định hướng phát triển</li>
+                        <li><span class="agenda-number">09</span> Kết luận</li>
                     </ul>
                 </div>
             </div>
@@ -1580,67 +1574,46 @@
             <div class="content">
                 <div class="header">
                     <div class="label">Hiện trạng</div>
-                    <h2>Dữ liệu đã có — nhưng chi phí khai thác còn cao</h2>
+                    <h2>Dữ liệu đã đầy đủ, nhưng khai thác thông tin vẫn phụ thuộc nhiều vào thao tác của người
+                        dùng</h2>
                     <p
                         style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
-                        Hệ thống không thiếu số liệu; vấn đề nằm ở cách người dùng phải điều hướng Dashboard để lấy câu
-                        trả lời</p>
+                        Vẫn còn khoảng cách giữa lượng dữ liệu sẵn có và khả năng khai thác nhanh, khi trải nghiệm tra
+                        cứu đòi hỏi nhiều thao tác thủ công.
+                    </p>
                 </div>
+
                 <table class="pain-table">
                     <thead>
                         <tr>
                             <th>Hiện trạng</th>
-                            <th>Hệ quả</th>
+                            <th>Tác động</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Phải nhớ dashboard, menu và tab chứa dữ liệu</td>
-                            <td>Khó sử dụng với người ít thao tác hệ thống</td>
+                            <td>Người dùng cần biết chính xác nơi chứa thông tin cần tra cứu</td>
+                            <td>Tăng thời gian tìm kiếm, gây khó khăn với người dùng không thường xuyên</td>
                         </tr>
                         <tr>
-                            <td>Một câu hỏi cần nhiều bước: mở dashboard → chọn năm/tháng → đọc KPI &amp; biểu đồ → tự
-                                tổng hợp</td>
-                            <td>Mất thời gian khi cần báo cáo nhanh</td>
+                            <td>Mỗi câu hỏi thường trải qua nhiều thao tác: mở màn hình → chọn thời gian → đọc
+                                số liệu → tự tổng hợp kết quả</td>
+                            <td>Khó đáp ứng nhu cầu tra cứu và báo cáo nhanh</td>
+                        </tr>
+                        <!-- <tr>
+                            <td>Thông tin hiện được tổ chức theo các chỉ số và báo cáo dựng sẵn</td>
+                            <td>Chưa thuận tiện cho các câu hỏi phát sinh hoặc yêu cầu phân tích linh hoạt</td>
+                        </tr> -->
+                        <tr>
+                            <td>Người dùng tự diễn giải và tổng hợp số liệu từ nhiều thành phần hiển thị</td>
+                            <td>Dễ bỏ sót thông tin và thiếu nhất quán khi phân tích, báo cáo</td>
                         </tr>
                         <tr>
-                            <td>Dashboard chỉ trả lời những gì đã được thiết kế sẵn</td>
-                            <td>Không trả lời được câu hỏi phát sinh (so sánh, xu hướng, đơn vị cải thiện…)</td>
-                        </tr>
-                        <tr>
-                            <td>Người dùng phải tự đọc và phân tích số liệu</td>
-                            <td>Dễ bỏ sót thông tin, diễn giải không nhất quán</td>
+                            <td>Người dùng ngày càng quen tương tác với AI bằng ngôn ngữ tự nhiên</td>
+                            <td>Hình thành nhu cầu về một trợ lý AI giúp tra cứu dữ liệu chỉ bằng cách đặt câu hỏi</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <!-- Slide: Hướng giải quyết — chuyển tiếp -->
-        <div class="slide slide-transition">
-            <div class="content">
-                <div class="header">
-                    <div class="label">Hướng giải quyết</div>
-                    <h2>Tra cứu theo ngôn ngữ tự nhiên</h2>
-                </div>
-                <p class="transition-lead">Người dùng cần một cách khai thác dữ liệu theo đúng cách họ đặt câu hỏi, thay
-                    vì phải học cấu trúc Dashboard.</p>
-                <div class="transition-grid">
-                    <div class="transition-input">
-                        <span class="sub-label">Đầu vào</span>
-                        <p>Người dùng chỉ cần nhập câu hỏi bằng ngôn ngữ tự nhiên.</p>
-                    </div>
-                    <div class="transition-flow">
-                        <span class="sub-label">Hệ thống sẽ</span>
-                        <ul>
-                            <li>Hiểu ý định</li>
-                            <li>Xác định Dashboard phù hợp</li>
-                            <li>Tự chọn tham số</li>
-                            <li>Truy vấn dữ liệu</li>
-                            <li>Tổng hợp thành câu trả lời</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1648,26 +1621,26 @@
         <div class="slide slide-cards">
             <div class="content">
                 <div class="header">
-                    <div class="label">Giải pháp đã có</div>
-                    <h2>Những hướng tiếp cận đã thử</h2>
+                    <div class="label">Giải pháp hiện có</div>
+                    <h2>Những hướng tiếp cận đã được nghiên cứu</h2>
                     <p
                         style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
-                        Mỗi giải pháp có điểm mạnh riêng nhưng còn rào cản khi triển khai rộng</p>
+                        Mỗi hướng có điểm mạnh riêng, đồng thời còn một số điều kiện cần đáp ứng khi triển khai rộng</p>
                 </div>
                 <div class="cards-grid two-col">
                     <div class="card">
                         <div class="card-icon">01</div>
-                        <h3>AI “hiểu” DB và tự sinh SQL</h3>
-                        <p><strong>Ưu điểm:</strong> Dynamic — AI hiểu DB nên có thể sinh SQL phù hợp, không bị giới hạn
-                            theo
-                            tập query cố định.</p>
-                        <p><strong>Nhược điểm:</strong> Dễ bị hallucination; cần training để tránh sai lệch.</p>
+                        <h3>AI đọc cấu trúc dữ liệu và tự sinh truy vấn</h3>
+                        <p><strong>Ưu điểm:</strong> Linh hoạt — AI có thể tạo truy vấn phù hợp với nhiều câu hỏi, không
+                            giới hạn theo tập truy vấn cố định.</p>
+                        <p><strong>Hạn chế:</strong> Kết quả phụ thuộc vào khả năng sinh truy vấn của AI, cần tinh chỉnh
+                            để đảm bảo độ chính xác.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">02</div>
                         <h3>Vtadchat</h3>
                         <p><strong>Ưu điểm:</strong> Có khả năng nhận định và phân tích.</p>
-                        <p><strong>Nhược điểm:</strong> Thời gian phản hồi lâu (~ 15–30s).</p>
+                        <p><strong>Hạn chế:</strong> Thời gian phản hồi còn dài (khoảng 15–30 giây).</p>
                     </div>
                 </div>
             </div>
@@ -1677,8 +1650,8 @@
         <div class="slide slide-statement">
             <div class="content">
                 <div class="attribution">Ý tưởng</div>
-                <h2>Tận dụng các truy vấn/dashboard đã có trên Lowcoder, chuẩn hoá mô tả và domain trên trang
-                    admin, rồi cho AI tra cứu &amp; trả lời qua MCP — ưu tiên tốc độ và độ ổn định.</h2>
+                <h2>Tận dụng Dashboard hiện có, kết hợp AI để lựa chọn truy vấn phù hợp và trả lời bằng ngôn ngữ tự
+                    nhiên.</h2>
 
             </div>
             <div class="geo-decoration" style="left: -10vw; top: 10vh; width: 40vw; height: 40vw; opacity: 0.2;"></div>
@@ -1688,56 +1661,54 @@
         <div class="slide slide-cards">
             <div class="content">
                 <div class="header">
-                    <div class="label">Giải pháp mới</div>
-                    <h2>Sự khác biệt của hướng Lowcoder</h2>
+                    <div class="label">Giải pháp đề xuất</div>
+                    <h2>Giải pháp AI Lookup Dashboard</h2>
                     <p
                         style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
-                        Ưu tiên tính ổn định và tốc độ khi trả lời theo “catalog truy vấn” đã được chuẩn hoá</p>
+                        Ưu tiên tốc độ và độ ổn định khi trả lời dựa trên tập truy vấn đã được chuẩn hoá</p>
                 </div>
                 <div class="slide-solution-airole">
                     <ul class="v-pipeline">
                         <li><span class="pipe-step">Người dùng đặt câu hỏi</span><span class="pipe-arrow">↓</span></li>
                         <li><span class="pipe-step">AI hiểu ý định</span><span class="pipe-arrow">↓</span></li>
-                        <li><span class="pipe-step">Xác định Dashboard phù hợp</span><span class="pipe-arrow">↓</span></li>
-                        <li><span class="pipe-step">Chọn Query phù hợp</span><span class="pipe-arrow">↓</span></li>
-                        <li><span class="pipe-step">MCP Execute</span><span class="pipe-arrow">↓</span></li>
-                        <li><span class="pipe-step">LLM tổng hợp kết quả</span><span class="pipe-arrow">↓</span></li>
-                        <li><span class="pipe-step">Trả lời người dùng</span></li>
+                        <li><span class="pipe-step">Lựa chọn Dashboard và truy vấn</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">MCP thực thi</span><span class="pipe-arrow">↓</span></li>
+                        <li><span class="pipe-step">AI tổng hợp câu trả lời</span></li>
                     </ul>
                     <div class="example-chain">
                         <span class="sub-label">Ví dụ</span>
                         <div class="example-row"><span class="ex-key">Câu hỏi</span><span class="ex-val quote">“Tóm tắt
                                 dịch vụ công tháng 1 năm 2025”</span></div>
-                        <div class="example-row"><span class="ex-key">Dashboard</span><span class="ex-val mono">DVC</span>
+                        <div class="example-row"><span class="ex-key">Dashboard</span><span
+                                class="ex-val mono">DVC</span>
                         </div>
                         <div class="example-row"><span class="ex-key">Query</span><span
                                 class="ex-val mono">summary_month</span></div>
-                        <div class="example-row"><span class="ex-key">Parameter</span><span
-                                class="ex-val mono">month=1 · year=2025</span></div>
-                        <div class="example-row"><span class="ex-key">Execute</span><span class="ex-val mono">MCP →
+                        <div class="example-row"><span class="ex-key">Parameter</span><span class="ex-val mono">month=1
+                                · year=2025</span></div>
+                        <div class="example-row"><span class="ex-key">Thực thi</span><span class="ex-val mono">MCP →
                                 SQL</span></div>
-                        <div class="example-row"><span class="ex-key">Kết quả</span><span class="ex-val">AI sinh câu trả
-                                lời</span></div>
+                        <div class="example-row"><span class="ex-key">Kết quả</span><span class="ex-val">AI tổng hợp câu
+                                trả lời</span></div>
                     </div>
                 </div>
                 <div class="cards-grid two-col">
                     <div class="card">
                         <div class="card-icon">+</div>
                         <h3>Ưu điểm</h3>
-                        <p><strong>Thời gian phản hồi ngắn:</strong> khai thác truy vấn đã cấu hình sẵn, giảm vòng suy
-                            luận.</p>
-                        <p><strong>Tỉ lệ chính xác cao:</strong> hạn chế sai lệch do “tự sinh SQL” (hallucination), kết
-                            quả bám
-                            vào dữ liệu dashboard.</p>
+                        <p><strong>Nhanh và chính xác:</strong> khai thác truy vấn đã cấu hình sẵn, giảm thời gian phản
+                            hồi và tăng độ tin cậy của kết quả.</p>
+                        <p><strong>Tận dụng hạ tầng hiện có:</strong> kế thừa trực tiếp Dashboard và truy vấn đang vận
+                            hành, giảm chi phí xây mới.</p>
+                        <p><strong>Dễ mở rộng, giảm rủi ro:</strong> bổ sung truy vấn mới thuận tiện, đồng thời hạn chế
+                            sai lệch nhờ bám vào dữ liệu sẵn có.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">−</div>
                         <h3>Nhược điểm</h3>
-                        <p><strong>Phụ thuộc vào SQL trên Lowcoder:</strong> chất lượng câu trả lời phụ thuộc tập truy
-                            vấn hiện có.</p>
-                        <p><strong>Phụ thuộc description trên trang admin:</strong> mô tả/domain càng chuẩn thì AI càng
-                            chọn đúng
-                            query để trả lời.</p>
+                        <p><strong>Phạm vi trả lời:</strong> giới hạn trong tập truy vấn hiện có trên hệ thống.</p>
+                        <p><strong>Chất lượng lựa chọn truy vấn:</strong> phụ thuộc vào mức độ chuẩn hoá của mô tả và
+                            domain — mô tả càng rõ, AI càng chọn đúng.</p>
                     </div>
                 </div>
             </div>
@@ -1754,7 +1725,7 @@
                     <thead>
                         <tr>
                             <th>Hiện tại</th>
-                            <th>Sau AI Lookup Dashboard</th>
+                            <th>Sau khi triển khai giải pháp mới</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1780,9 +1751,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <p class="value-conclusion">AI Lookup Dashboard không thay thế Dashboard hiện có mà bổ sung một lớp tra
-                    cứu bằng ngôn ngữ tự nhiên — giúp người dùng khai thác dữ liệu nhanh hơn, ít thao tác hơn và phù hợp
-                    với cách đặt câu hỏi của người dùng.</p>
+                <p class="value-conclusion">AI Lookup Dashboard không thay thế Dashboard hiện có mà đóng vai trò như một
+                    lớp trợ lý thông minh, giúp người dùng khai thác dữ liệu nhanh hơn, tự nhiên hơn và hiệu quả hơn.</p>
             </div>
         </div>
 
@@ -1790,27 +1760,27 @@
         <div class="slide slide-cards slide-arch-layers">
             <div class="content">
                 <div class="header">
-                    <div class="label">Kiến trúc</div>
+                    <div class="label">Kiến trúc hệ thống</div>
                     <h2>Ba thành phần bổ sung cho nhau</h2>
                     <p
                         style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
-                        Trách nhiệm từng tầng trong hệ thống</p>
+                        Mỗi tầng đảm nhận một vai trò rõ ràng trong hệ thống</p>
                 </div>
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-icon">A</div>
                         <h3>Admin</h3>
-                        <span class="card-role">Lớp giao diện · Quản trị viên</span>
+                        <span class="card-role">Cấu hình và chuẩn hoá dữ liệu tra cứu</span>
                     </div>
                     <div class="card">
                         <div class="card-icon">B</div>
-                        <h3>Backend/AI Orchestrator</h3>
-                        <span class="card-role">Lớp trung tâm · Điều phối Agent</span>
+                        <h3>Backend / AI Orchestrator</h3>
+                        <span class="card-role">Điều phối AI và xử lý yêu cầu</span>
                     </div>
                     <div class="card">
                         <div class="card-icon">M</div>
                         <h3>MCP Server</h3>
-                        <span class="card-role">Lớp thực thi · SQL/GraphQL</span>
+                        <span class="card-role">Thực thi truy vấn và trả kết quả</span>
                     </div>
                 </div>
             </div>
@@ -1848,27 +1818,23 @@
                     </div>
                 </div>
                 <div class="right-col">
-                    <div class="label">Dữ liệu nằm ở đâu?</div>
+                    <div class="label">Ranh giới dữ liệu</div>
                     <h2>Hai luồng: cấu hình và tra cứu</h2>
-                    <p><strong>Luồng cấu hình (ghi):</strong> Admin nhập mô tả, domain, gán MCP → Backend lưu lại →
-                        Backend đồng
-                        bộ sang bảng catalog trên MySQL/Postgres.</p>
-                    <p><strong>Nguồn query gốc:</strong> Lowcoder (MongoDB). Backend chỉ đọc khi đồng bộ, không phải lúc
-                        agent hỏi.</p>
-                    <p><strong>Luồng tra cứu (đọc):</strong> MCP server chỉ đọc bảng catalog đã mirror — không gọi lại
-                        Admin hay Backend.</p>
+                    <p><strong>Luồng cấu hình:</strong> Admin chuẩn hoá mô tả và truy vấn, Backend lưu và đồng bộ sang
+                        catalog dữ liệu.</p>
+                    <p><strong>Luồng tra cứu:</strong> Khi người dùng hỏi, hệ thống đọc trực tiếp từ catalog đã đồng bộ.</p>
                     <div class="stats">
                         <div class="stat-item">
-                            <h4>Admin</h4>
-                            <span>Cấu hình → Backend → mirror</span>
+                            <h4>Cấu hình</h4>
+                            <span>Chuẩn hoá và đồng bộ dữ liệu</span>
                         </div>
                         <div class="stat-item">
-                            <h4>MCP</h4>
-                            <span>Chỉ đọc mirror</span>
+                            <h4>Tra cứu</h4>
+                            <span>Đọc từ catalog đã đồng bộ</span>
                         </div>
                         <div class="stat-item">
                             <h4>Lợi ích</h4>
-                            <span>Agent trả lời nhanh, không phụ thuộc Backend</span>
+                            <span>Trả lời nhanh, vận hành ổn định</span>
                         </div>
                     </div>
                 </div>
@@ -1913,13 +1879,15 @@
                             <li><strong>20.721</strong> hồ sơ xử lý đúng hạn, <strong>10.028</strong> hồ sơ xử lý trước
                                 hạn</li>
                             <li>Lĩnh vực tiếp nhận nhiều nhất là <strong>Hộ tịch (3.869)</strong>, sau đó là
-                                <strong>Bảo trợ xã hội (1.660)</strong> và <strong>Hoạt động xây dựng (943)</strong></li>
+                                <strong>Bảo trợ xã hội (1.660)</strong> và <strong>Hoạt động xây dựng (943)</strong>
+                            </li>
                             <li>Thủ tục người dân nộp nhiều nhất là <strong>chứng thực bản sao</strong>, <strong>chứng
                                     thực chữ ký</strong>, và <strong>cấp giấy xác nhận tình trạng hôn nhân</strong></li>
                             <li>Doanh nghiệp nộp nhiều nhất là <strong>Thông báo hoạt động khuyến mại</strong> (159 hồ
                                 sơ)</li>
                         </ul>
-                        <p class="demo-summary">Nếu cần, tôi có thể tóm tắt ngắn hơn nữa theo kiểu 1–2 câu.</p>
+                        <p class="demo-summary">Kết quả được tổng hợp tự động từ dữ liệu Dashboard và trình bày dưới
+                            dạng câu trả lời hoàn chỉnh.</p>
                     </div>
                 </div>
             </div>
@@ -1949,14 +1917,52 @@
             </div>
         </div>
 
-        <!-- Slide 10: Chi phí dự kiến -->
+        <!-- Slide 10: Evaluation -->
+        <div class="slide slide-evaluation">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Đánh giá</div>
+                    <h2>Đánh giá chất lượng</h2>
+                    <p>Kết quả kiểm thử trên 31 câu hỏi mẫu — đánh giá độ chính xác khi chọn đúng dữ liệu, chất lượng
+                        câu trả lời và thời gian phản hồi.</p>
+                </div>
+                <div class="eval-metrics">
+                    <div class="eval-metric">
+                        <span class="metric-label">Độ chính xác</span>
+                        <span class="metric-value">93.5%</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Thời gian TB (29/31)</span>
+                        <span class="metric-value">8.06s</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Thời gian TB (31/31)</span>
+                        <span class="metric-value">9.49s</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Latency p50</span>
+                        <span class="metric-value">7.44s</span>
+                    </div>
+                    <div class="eval-metric">
+                        <span class="metric-label">Số câu kiểm thử</span>
+                        <span class="metric-value">31</span>
+                    </div>
+                </div>
+                <div class="eval-chart">
+                    <h3>Thời gian phản hồi theo câu (p50)</h3>
+                    <img src="assets/evaluation-latency-chart.png" alt="Biểu đồ thời gian phản hồi p50 theo từng câu hỏi (#1–#31)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Chi phí dự kiến -->
         <div class="slide slide-twocol">
             <div class="content">
                 <div class="left-col">
                     <div class="label">Vận hành</div>
-                    <h2>Chi phí dự kiến</h2>
-                    <p>Với model hiện tại đang sử dụng <strong>GPT-4o Mini</strong>, mỗi câu hỏi thường tốn chưa đến
-                        <strong>10k token</strong> (input + output + tool calls).
+                    <h2>Chi phí vận hành dự kiến</h2>
+                    <p>Mỗi câu hỏi tiêu tốn chưa đến <strong>10.000 token</strong>, tương ứng chi phí rất thấp trên mỗi
+                        lượt tra cứu.
                     </p>
                     <div class="stats">
                         <div class="stat-item">
@@ -1973,87 +1979,47 @@
                 <div class="right-col">
                     <div class="label">Ước tính</div>
                     <h2>Chi phí theo từng lượt hỏi</h2>
-                    <p><strong>Model:</strong> GPT-4o Mini — cân bằng giữa chất lượng suy luận và chi phí cho luồng
-                        agent đa bước (chọn sub-agent, MCP, tool).</p>
-                    <p><strong>Mức tiêu thụ:</strong> Một câu hỏi dashboard/báo cáo điển hình tiêu tốn chưa đến 10.000
-                        token,
-                        bao gồm prompt hệ thống, lịch sử hội thoại ngắn và các vòng gọi tool MCP.</p>
-                    <p><strong>Quy đổi:</strong> Tương đương khoảng <strong>40–80 VNĐ</strong> mỗi câu hỏi, tuỳ độ
-                        dài ngữ cảnh và số lần gọi tool trong phiên.</p>
+                    <p><strong>Mô hình sử dụng:</strong> cân bằng giữa chất lượng trả lời và chi phí vận hành.</p>
+                    <p><strong>Mức tiêu thụ:</strong> một câu hỏi điển hình tiêu tốn chưa đến 10.000 token cho toàn bộ
+                        quá trình xử lý.</p>
+                    <p><strong>Quy đổi chi phí:</strong> tương đương khoảng <strong>40–80 VNĐ</strong> mỗi câu hỏi, tuỳ
+                        độ phức tạp của yêu cầu.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 9: Thời gian trả lời trung bình -->
+        <!-- Slide 12: Thời gian trả lời trung bình -->
         <div class="slide slide-agenda slide-latency">
             <div class="content">
                 <div class="left-col">
                     <div class="label">Hiệu năng</div>
-                    <h2>Thời gian trả lời trung bình</h2>
-                    <p>Giao động <strong>5-10 giây</strong> cho một câu hỏi tra cứu dashboard điển hình — phần lớn thời
-                        gian nằm ở chuỗi quyết định của agent và các vòng gọi tool MCP.</p>
+                    <h2>Thời gian phản hồi trung bình</h2>
+                    <p>Khoảng <strong>5–10 giây</strong> cho một câu hỏi tra cứu điển hình — đủ nhanh cho nhu cầu tra
+                        cứu và báo cáo hằng ngày.</p>
                     <div class="stats" style="margin-top: 4vh; padding-top: 3vh; border-top: 1px solid var(--line);">
                         <div class="stat-item">
                             <h4>5-10</h4>
-                            <span>Trung bình / câu hỏi</span>
+                            <span>Giây / câu hỏi</span>
                         </div>
                     </div>
                 </div>
                 <div class="right-col">
                     <div class="label">Các bước xử lý</div>
                     <ul class="agenda-list latency-steps">
-                        <li><span class="agenda-number">01</span> Agent chọn sub-agent phù hợp</li>
-                        <li><span class="agenda-number">02</span> Chọn MCP server và thực thi truy vấn</li>
-                        <li><span class="agenda-number">03</span> Tổng hợp kết quả trả lời người dùng</li>
+                        <li><span class="agenda-number">01</span> Hiểu ý định câu hỏi</li>
+                        <li><span class="agenda-number">02</span> Lựa chọn và thực thi truy vấn</li>
+                        <li><span class="agenda-number">03</span> Tổng hợp và trả lời người dùng</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Slide: Evaluation -->
-        <div class="slide slide-evaluation">
-            <div class="content">
-                <div class="header">
-                    <div class="label">Đánh giá</div>
-                    <h2>Evaluation</h2>
-                    <p>Kết quả benchmark trên 31 câu hỏi mẫu - được đánh giá trên routing quality, result quality, avg time và run latency p50.</p>
-                </div>
-                <div class="eval-metrics">
-                    <div class="eval-metric">
-                        <span class="metric-label">Pass rate</span>
-                        <span class="metric-value">93.5%</span>
-                    </div>
-                    <div class="eval-metric">
-                        <span class="metric-label">Avg time (29/31)</span>
-                        <span class="metric-value">8.06s</span>
-                    </div>
-                    <div class="eval-metric">
-                        <span class="metric-label">Avg time (31/31)</span>
-                        <span class="metric-value">9.49s</span>
-                    </div>
-                    <div class="eval-metric">
-                        <span class="metric-label">Run latency p50</span>
-                        <span class="metric-value">7.44s</span>
-                    </div>
-                    <div class="eval-metric">
-                        <span class="metric-label">Examples</span>
-                        <span class="metric-value">31</span>
-                    </div>
-                </div>
-                <div class="eval-chart">
-                    <h3>Latency theo câu (p50)</h3>
-                    <img src="assets/evaluation-latency-chart.png"
-                        alt="Biểu đồ latency p50 theo từng câu hỏi (#1–#31)">
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 10: Next steps -->
+        <!-- Slide 13: Next steps -->
         <div class="slide slide-cards">
             <div class="content">
                 <div class="header">
-                    <div class="label">Tiếp theo</div>
-                    <h2>Hướng xử lý tiếp theo</h2>
+                    <div class="label">Định hướng</div>
+                    <h2>Định hướng phát triển</h2>
                 </div>
                 <div class="cards-grid">
                     <div class="card">
@@ -2115,7 +2081,7 @@
     </div>
 
     <div class="slide-counter">
-        <span id="currentSlide">01</span> / <span id="totalSlides">17</span>
+        <span id="currentSlide">01</span> / <span id="totalSlides">16</span>
     </div>
 
     <script>
