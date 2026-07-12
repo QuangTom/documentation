@@ -1550,12 +1550,12 @@
                 <div class="left-col">
                     <div class="label">Mục lục</div>
                     <h2>Nội dung báo cáo</h2>
-                    <p>Từ hiện trạng khai thác dữ liệu đến giải pháp AI Lookup Dashboard, giá trị mang lại và mức độ sẵn
-                        sàng triển khai.</p>
+                    <p>AI Lookup Dashboard thay đổi cách người dùng tiếp cận dữ liệu — từ tìm kiếm thông tin sang đặt
+                        câu hỏi và nhận câu trả lời.</p>
                 </div>
                 <div class="right-col">
                     <ul class="agenda-list agenda-list-cols">
-                        <li><span class="agenda-number">01</span> Hiện trạng</li>
+                        <li><span class="agenda-number">01</span> Hiện trạng &amp; nhu cầu người dùng</li>
                         <li><span class="agenda-number">02</span> Các giải pháp hiện có</li>
                         <li><span class="agenda-number">03</span> Giải pháp đề xuất</li>
                         <li><span class="agenda-number">04</span> Giá trị mang lại</li>
@@ -1617,30 +1617,73 @@
             </div>
         </div>
 
+        <!-- Slide: Góc nhìn người dùng -->
+        <div class="slide slide-cards slide-pain-points">
+            <div class="content">
+                <div class="header">
+                    <div class="label">Nhu cầu người dùng</div>
+                    <h2>Người dùng cần câu trả lời, không phải cần Dashboard</h2>
+                    <p
+                        style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
+                        Mục tiêu của người sử dụng là nhanh chóng có được thông tin phục vụ công việc và ra quyết định,
+                        thay vì phải tìm kiếm và tổng hợp dữ liệu từ nhiều màn hình.
+                    </p>
+                </div>
+
+                <table class="pain-table">
+                    <thead>
+                        <tr>
+                            <th>Người dùng mong muốn</th>
+                            <th>Thực tế hiện nay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Biết ngay số liệu cần tìm</td>
+                            <td>Phải tìm đúng Dashboard</td>
+                        </tr>
+                        <tr>
+                            <td>Đặt câu hỏi theo cách tự nhiên</td>
+                            <td>Phải nhớ menu và bộ lọc</td>
+                        </tr>
+                        <tr>
+                            <td>Có câu trả lời</td>
+                            <td>Phải tự đọc KPI và biểu đồ</td>
+                        </tr>
+                        <tr>
+                            <td>Báo cáo nhanh</td>
+                            <td>Phải tổng hợp từ nhiều màn hình</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="value-conclusion">Khoảng cách hiện nay không nằm ở dữ liệu mà nằm ở trải nghiệm khai thác
+                    dữ liệu.</p>
+            </div>
+        </div>
+
         <!-- Slide 5: Các giải pháp đã có -->
         <div class="slide slide-cards">
             <div class="content">
                 <div class="header">
                     <div class="label">Giải pháp hiện có</div>
-                    <h2>Những hướng tiếp cận đã được nghiên cứu</h2>
+                    <h2>Những giải pháp đã thử</h2>
                     <p
                         style="margin-top: 1.5vh; color: var(--text-secondary); font-size: clamp(0.85rem, 1vw, 0.95rem);">
-                        Mỗi hướng có điểm mạnh riêng, đồng thời còn một số điều kiện cần đáp ứng khi triển khai rộng</p>
+                        Mỗi hướng giải quyết một phần nhu cầu — tuy nhiên có những hạn chế về kết quả và trải nghiệm người dùng</p>
                 </div>
                 <div class="cards-grid two-col">
                     <div class="card">
                         <div class="card-icon">01</div>
-                        <h3>AI đọc cấu trúc dữ liệu và tự sinh truy vấn</h3>
-                        <p><strong>Ưu điểm:</strong> Linh hoạt — AI có thể tạo truy vấn phù hợp với nhiều câu hỏi, không
-                            giới hạn theo tập truy vấn cố định.</p>
-                        <p><strong>Hạn chế:</strong> Kết quả phụ thuộc vào khả năng sinh truy vấn của AI, cần tinh chỉnh
-                            để đảm bảo độ chính xác.</p>
+                        <h3>Tra cứu bằng cách tự sinh truy vấn</h3>
+                        <p><strong>Lợi ích:</strong> Người dùng có thể hỏi nhiều dạng câu hỏi, không bị giới hạn theo màn
+                            hình có sẵn.</p>
+                        <p><strong>Hạn chế:</strong> AI dễ bị hallucination, cần kiểm tra độ chính xác câu trả lời.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">02</div>
-                        <h3>Vtadchat</h3>
-                        <p><strong>Ưu điểm:</strong> Có khả năng nhận định và phân tích.</p>
-                        <p><strong>Hạn chế:</strong> Thời gian phản hồi còn dài (khoảng 15–30 giây).</p>
+                        <h3>Trợ lý phân tích Vtadchat (AI Chatbot)</h3>
+                        <p><strong>Lợi ích:</strong> Có khả năng phân tích và đưa ra nhận định</p>
+                        <p><strong>Hạn chế:</strong> Người dùng phải chờ 15–30 giây — chưa đáp ứng nhu cầu tra cứu nhanh.</p>
                     </div>
                 </div>
             </div>
@@ -1650,8 +1693,12 @@
         <div class="slide slide-statement">
             <div class="content">
                 <div class="attribution">Ý tưởng</div>
-                <h2>Tận dụng Dashboard hiện có, kết hợp AI để lựa chọn truy vấn phù hợp và trả lời bằng ngôn ngữ tự
+                <h2>Thay đổi cách người dùng khai thác dữ liệu: từ tìm kiếm Dashboard sang đặt câu hỏi bằng ngôn ngữ tự
                     nhiên.</h2>
+                <p
+                    style="margin-top: 2vh; font-size: clamp(0.9rem, 1.1vw, 1.05rem); color: var(--text-secondary); line-height: 1.55; font-style: normal; max-width: 52vw;">
+                    Giải pháp tận dụng Dashboard hiện có, kết hợp AI để lựa chọn truy vấn phù hợp và trả lời người dùng
+                    bằng ngôn ngữ tự nhiên.</p>
 
             </div>
             <div class="geo-decoration" style="left: -10vw; top: 10vh; width: 40vw; height: 40vw; opacity: 0.2;"></div>
@@ -1719,40 +1766,40 @@
             <div class="content">
                 <div class="header">
                     <div class="label">Giá trị</div>
-                    <h2>Giá trị mang lại cho người dùng</h2>
+                    <h2>Điều gì thay đổi với người dùng?</h2>
                 </div>
                 <table class="value-table">
                     <thead>
                         <tr>
-                            <th>Hiện tại</th>
-                            <th>Sau khi triển khai giải pháp mới</th>
+                            <th>Trước</th>
+                            <th>Sau</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Tự tìm Dashboard</td>
-                            <td>Chỉ cần đặt câu hỏi</td>
+                            <td>Phải biết dữ liệu nằm ở đâu</td>
+                            <td>Chỉ cần hỏi</td>
                         </tr>
                         <tr>
-                            <td>Tự chọn bộ lọc</td>
-                            <td>AI tự xác định tham số</td>
+                            <td>Phải nhớ bộ lọc</td>
+                            <td>Không cần nhớ</td>
                         </tr>
                         <tr>
-                            <td>Đọc nhiều biểu đồ</td>
-                            <td>AI tổng hợp thành câu trả lời</td>
+                            <td>Phải tự tổng hợp</td>
+                            <td>Có câu trả lời hoàn chỉnh</td>
                         </tr>
                         <tr>
-                            <td>Chỉ xem dữ liệu đã thiết kế</td>
-                            <td>Có thể hỏi linh hoạt theo nhu cầu</td>
+                            <td>Phụ thuộc kinh nghiệm</td>
+                            <td>Ai cũng có thể tra cứu</td>
                         </tr>
                         <tr>
-                            <td>Mất vài phút tra cứu</td>
-                            <td>Có kết quả trong vài giây</td>
+                            <td>Mất vài phút</td>
+                            <td>Chỉ mất vài giây</td>
                         </tr>
                     </tbody>
                 </table>
-                <p class="value-conclusion">AI Lookup Dashboard không thay thế Dashboard hiện có mà đóng vai trò như một
-                    lớp trợ lý thông minh, giúp người dùng khai thác dữ liệu nhanh hơn, tự nhiên hơn và hiệu quả hơn.</p>
+                <p class="value-conclusion">AI Lookup Dashboard không thay đổi dữ liệu hiện có, mà thay đổi cách người
+                    dùng tiếp cận dữ liệu: từ “tìm kiếm thông tin” sang “đặt câu hỏi và nhận câu trả lời”.</p>
             </div>
         </div>
 
@@ -1818,23 +1865,24 @@
                     </div>
                 </div>
                 <div class="right-col">
-                    <div class="label">Ranh giới dữ liệu</div>
-                    <h2>Hai luồng: cấu hình và tra cứu</h2>
-                    <p><strong>Luồng cấu hình:</strong> Admin chuẩn hoá mô tả và truy vấn, Backend lưu và đồng bộ sang
-                        catalog dữ liệu.</p>
-                    <p><strong>Luồng tra cứu:</strong> Khi người dùng hỏi, hệ thống đọc trực tiếp từ catalog đã đồng bộ.</p>
+                    <div class="label">Đảm bảo trải nghiệm</div>
+                    <h2>Chuẩn bị một lần — trả lời mỗi khi người dùng hỏi</h2>
+                    <p><strong>Chuẩn bị:</strong> Dữ liệu được mô tả rõ ràng — để khi người dùng hỏi, hệ thống biết trả
+                        lời từ đâu.</p>
+                    <p><strong>Tra cứu:</strong> Người dùng đặt câu hỏi → nhận câu trả lời nhanh, không cần thao tác phức
+                        tạp.</p>
                     <div class="stats">
                         <div class="stat-item">
-                            <h4>Cấu hình</h4>
-                            <span>Chuẩn hoá và đồng bộ dữ liệu</span>
+                            <h4>Chuẩn bị</h4>
+                            <span>Mô tả rõ → trả lời đúng</span>
                         </div>
                         <div class="stat-item">
                             <h4>Tra cứu</h4>
-                            <span>Đọc từ catalog đã đồng bộ</span>
+                            <span>Hỏi → nhận câu trả lời</span>
                         </div>
                         <div class="stat-item">
                             <h4>Lợi ích</h4>
-                            <span>Trả lời nhanh, vận hành ổn định</span>
+                            <span>Người dùng có kết quả trong vài giây</span>
                         </div>
                     </div>
                 </div>
@@ -1845,27 +1893,37 @@
         <div class="slide slide-demo-flow">
             <div class="content">
                 <div class="header">
-                    <div class="label">Kết quả</div>
+                    <div class="label">Kết quả thực tế</div>
+                    <h2>Người dùng hỏi — nhận câu trả lời trong vài giây</h2>
                 </div>
                 <div class="demo-grid">
                     <div class="demo-left">
                         <div class="demo-question">
                             <p>“Tóm tắt ngắn gọn tổng quan dịch vụ công tháng 1 năm 2025”</p>
-                            <span>Câu hỏi từ người dùng cuối</span>
+                            <span>Câu hỏi của người dùng</span>
                         </div>
                         <div class="demo-stats">
                             <div class="stat-item">
                                 <h4>~8s</h4>
-                                <span>Thời gian phản hồi</span>
+                                <span>Thời gian chờ</span>
                             </div>
                             <div class="stat-item">
-                                <h4>~8k = ~40 VNĐ</h4>
-                                <span>Token</span>
+                                <h4>~40 VNĐ</h4>
+                                <span>Chi phí / lượt hỏi</span>
                             </div>
+                        </div>
+                        <div class="demo-question">
+                            <span>Người dùng nhận được</span>
+                            <ul style="list-style: none; margin-top: 1.5vh; display: flex; flex-direction: column; gap: 0.8vh; font-style: normal; font-family: inherit; font-size: clamp(0.85rem, 1vw, 0.95rem); color: var(--text-primary); line-height: 1.45;">
+                                <li>✓ Không cần tìm Dashboard</li>
+                                <li>✓ Không cần chọn bộ lọc</li>
+                                <li>✓ Không cần đọc biểu đồ</li>
+                                <li>✓ Có câu trả lời hoàn chỉnh sau khoảng 8 giây</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="demo-answer">
-                        <div class="label">Câu trả lời</div>
+                        <div class="label">Câu trả lời người dùng nhận được</div>
                         <h3>Tổng quan dịch vụ công tháng 1/2025</h3>
                         <p class="answer-lead">
                             Tháng 1/2025, dịch vụ công ghi nhận <strong>31.091 hồ sơ tiếp nhận</strong>, trong đó
@@ -1886,8 +1944,8 @@
                             <li>Doanh nghiệp nộp nhiều nhất là <strong>Thông báo hoạt động khuyến mại</strong> (159 hồ
                                 sơ)</li>
                         </ul>
-                        <p class="demo-summary">Kết quả được tổng hợp tự động từ dữ liệu Dashboard và trình bày dưới
-                            dạng câu trả lời hoàn chỉnh.</p>
+                        <p class="demo-summary">Người dùng nhận câu trả lời đã được tổng hợp — sẵn sàng dùng cho báo cáo
+                            và ra quyết định.</p>
                     </div>
                 </div>
             </div>
@@ -1898,7 +1956,7 @@
             <div class="content">
                 <div class="header">
                     <div class="label">Demo</div>
-                    <h2>Trải nghiệm thực tế trên app mobile</h2>
+                    <h2>Người dùng tra cứu mọi lúc trên app mobile</h2>
                 </div>
                 <div class="screenshots-grid">
                     <div class="phone-frame">
@@ -1922,25 +1980,24 @@
             <div class="content">
                 <div class="header">
                     <div class="label">Đánh giá</div>
-                    <h2>Đánh giá chất lượng</h2>
-                    <p>Kết quả kiểm thử trên 31 câu hỏi mẫu — đánh giá độ chính xác khi chọn đúng dữ liệu, chất lượng
-                        câu trả lời và thời gian phản hồi.</p>
+                    <h2>Đánh giá trải nghiệm người dùng</h2>
+                    <p>Kiểm thử 31 câu hỏi thực tế — đo mức độ người dùng nhận đúng câu trả lời và thời gian phải chờ.</p>
                 </div>
                 <div class="eval-metrics">
                     <div class="eval-metric">
-                        <span class="metric-label">Độ chính xác</span>
+                        <span class="metric-label">Câu trả lời đúng</span>
                         <span class="metric-value">93.5%</span>
                     </div>
                     <div class="eval-metric">
-                        <span class="metric-label">Thời gian TB (29/31)</span>
+                        <span class="metric-label">Thời gian chờ TB (29/31)</span>
                         <span class="metric-value">8.06s</span>
                     </div>
                     <div class="eval-metric">
-                        <span class="metric-label">Thời gian TB (31/31)</span>
+                        <span class="metric-label">Thời gian chờ TB (31/31)</span>
                         <span class="metric-value">9.49s</span>
                     </div>
                     <div class="eval-metric">
-                        <span class="metric-label">Latency p50</span>
+                        <span class="metric-label">Thời gian chờ p50</span>
                         <span class="metric-value">7.44s</span>
                     </div>
                     <div class="eval-metric">
@@ -1993,29 +2050,29 @@
             <div class="content">
                 <div class="left-col">
                     <div class="label">Hiệu năng</div>
-                    <h2>Thời gian phản hồi trung bình</h2>
-                    <p>Khoảng <strong>5–10 giây</strong> cho một câu hỏi tra cứu điển hình — đủ nhanh cho nhu cầu tra
-                        cứu và báo cáo hằng ngày.</p>
+                    <h2>Thời gian người dùng phải chờ</h2>
+                    <p>Người dùng chỉ cần chờ khoảng <strong>5–10 giây</strong> để nhận được câu trả lời hoàn chỉnh — đủ
+                        nhanh cho tra cứu và báo cáo ngay trong cuộc họp.</p>
                     <div class="stats" style="margin-top: 4vh; padding-top: 3vh; border-top: 1px solid var(--line);">
                         <div class="stat-item">
                             <h4>5-10</h4>
-                            <span>Giây / câu hỏi</span>
+                            <span>Giây chờ / câu hỏi</span>
                         </div>
                     </div>
                 </div>
                 <div class="right-col">
-                    <div class="label">Các bước xử lý</div>
+                    <div class="label">Trải nghiệm người dùng</div>
                     <ul class="agenda-list latency-steps">
-                        <li><span class="agenda-number">01</span> Hiểu ý định câu hỏi</li>
-                        <li><span class="agenda-number">02</span> Lựa chọn và thực thi truy vấn</li>
-                        <li><span class="agenda-number">03</span> Tổng hợp và trả lời người dùng</li>
+                        <li><span class="agenda-number">01</span> Đặt câu hỏi</li>
+                        <li><span class="agenda-number">02</span> Chờ vài giây</li>
+                        <li><span class="agenda-number">03</span> Nhận câu trả lời hoàn chỉnh</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- Slide 13: Next steps -->
-        <div class="slide slide-cards">
+         <div class="slide slide-cards">
             <div class="content">
                 <div class="header">
                     <div class="label">Định hướng</div>
@@ -2031,8 +2088,7 @@
                     <div class="card">
                         <div class="card-icon">II</div>
                         <h3>Hỗ trợ multi DB connection</h3>
-                        <p>Cho phép một MCP server kết nối đồng thời nhiều CSDL thực thi, chỉ định rõ
-                            connection khi agent thực thi query.</p>
+                        <p>Cho phép một MCP server kết nối đồng thời nhiều CSDL thực thi.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">III</div>
@@ -2081,7 +2137,7 @@
     </div>
 
     <div class="slide-counter">
-        <span id="currentSlide">01</span> / <span id="totalSlides">16</span>
+        <span id="currentSlide">01</span> / <span id="totalSlides">17</span>
     </div>
 
     <script>
