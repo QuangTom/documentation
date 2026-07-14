@@ -56,7 +56,7 @@
 
 ---
 
-## 4. Phản ánh liên quan đến thủ tục hành chính và đạo đức công vụ
+## 4. Phản ánh liên quan đến đạo đức công vụ
 
 **Mục tiêu:** Phát hiện sớm các vấn đề nhạy cảm liên quan đến chất lượng phục vụ người dân.
 
@@ -64,13 +64,17 @@
 - Chỉ lấy các phản ánh **chưa được xử lý**.
 - Phản ánh phát sinh trong **30 ngày gần nhất**.
 - Phân tích và tổng hợp các vấn đề nổi cộm thuộc nhóm:
-  - Thủ tục hành chính.
-  - Đạo đức công vụ.
-
+  - Đạo đức công vụ:
+    - Phản ánh liên quan đến thái độ, hành vi, trách nhiệm, chuẩn mực ứng xử của cán bộ, công chức, viên chức trong quá trình thực thi công vụ. Trọng tâm là con người thực hiện công vụ.
+    - Cán bộ gây khó dễ; nhũng nhiễu; vòi vĩnh; thái độ thiếu lịch sự; không tiếp dân; đùn đẩy trách nhiệm; làm việc thiếu trách nhiệm; quát mắng người dân.
+      
 **Yêu cầu:**
 - Nếu phát hiện vấn đề nổi cộm, hệ thống cần sinh cảnh báo.
 - Hiển thị danh sách chi tiết các phản ánh liên quan đến đạo đức công vụ.
 - Hiển thị số chi tiết bao nhiêu chưa xử lý trong hạn và bao nhiêu đã trễ hạn
+- Không lấy các phản ánh thuộc nhóm Thủ tục hành chính:
+    - Phản ánh liên quan đến quy trình, thủ tục, hồ sơ, thời gian giải quyết hoặc việc thực hiện dịch vụ công của cơ quan nhà nước. Trọng tâm là quy trình giải quyết công việc.
+    - Ví dụ: Hồ sơ giải quyết chậm; yêu cầu bổ sung giấy tờ nhiều lần; thủ tục rườm rà; không hướng dẫn đầy đủ; hệ thống dịch vụ công lỗi; không trả kết quả đúng hẹn.
 ---
 
 ## 5. Đơn vị có số lượng phản ánh tăng bất thường
