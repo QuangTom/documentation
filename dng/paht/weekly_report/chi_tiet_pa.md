@@ -1,5 +1,5 @@
 # Cập nhật cấu trúc nội dung báo cáo
-**Ngày cập nhật:** 05/06/2026
+**Ngày cập nhật:** 15/07/2026
 
 ## Cấu trúc trình bày chung
 
@@ -28,32 +28,38 @@ Mỗi nội dung phân tích cần tuân theo cấu trúc:
 - Tổng số phản ánh tồn đọng kéo dài.
 - Thống kê chi tiết dưới dạng bảng:
 
-| Tóm tắt nội dung vấn đề | Địa điểm cụ thể (Có thêm Phường) | Số lần lặp lại | Mã phản ánh | 
+| Mã phản ánh | Tóm tắt nội dung vấn đề | Địa điểm cụ thể (Có thêm Phường) | Số lần lặp lại  
 |------|----------------|------------------|------------------|
 | ... | ... | ... | ... |
 | ... | ... | ... | ... |
 
 ---
 
-## 3. Phản ánh trễ hạn nghiêm trọng
+## 3. Phản ánh về đạo đức công vụ
 
 ### Vấn đề
-- Tổng số phản ánh đang trễ hạn.
-- Phân loại theo mức độ trễ hạn:
-  - Trên 15 ngày.
-  - Trên 30 ngày.
-- Xác định các lĩnh vực có tỷ lệ trễ hạn cao nhất.
+
+| Mã phản ánh | Tóm tắt nội dung vấn đề | Đối tượng bị phản ánh hoặc Địa điểm cụ thể (Có thêm Phường)
+|------|----------------|------------------|
+| ... | ... | ... |
+| ... | ... | ... |
+
 
 ---
 
-## 4. Đơn vị có số lượng phản ánh tăng bất thường
+## 4. Phản ánh trễ hạn nghiêm trọng
 
 ### Vấn đề
-- Giữ nguyên nội dung và cách trình bày hiện tại.
 
 ---
 
-## 5. Đơn vị có tỷ lệ phản ánh trễ hạn rất cao
+## 5. Đơn vị có số lượng phản ánh tăng bất thường
+
+### Vấn đề
+
+---
+
+## 6. Đơn vị có tỷ lệ phản ánh trễ hạn rất cao
 
 ### Vấn đề
 - Xác định các đơn vị có tỷ lệ phản ánh trễ hạn cao.
