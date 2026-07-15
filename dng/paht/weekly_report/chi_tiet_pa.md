@@ -28,10 +28,10 @@ Mỗi nội dung phân tích cần tuân theo cấu trúc:
 - Tổng số phản ánh tồn đọng kéo dài.
 - Thống kê chi tiết dưới dạng bảng:
 
-| STT | Nội dung vấn đề | Số lượng phản ánh | Tần suất lặp lại |
+| Tóm tắt nội dung vấn đề | Địa điểm cụ thể (Có thêm Phường) | Số lần lặp lại | Mã phản ánh | 
 |------|----------------|------------------|------------------|
-| 1 | ... | ... | ... |
-| 2 | ... | ... | ... |
+| ... | ... | ... | ... |
+| ... | ... | ... | ... |
 
 ---
 
