@@ -44,7 +44,7 @@ Lấy toàn bộ phản ánh **(Trừ phản ánh chưa xử lý)** trong **1 tu
 
 ---
 
-## 3. Phản ánh trễ hạn nghiêm trọng
+## 3. Phản ánh quá hạn nghiêm trọng
 
 **Mục tiêu:** 
 
