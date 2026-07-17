@@ -1,6 +1,6 @@
 # Cập nhật yêu cầu phân tích dữ liệu phản ánh hiện trường
 
-**Ngày cập nhật:** 15/07/2026
+**Ngày cập nhật:** 17/07/2026
 
 ## 1. Vấn đề nổi cộm chi tiết trong lĩnh vực được phản ánh nhiều nhất
 
@@ -31,7 +31,7 @@ Lấy toàn bộ phản ánh **(Trừ phản ánh chưa xử lý)** trong **1 tu
 
 **Điều kiện:**
 
-- Chỉ lấy các phản ánh **đang xử lý** và phát sinh trong **1 tuần gần nhất**.
+- Chỉ lấy các phản ánh **đang xử lý** trên toàn bộ thời gian.
 - Các phản ánh trước đó **đã được xử lý**.
 - Nội dung hoặc nhóm vấn đề đã xuất hiện **từ 4 lần trở lên** kể từ đầu năm đến thời điểm hiện tại, nên lấy theo vị trí phản ánh
 
