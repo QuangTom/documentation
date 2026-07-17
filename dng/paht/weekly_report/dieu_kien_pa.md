@@ -56,7 +56,7 @@ Lấy toàn bộ phản ánh **(Trừ phản ánh chưa xử lý)** trong **1 tu
 
 **Yêu cầu:**
 
-- Hiển thị số lượng chi tiết bao nhiêu phản ánh **trễ hạn** và bao nhiêu phản ánh **quá hạn đang xử lý**
+- Hiển thị số lượng chi tiết bao nhiêu phản ánh **quá hạn đang xử lý**
 
 ---
 
