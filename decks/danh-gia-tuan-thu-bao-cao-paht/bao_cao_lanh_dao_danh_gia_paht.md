@@ -1,139 +1,143 @@
-# Báo cáo đánh giá tuân thủ báo cáo phân tích phản ánh hiện trường
-**Kỳ dữ liệu đối chiếu:** 13/07/2026 – 17/07/2026  
-**Ngày lập:** 24/07/2026  
+# Báo cáo đánh giá so sánh chất lượng bài phân tích phản ánh hiện trường
+
+**Kỳ dữ liệu:** 13/07/2026 – 17/07/2026  
+**Ngày lập:** 26/07/2026  
+**Đối tượng đọc:** Lãnh đạo / Cấp ra quyết định
+
+> Đây là báo cáo tổng quan phục vụ đánh giá chất lượng hai phương án phân tích.
 
 ---
 
-## 1. Mục đích và cách đánh giá
+# 1. Tóm tắt điều hành
 
-Báo cáo này đối chiếu hai bộ đầu ra (Anh Tuấn và Đạt) trên **cùng bộ chỉ tiêu**.
+Qua đánh giá hai phương án phân tích phản ánh hiện trường, cả hai đều đáp ứng cấu trúc báo cáo gồm: Tổng quan, Vấn đề nổi cộm, Tồn đọng lặp lại, Đạo đức công vụ và Đề xuất.
 
-| Chỉ tiêu | Nội dung |
-|---|---|
-| **Số liệu** | So sánh số liệu trong báo cáo với số liệu thực tế |
-| **Nghiệp vụ** | So sánh trên 3 loại báo cáo: Vấn đề nổi cộm · Tồn đọng lặp lại · Thủ tục & đạo đức công vụ |
-| **Văn phong** | Giọng quản trị, ngắn gọn, khách quan; tránh thuật ngữ kỹ thuật và suy diễn; đề xuất có đơn vị, không bắt buộc thời hạn/chỉ số theo dõi |
-| **Cấu trúc trúc báo cáo** | Cấu trúc gồm 4 phần: Tổng quan → Vấn đề → Nguyên nhân → Đề xuất |
-| **Phương án triển khai** | Thành phần · Hạ tầng Compute · AI/Model|
-| **Chi phí dự kiến** | License · Dịch vụ triển khai ·  Tài sản cố định|
+Tuy nhiên:
 
----
+- **Phương án của Anh Tuấn** có ưu thế về **độ chính xác số liệu** và **mức độ tuân thủ nghiệp vụ**.
+- **Phương án của Đạt** có ưu điểm về **mức độ bao phủ nhiều lĩnh vực**, nhưng còn tồn tại sai lệch số liệu và một số điểm chưa tuân thủ đầy đủ quy tắc nghiệp vụ.
+- Hai phương án đều cần tiếp tục chuẩn hóa văn phong báo cáo theo hướng ngắn gọn, khách quan và phục vụ điều hành.
 
-## 2. Kết quả tổng hợp
 
-### 2.1. Điều kiện nghiệp vụ
 
-| Mục | Anh Tuấn | Đạt |
-|---|---|---|
-| Vấn đề nổi cộm | Đạt một phần | Đạt một phần |
-| Tồn đọng lặp lại | Đạt | Đạt |
-| Thủ tục & đạo đức công vụ | Đạt một phần | Đạt một phần |
+## Đánh giá chung
 
-### 2.2. Văn phong & ngôn ngữ
 
-| Mục | Anh Tuấn | Đạt |
-|---|---|---|
-| Vấn đề nổi cộm | Đạt | Đạt một phần |
-| Tồn đọng lặp lại | Đạt một phần | Đạt một phần |
-| Thủ tục & đạo đức công vụ | Đạt một phần | Đạt một phần |
+| Tiêu chí                | Phương án ưu thế |
+| ----------------------- | ---------------- |
+| Độ chính xác số liệu    | Anh Tuấn         |
+| Tuân thủ nghiệp vụ      | Anh Tuấn         |
+| Mức độ bao phủ lĩnh vực | Đạt              |
+| Văn phong               | Tương đương      |
 
-**Đọc nhanh:** Không bên nào đạt đầy đủ trên cả hai trục. Mục tồn đọng là điểm mạnh chung. Mục nổi cộm và mục thủ tục–đạo đức còn lệch điều kiện gốc. Về văn phong điều hành, Anh Tuấn rõ hơn ở mục nổi cộm (đề xuất hai cột, tổng quan ngắn).
+
+**Kết luận:** Xét theo mục tiêu xây dựng báo cáo phục vụ lãnh đạo, phương án của **Anh Tuấn** phù hợp hơn do bảo đảm tính chính xác của số liệu và tuân thủ quy tắc nghiệp vụ.
 
 ---
 
-## 3. Ưu và nhược theo từng bên
 
-### 3.1. Anh Tuấn
 
-**Ưu điểm**
-- Tổng quan ngắn, dễ đọc ở cấp lãnh đạo.
-- Mục nổi cộm: bảng vấn đề **chỉ trong lĩnh vực dẫn đầu** — đúng trọng tâm điều kiện nghiệp vụ.
-- Đề xuất hướng xử lý: bảng **Việc cần làm · Đơn vị thực hiện**, không kèm thời hạn/chỉ số theo dõi (khớp yêu cầu khách hàng).
-- Mục tồn đọng: danh sách địa điểm cụ thể, ngưỡng ≥3 lần, còn phản ánh đang xử lý.
-- Mục đạo đức: có danh sách chi tiết và bảng theo đơn vị (đã loại Trung tâm IOC).
+# 2. Tiêu chí đánh giá
 
-**Nhược điểm**
-- Mục nổi cộm: kỳ phân tích chỉ **1 tuần**; thiếu phạm vi **30 ngày** và mục biến động ngắn hạn so với mức thường lệ.
-- Nguyên nhân đôi chỗ còn suy diễn (ví dụ gắn với thời tiết).
-- Mục tồn đọng: cột mã phản ánh dài; đề xuất còn nhắc thuật ngữ kỹ thuật (`vada-gov-diagnostic`).
-- Mục thủ tục & đạo đức: chỉ phủ **đạo đức công vụ**; thiếu nhóm **thủ tục hành chính**; thiếu tách **trong hạn / trễ hạn**; thiếu **cảnh báo**; kỳ còn gồm phản ánh đã xử lý trong tuần.
-- Phụ lục chi phí: có khung hạng mục, **chưa công bố số tiền** trong tài liệu đánh giá.
 
-### 3.2. Đạt
+| STT | Tiêu chí             | Nội dung đánh giá                  |
+| --- | -------------------- | ---------------------------------- |
+| 1   | Độ chính xác số liệu | Đối chiếu với dữ liệu chuẩn        |
+| 2   | Tuân thủ nghiệp vụ   | Đối chiếu với yêu cầu nghiệp vụ    |
+| 3   | Văn phong báo cáo    | Ngắn gọn, khách quan, dễ đọc       |
+| 4   | Phương án triển khai | Đối chiếu thực tế, không chấm điểm |
+| 5   | Chi phí triển khai   | Đối chiếu thực tế, không chấm điểm |
 
-**Ưu điểm**
-- Mục nổi cộm: tổng quan nêu lĩnh vực dẫn đầu và vấn đề nhiều nhất; đã giảm meta kỹ thuật so với bản trước.
-- Mục tồn đọng: nhận diện chuỗi tái diễn còn đang xử lý; nguyên nhân vụ việc cụ thể.
-- Mục đạo đức: có **cảnh báo**; có danh sách chi tiết và bảng theo đơn vị.
-- Phụ lục chi phí: có envelope phần cứng rõ (**107–147** triệu; tổng GĐ1 **118–162** triệu, chưa VAT).
-- Phương án triển khai: nhẹ, giai đoạn đầu trên một workstation — phù hợp thử nghiệm nhanh.
-
-**Nhược điểm**
-- Mục nổi cộm: kỳ ngắn (13–17/07), không phải 30 ngày; bảng vấn đề **lẫn nhiều lĩnh vực** ngoài lĩnh vực dẫn đầu; thiếu mục biến động so mức thường lệ.
-- Nguyên nhân còn nhãn kỹ thuật (`[Theo dữ liệu]`); liệt kê vụ việc lẻ, thiếu tóm theo ý quản trị.
-- Đề xuất thường dạng bullet, **thiếu đơn vị thực hiện** rõ.
-- Mục tồn đọng: bảng dài, nhiều mã phản ánh; tổng quan còn mô tả logic lọc.
-- Mục thủ tục & đạo đức: chỉ đạo đức; thiếu nhóm thủ tục; thiếu trong hạn/trễ hạn; danh sách chi tiết quá dài, nhiều thông tin nhận dạng cá nhân; đề xuất còn lệch nhóm «thủ tục» trong báo cáo chỉ về đạo đức.
-- Phương án triển khai và chi phí **không cùng khổ** với phương án cụm HA + GPU của Anh Tuấn — không thể so giá một–một.
 
 ---
 
-## 4. Đối chiếu phụ lục (không chấm điểm)
 
-| Chiều | Anh Tuấn | Đạt |
-|---|---|---|
-| Kiến trúc | Platform + Agent On-Prem, cụm HA, GPU tách lớp | Stack phân tích trên 1 workstation + Ollama |
-| Quy mô | Lộ trình GĐ1–GĐ3; Tier GPU pilot / sản xuất | ~3.000 phản ánh/tuần; một máy giai đoạn đầu |
-| Chi phí | Khung license · MM · CapEx — **chưa có số** | Phần cứng GĐ1 **118–162** triệu (chưa VAT) |
 
-Hai phương án phục vụ giả định khác nhau. So chi phí trực tiếp sẽ gây hiểu sai.
+# 3. Kết quả đánh giá
 
----
 
-## 5. Gợi ý cho lãnh đạo
 
-### 5.1. Kết luận ngắn
+## 3.1 Độ chính xác số liệu
 
-Cả hai bên **chưa sẵn sàng** làm đầu ra chuẩn điều hành nếu áp dụng đầy đủ `dieu_kien_pa.md`.  
-Điểm mạnh lệch nhau: Anh Tuấn **dễ đọc và đúng trọng tâm lĩnh vực dẫn đầu**; Đạt **cảnh báo + nguyên nhân cụ thể hơn**, và **có số chi phí phần cứng** cho giai đoạn đầu.
 
-Không khuyến nghị chọn nhà cung cấp chỉ từ điểm văn phong hoặc chỉ từ bảng chi phí hiện có.
+| Nội dung         | Anh Tuấn | Đạt             |
+| ---------------- | -------- | --------------- |
+| Vấn đề nổi cộm   | ✅ Đạt    | 🟡 Đạt một phần |
+| Tồn đọng lặp lại | ✅ Đạt    | 🟡 Đạt một phần |
+| Đạo đức công vụ  | ✅ Đạt    | 🟡 Đạt một phần |
 
-### 5.2. Việc cần yêu cầu trước khi chốt
 
-**Chung cho cả hai (ưu tiên cao)**
-1. Mục nổi cộm: tách **nổi cộm 30 ngày** và **biến động ~1 tuần** (so mức thường lệ); bảng vấn đề chỉ trong lĩnh vực dẫn đầu.  
-2. Mục thủ tục & đạo đức: đủ **hai nhóm**; chỉ lấy phản ánh **chưa xử lý**; thống kê **trong hạn / trễ hạn**; giữ **cảnh báo** khi có vấn đề nhạy cảm.  
-3. Văn phong: bỏ meta kỹ thuật; đề xuất dạng **việc · đơn vị**; rút gọn bảng; hạn chế mã dài và thông tin nhận dạng cá nhân trên bản lãnh đạo.  
-4. Đồng bộ **cùng kỳ dữ liệu** và cùng quy tắc lọc trạng thái trước mỗi vòng đối chiếu.
 
-**Riêng Anh Tuấn**
-- Bổ sung bảng báo giá số (license, MM, CapEx Platform, CapEx GPU Tier 1/2) hoặc ghi rõ «chưa khóa ngân sách».  
-- Loại thuật ngữ kỹ thuật khỏi đề xuất.
 
-**Riêng Đạt**
-- Thu hẹp bảng nổi cộm về lĩnh vực dẫn đầu.  
-- Gắn đơn vị vào mọi đề xuất.  
-- Rút danh sách đạo đức thành bản điều hành (tóm tắt + mã phụ lục nếu cần).
+### Phân tích
 
-### 5.3. Hướng xử lý đề xuất
-
-| Nếu ưu tiên… | Hướng xử lý |
-|---|---|
-| Báo cáo lãnh đạo đọc nhanh, đúng trọng tâm | Yêu cầu vòng sửa theo checklist trên; lấy phong cách tổng quan/đề xuất của Anh Tuấn làm chuẩn đầu ra |
-| Phát hiện nhạy cảm + nguyên nhân vụ việc | Giữ cơ chế cảnh báo và độ chi tiết nguyên nhân của Đạt, nhưng phải rút gọn và ẩn danh cho bản lãnh đạo |
-| Thử nghiệm hạ tầng giai đoạn đầu, ngân sách nhỏ | Phương án workstation (~118–162 triệu, chưa VAT) có số liệu đủ để lập dự toán pilot |
-| Năng lực nền tảng dài hạn, HA, mở rộng nhiều cấp lãnh đạo | Xem phương án cụm On-Prem + GPU; **chỉ thẩm định sau khi có bảng giá số và cùng baseline với pilot** |
-
-### 5.4. Quyết định nên tránh lúc này
-
-- Chọn bên thắng chỉ vì một mục Đạt hoặc một slide văn phong.  
-- So tổng chi phí hai bên khi một bên chưa công bố số và hai kiến trúc khác khổ.  
-- Đưa báo cáo hiện tại ra lãnh đạo thành phố mà chưa sửa mục nổi cộm (30 ngày) và mục thủ tục–đạo đức (hai nhóm + hạn xử lý).
+- **Vấn đề nổi cộm**
+  - Anh Tuấn thống kê Môi trường **109/350**, Thu gom rác **66**.
+  - Đạt thống kê trên tập dữ liệu **282**, Môi trường **72**, Thu gom **42**.
+  - Sai khác xuất phát từ phương pháp tổng hợp dữ liệu và điều kiện truy vấn chưa bao quát đầy đủ; đồng thời tiêu chí phân loại giữa hai phương án chưa thống nhất.
+- **Tồn đọng lặp lại**
+  - Anh Tuấn xác định **13** điểm tồn đọng theo đúng đối tượng phản ánh.
+  - Đạt xác định **10** điểm.
+  - Khác biệt do phương pháp gom nhóm theo vị trí thay vì theo đối tượng phản ánh.
+- **Đạo đức công vụ**
+  - Anh Tuấn thống kê **7** phản ánh đúng nhóm phân loại.
+  - Đạt thống kê **36** phản ánh.
+  - Nguyên nhân là tiêu chí phân loại chưa tách biệt giữa nhóm Đạo đức công vụ và Thủ tục hành chính.
 
 ---
 
-## 6. Phụ lục tham chiếu nhanh
 
-Chi tiết bằng chứng từng điểm:  
-`/Users/quanglhb/Documents/Tools/beautiful-html-templates/decks/danh-gia-tuan-thu-bao-cao-paht/so_sanh_bai_phan_tich_paht.html`
+
+## 3.2 Tuân thủ nghiệp vụ
+
+
+| Nội dung         | Anh Tuấn        | Đạt             |
+| ---------------- | --------------- | --------------- |
+| Vấn đề nổi cộm   | 🟡 Đạt một phần | ✅ Đạt           |
+| Tồn đọng lặp lại | ✅ Đạt           | 🟡 Đạt một phần |
+| Đạo đức công vụ  | ✅ Đạt           | 🟡 Đạt một phần |
+
+
+
+
+### Phân tích
+
+- Đạt đáp ứng yêu cầu thống kê theo nhiều lĩnh vực.
+- Anh Tuấn tập trung phân tích chuyên sâu lĩnh vực Môi trường.
+- Với phản ánh tồn đọng, Anh Tuấn áp dụng đúng quy tắc gom theo đối tượng phản ánh; phương án của Đạt gom theo vị trí nên chưa phù hợp với quy tắc nghiệp vụ.
+- Đối với Đạo đức công vụ, Anh Tuấn phân loại đúng; phương án của Đạt chưa tách biệt với nhóm Thủ tục hành chính.
+
+---
+
+
+
+## 3.3 Văn phong báo cáo
+
+
+| Nội dung       | Anh Tuấn | Đạt             |
+| -------------- | -------- | --------------- |
+| Vấn đề nổi cộm | ✅ Đạt    | 🟡 Đạt một phần |
+
+
+Nhìn chung, cả hai phương án đều đáp ứng yêu cầu trình bày cơ bản. Tuy nhiên vẫn cần tiếp tục chuẩn hóa cách diễn đạt theo hướng ngắn gọn, khách quan và tập trung vào thông tin phục vụ điều hành.
+
+---
+
+
+
+# 4. Đánh giá tổng hợp
+
+
+| Tiêu chí                | Anh Tuấn | Đạt | Nhận xét                    |
+| ----------------------- | -------- | --- | --------------------------- |
+| Độ chính xác số liệu    | ✅        | 🟡  | Anh Tuấn ổn định hơn        |
+| Tuân thủ nghiệp vụ      | ✅        | 🟡  | Anh Tuấn đáp ứng đầy đủ     |
+| Mức độ bao phủ lĩnh vực | 🟡       | ✅   | Đạt bao quát nhiều lĩnh vực |
+| Văn phong               | 🟡       | 🟡  | Đều cần chuẩn hóa           |
+
+
+
+
+## Kết luận
+
+Phương án của **Anh Tuấn** phù hợp hơn để sử dụng trong báo cáo điều hành do bảo đảm độ chính xác của số liệu và tuân thủ các quy tắc nghiệp vụ. Phương án của **Đạt** có ưu điểm về phạm vi phân tích nhưng cần hoàn thiện phương pháp tổng hợp dữ liệu và tiêu chí phân loại để nâng cao độ tin cậy của kết quả.

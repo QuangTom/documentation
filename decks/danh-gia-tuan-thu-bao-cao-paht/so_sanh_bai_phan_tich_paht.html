@@ -222,6 +222,10 @@
       background: var(--card-bg);
     }
 
+    .summary-block--full {
+      grid-column: 1 / -1;
+    }
+
     .summary-block h3 {
       padding: 0.85rem 1.1rem;
       background: var(--accent-light);
@@ -868,44 +872,49 @@
       </div>
       <div class="slide-content">
         <div class="accent-line"></div>
-        <h2>Căn cứ và phạm vi</h2>
+        <h2>Năm tiêu chí đối chiếu</h2>
         <div class="method-grid">
           <div class="method-card">
-            <h3>Đối tượng so sánh</h3>
-            <ul>
-              <li>Báo cáo Anh Tuấn (3 nội dung)</li>
-              <li>Báo cáo Đạt (3 nội dung tương ứng)</li>
-              <li>Kỳ dữ liệu: 13/07/2026 – 17/07/2026</li>
-            </ul>
-          </div>
-          <div class="method-card">
-            <h3>Tiêu chí 1 — Điều kiện nghiệp vụ</h3>
+            <h3>Tiêu chí 1 — Tính chính xác số liệu</h3>
             <ul>
               <li>Mục 1: Vấn đề nổi cộm</li>
               <li>Mục 2: Tồn đọng lặp lại</li>
-              <li>Mục 4: Thủ tục &amp; đạo đức công vụ</li>
+              <li>Mục 4: Đạo đức công vụ</li>
             </ul>
           </div>
           <div class="method-card">
-            <h3>Tiêu chí 2 — Văn phong &amp; ngôn ngữ</h3>
+            <h3>Tiêu chí 2 — Điều kiện nghiệp vụ</h3>
+            <ul>
+              <li>Mục 1: Vấn đề nổi cộm</li>
+              <li>Mục 2: Tồn đọng lặp lại</li>
+              <li>Mục 4: Đạo đức công vụ</li>
+            </ul>
+          </div>
+          <div class="method-card">
+            <h3>Tiêu chí 3 — Văn phong &amp; ngôn ngữ</h3>
             <ul>
               <li>Giọng quản trị: ngắn gọn, khách quan</li>
-              <li>Tổng quan → nổi bật → xu hướng → lưu ý</li>
               <li>Tránh thuật ngữ kỹ thuật, suy diễn</li>
+              <li>Đề xuất có đơn vị thực hiện</li>
               <li>Kiểm tra lỗi tiếng Việt</li>
             </ul>
           </div>
           <div class="method-card">
-            <h3>Thang đánh giá</h3>
+            <h3>Tiêu chí 4 — Phương án triển khai</h3>
             <ul>
-              <li><span class="badge pass">Đạt</span> — đáp ứng đầy đủ</li>
-              <li><span class="badge partial">Đạt một phần</span> — còn thiếu/sai một số điều kiện</li>
-              <li><span class="badge fail">Chưa đạt</span> — lệch logic hoặc thiếu trọng yếu</li>
+              <li>Thành phần · Hạ tầng Compute · AI/Model</li>
+              <li>Đối chiếu thực tế — <strong>không chấm điểm</strong></li>
+            </ul>
+          </div>
+          <div class="method-card">
+            <h3>Tiêu chí 5 — Chi phí thực tế</h3>
+            <ul>
+              <li>License · Dịch vụ triển khai · Tài sản cố định</li>
+              <li>Đối chiếu thực tế — <strong>không chấm điểm</strong></li>
             </ul>
           </div>
         </div>
-        <p class="method-note">Phạm vi chính: điều kiện nghiệp vụ và văn phong theo từng mục (theo <code>dieu_kien_pa.md</code>). Văn phong mong muốn: báo cáo quản trị, hỗ trợ lãnh đạo nắm tình hình và ra quyết định. Báo cáo mang tính trung lập, không đưa khuyến nghị lựa chọn nhà cung cấp.</p>
-        <p class="method-note" style="margin-top:0.65rem;">Phụ lục đối chiếu: phương án triển khai &amp; chi phí thực tế (theo 2 PDF hạ tầng) — chỉ trình bày thực tế, <strong>không</strong> dùng thang Đạt / Đạt một phần / Chưa đạt.</p>
+        <p class="method-note">Đối tượng: báo cáo Anh Tuấn và Đạt (3 nội dung tương ứng) · Kỳ dữ liệu 13/07/2026 – 17/07/2026. Thang cho tiêu chí 1–3: <span class="badge pass">Đạt</span> · <span class="badge partial">Đạt một phần</span> · <span class="badge fail">Chưa đạt</span>. Tiêu chí 4–5 chỉ trình bày thực tế, không dùng thang này.</p>
       </div>
     </div>
 
@@ -913,15 +922,15 @@
     <div class="slide">
       <div class="slide-header">
         <h4>Bảng tổng quan</h4>
-        <span class="tag">Tổng hợp · Bản xuất lại</span>
+        <span class="tag">Tổng hợp</span>
       </div>
       <div class="slide-content">
         <div class="accent-line"></div>
         <h2>Đánh giá tổng quan</h2>
         <p class="method-note" style="margin-top:0;margin-bottom:1rem;">Cả hai báo cáo đều tuân thủ <strong>format chung</strong> (Tổng quan → Vấn đề → Nguyên nhân → Đề xuất hướng xử lý) trên cả 3 nội dung.</p>
         <div class="summary-blocks">
-          <div class="summary-block">
-            <h3>Điều kiện nghiệp vụ</h3>
+          <div class="summary-block summary-block--full">
+            <h3>Tiêu chí 1 — Tính chính xác số liệu</h3>
             <table class="eval-table">
               <thead>
                 <tr>
@@ -933,24 +942,53 @@
               <tbody>
                 <tr>
                   <td>Vấn đề nổi cộm</td>
-                  <td><span class="badge partial">Đạt một phần</span></td>
+                  <td><span class="badge pass">Đạt</span></td>
                   <td><span class="badge partial">Đạt một phần</span></td>
                 </tr>
                 <tr>
                   <td>Tồn đọng lặp lại</td>
                   <td><span class="badge pass">Đạt</span></td>
-                  <td><span class="badge pass">Đạt</span></td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
                 </tr>
                 <tr>
-                  <td>Thủ tục &amp; đạo đức công vụ</td>
-                  <td><span class="badge partial">Đạt một phần</span></td>
+                  <td>Đạo đức công vụ</td>
+                  <td><span class="badge pass">Đạt</span></td>
                   <td><span class="badge partial">Đạt một phần</span></td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="summary-block">
-            <h3>Văn phong &amp; ngôn ngữ</h3>
+            <h3>Tiêu chí 2 — Điều kiện nghiệp vụ</h3>
+            <table class="eval-table">
+              <thead>
+                <tr>
+                  <th>Nội dung báo cáo</th>
+                  <th>Anh Tuấn</th>
+                  <th>Đạt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vấn đề nổi cộm</td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
+                  <td><span class="badge pass">Đạt</span></td>
+                </tr>
+                <tr>
+                  <td>Tồn đọng lặp lại</td>
+                  <td><span class="badge pass">Đạt</span></td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
+                </tr>
+                <tr>
+                  <td>Đạo đức công vụ</td>
+                  <td><span class="badge pass">Đạt</span></td>
+                  <td><span class="badge partial">Đạt một phần</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="summary-block">
+            <h3>Tiêu chí 3 — Văn phong &amp; ngôn ngữ</h3>
             <table class="eval-table">
               <thead>
                 <tr>
@@ -971,7 +1009,7 @@
                   <td><span class="badge partial">Đạt một phần</span></td>
                 </tr>
                 <tr>
-                  <td>Thủ tục &amp; đạo đức công vụ</td>
+                  <td>Đạo đức công vụ</td>
                   <td><span class="badge partial">Đạt một phần</span></td>
                   <td><span class="badge partial">Đạt một phần</span></td>
                 </tr>
@@ -979,12 +1017,78 @@
             </table>
           </div>
         </div>
-        <p class="method-note" style="margin-top:1rem;margin-bottom:0;">Phụ lục (cuối deck): đối chiếu <strong>phương án triển khai</strong> và <strong>chi phí thực tế</strong> theo 2 PDF hạ tầng — trình bày thực tế, không chấm Đạt/Chưa đạt, không khuyến nghị nhà cung cấp.</p>
+        <p class="method-note" style="margin-top:1rem;margin-bottom:0;">Tiêu chí 4–5 (cuối deck): đối chiếu <strong>phương án triển khai</strong> và <strong>chi phí thực tế</strong> — trình bày thực tế, <strong>không chấm</strong> Đạt/Chưa đạt, không khuyến nghị nhà cung cấp.</p>
       </div>
     </div>
 
 
-    <!-- SLIDE 4: Nổi cộm · Nghiệp vụ -->
+    <!-- SLIDE 4: Số liệu · Nổi cộm -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Vấn đề nổi cộm</h4>
+        <span class="tag">Mục 1 · Số liệu</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Tính chính xác số liệu</h2>
+        <p class="method-note" style="margin-top:0;margin-bottom:0.75rem;">Nguồn xác nhận: <strong>kết quả kiểm tra nghiệp vụ</strong> (không so trực tiếp số gắn tag vì hai bên dùng hai bộ sub-category khác nhau).</p>
+        <div class="compare-layout">
+          <div class="compare-layout-head">
+            <div class="compare-head-cell"><h3>Anh Tuấn</h3><span class="badge pass">Đạt</span></div>
+            <div class="compare-head-cell"><h3>Đạt</h3><span class="badge partial">Đạt một phần</span></div>
+          </div>
+          <div class="compare-section compare-section-paired">
+            <div class="compare-section-label">Đối chiếu</div>
+            <div class="compare-pair-row">
+              <div class="compare-pair-topic">Số liệu chính</div>
+              <div class="compare-pair-grid">
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">Số liệu tổng chính xác hơn: Môi trường 109/350 (31,1%); thu gom rác 66</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">**Tổng quan**
+- 1 tuần gần nhất: Môi trường dẫn đầu 109 phản ánh (31.1%); nhiều nhất là thu gom rác (66).
+
+**Vấn đề**
+- Lĩnh vực Môi trường được phản ánh nhiều nhất tuần với 109/350 phản ánh.
+
+| Lĩnh vực | Vấn đề cụ thể | Số phản ánh |
+|---|---|---:|
+| Môi trường | Thu gom rác | 66 |
+| Môi trường | Chăn nuôi gây ô nhiễm | 7 |
+| Môi trường | Tập kết rác | 6 |</script>
+                </div>
+                </div>
+              </div>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">Số liệu tổng lệch: kỳ 282 phản ánh; Môi trường chỉ 72; thu gom rác 42</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Vấn đề nổi cộm - Đạt.md</code></div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">## Tổng quan
+
+Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản ánh. Lĩnh vực Môi trường là lĩnh vực có số phản ánh cao nhất với 72 phản ánh. Vấn đề cụ thể được phản ánh nhiều nhất là Thu gom rác với 42 phản ánh…
+
+| Lĩnh vực | Vấn đề cụ thể | Số phản ánh |
+|---|---|---|
+| Môi trường | Thu gom rác | 42 |
+| An ninh trật tự | Ô nhiễm tiếng ồn | 14 |
+| An toàn giao thông | Lấn chiếm vỉa hè | 10 |</script>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="method-note" style="margin-top:0.85rem;margin-bottom:0;"><strong>Nguyên nhân lệch:</strong> Thiết kế bảng CSDL chưa logic → điều kiện query của Đạt đang chưa đầy đủ. Đồng thời sub-category của Đạt khác Anh Tuấn nên cho ra số liệu khác nhau.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Nổi cộm · Nghiệp vụ -->
     <div class="slide">
       <div class="slide-header">
         <h4>Vấn đề nổi cộm</h4>
@@ -996,122 +1100,77 @@
                 <div class="compare-layout">
           <div class="compare-layout-head">
             <div class="compare-head-cell"><h3>Anh Tuấn</h3><span class="badge partial">Đạt một phần</span></div>
-            <div class="compare-head-cell"><h3>Đạt</h3><span class="badge partial">Đạt một phần</span></div>
+            <div class="compare-head-cell"><h3>Đạt</h3><span class="badge pass">Đạt</span></div>
           </div>
           <div class="compare-section compare-section-paired">
             <div class="compare-section-label">Đối chiếu</div>
             <div class="compare-pair-row">
-              <div class="compare-pair-topic">Phạm vi 30 ngày / lĩnh vực dẫn đầu</div>
+              <div class="compare-pair-topic">Phạm vi thời gian (1 tuần gần nhất)</div>
               <div class="compare-pair-grid">
-              <div class="compare-pair-cell gap" data-side="tuan">
-                <div class="evidence-item gap">
-<p class="eval-point">Có lĩnh vực dẫn đầu và vấn đề cụ thể trong lĩnh vực đó, nhưng kỳ chỉ «1 tuần» — thiếu phạm vi 30 ngày theo điều kiện</p>
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">Kỳ dữ liệu 13–17/07</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>1_van-de-noi-com.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
                   <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">**Kỳ phân tích:** 1 tuần gần nhất
+                  <script type="text/markdown" class="cite-md-source">**Kỳ phân tích:** Tuần 13/07/2026 → 19/07/2026
 
 **Tổng quan**
-- 1 tuần gần nhất: Môi trường dẫn đầu 109 phản ánh (31%); nhiều nhất là thu gom rác (66).
-
-**Vấn đề**
-| Lĩnh vực | Vấn đề cụ thể | Số phản ánh | Địa bàn chính |
-|---|---|---:|---|
-| Môi trường | Thu gom rác | 66 | Ngũ Hành Sơn, Sơn Trà, An Hải |
-| Môi trường | Chăn nuôi gây ô nhiễm | 7 | Cẩm Lệ, Liên Chiểu |</script>
+- 1 tuần gần nhất: Môi trường dẫn đầu 109 phản ánh (31.1%); nhiều nhất là thu gom rác (66).</script>
                 </div>
                 </div>
               </div>
-              <div class="compare-pair-cell gap" data-side="dat">
-                <div class="evidence-item gap">
-<p class="eval-point">Nêu lĩnh vực dẫn đầu và vấn đề nhiều nhất, nhưng kỳ 13–17/07 (không phải 30 ngày); bảng vấn đề lẫn nhiều lĩnh vực ngoài lĩnh vực dẫn đầu</p>
+              <div class="compare-pair-cell positive" data-side="dat">
+                <div class="evidence-item positive">
+<p class="eval-point">Kỳ dữ liệu 13–17/07</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-prominent_issue-2026-07-13-2026-07-17.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Vấn đề nổi cộm - Đạt.md</code></div>
                   <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">## Tổng quan
+                  <script type="text/markdown" class="cite-md-source">**Kỳ phân tích:** 13/07/2026 - 17/07/2026
 
-Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản ánh. Lĩnh vực Môi trường là lĩnh vực có số phản ánh cao nhất với 72 phản ánh. Vấn đề cụ thể được phản ánh nhiều nhất là Thu gom rác với 42 phản ánh, tập trung nhiều nhất tại Phường Ngũ Hành Sơn.
+## Tổng quan
 
-## Vấn đề *(trích)*
-| Lĩnh vực | Vấn đề cụ thể | Số phản ánh |
-|---|---|---|
-| Môi trường | Thu gom rác | 42 |
-| An ninh trật tự | Ô nhiễm tiếng ồn | 14 |
-| An toàn giao thông | Lấn chiếm vỉa hè | 10 |</script>
+Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản ánh. Lĩnh vực Môi trường là lĩnh vực có số phản ánh cao nhất với 72 phản ánh.</script>
                 </div>
                 </div>
               </div>
               </div>
             </div>
             <div class="compare-pair-row">
-              <div class="compare-pair-topic">Vấn đề nổi bật ngắn hạn (~1 tuần)</div>
+              <div class="compare-pair-topic">Phạm vi lĩnh vực trong bảng vấn đề</div>
               <div class="compare-pair-grid">
               <div class="compare-pair-cell gap" data-side="tuan">
                 <div class="evidence-item gap">
-<p class="eval-point">Toàn bộ báo cáo đã là 1 tuần — không có mục riêng so với mức thường lệ / tách với nổi cộm 30 ngày</p>
+<p class="eval-point">Chỉ đào sâu lĩnh vực Môi trường — thiếu vấn đề nổi cộm theo từng lĩnh vực khác</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>1_van-de-noi-com.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">**Kỳ phân tích:** 1 tuần gần nhất
-
-*(Không có bảng «tăng vọt so với mức thường lệ» hay mục nổi bật ngắn hạn tách khỏi nổi cộm 30 ngày.)*</script>
-                </div>
-                </div>
-              </div>
-              <div class="compare-pair-cell gap" data-side="dat">
-                <div class="evidence-item gap">
-<p class="eval-point">Kỳ báo cáo đã là khoảng 1 tuần — không có mục riêng biến động / so mức thường lệ</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-prominent_issue-2026-07-13-2026-07-17.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">**Kỳ phân tích:** 13/07/2026 - 17/07/2026
-
-*(Không có mục «Vấn đề nổi bật trong 7 ngày gần nhất» tách riêng, cũng không so với mức thường lệ.)*</script>
-                </div>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="compare-section compare-section-solo">
-            <div class="compare-section-label">Riêng từng bên</div>
-            <div class="compare-solo-grid">
-              <div class="compare-solo-col">
-                <div class="compare-solo-head">Anh Tuấn</div>
-                <ul class="evidence-list">
-                  <li class="positive">
-<p class="eval-point">Bảng vấn đề chỉ trong lĩnh vực dẫn đầu (Môi trường) — đúng mục tiêu «vấn đề cụ thể trong lĩnh vực nhiều nhất»</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>1_van-de-noi-com.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
                   <div class="cite-md-render"></div>
                   <script type="text/markdown" class="cite-md-source">| Lĩnh vực | Vấn đề cụ thể | Số phản ánh | Địa bàn chính |
 |---|---|---:|---|
-| Môi trường | Thu gom rác | 66 | Ngũ Hành Sơn, Sơn Trà, An Hải |
-| Môi trường | Chăn nuôi gây ô nhiễm | 7 | Cẩm Lệ, Liên Chiểu |
-| Môi trường | Tập kết rác | 6 | Hòa Khánh, Thanh Khê |
-| Môi trường | Xả nước thải | 4 | Cẩm Lệ, Hải Châu |
-| Môi trường | Ô nhiễm mùi | 4 | Sơn Trà, Liên Chiểu |</script>
+| Môi trường | Thu gom rác | 66 | Phường Ngũ Hành Sơn, Phường Sơn Trà, Phường An Hải |
+| Môi trường | Chăn nuôi gây ô nhiễm | 7 | Xã Tam Xuân, Phường Liên Chiểu, Phường Hội An Tây |
+| Môi trường | Tập kết rác | 6 | Phường Hòa Khánh, Phường Thanh Khê, Phường Hòa Xuân |
+
+*(Toàn bộ dòng trong bảng đều thuộc Môi trường.)*</script>
                 </div>
-                  </li>
-                </ul>
+                </div>
               </div>
-              <div class="compare-solo-col">
-                <div class="compare-solo-head">Đạt</div>
-                <ul class="evidence-list">
-                  <li class="gap">
-<p class="eval-point">Bảng vấn đề liệt kê nhiều lĩnh vực ngoài Môi trường — lệch trọng tâm «trong lĩnh vực dẫn đầu»</p>
+              <div class="compare-pair-cell positive" data-side="dat">
+                <div class="evidence-item positive">
+<p class="eval-point">Có lĩnh vực dẫn đầu và bảng vấn đề theo từng lĩnh vực — đủ theo chi_tiet_pa</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-prominent_issue-2026-07-13-2026-07-17.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Vấn đề nổi cộm - Đạt.md</code></div>
                   <div class="cite-md-render"></div>
                   <script type="text/markdown" class="cite-md-source">| Lĩnh vực | Vấn đề cụ thể | Số phản ánh | Địa bàn nhiều nhất |
 |---|---|---|---|
 | Môi trường | Thu gom rác | 42 | Phường Ngũ Hành Sơn |
 | An ninh trật tự | Ô nhiễm tiếng ồn | 14 | phường Ngũ Hành Sơn |
 | An toàn giao thông | Lấn chiếm vỉa hè | 10 | Phường An Hải |
+| Hạ tầng đô thị | Cây xanh | 5 | phường An Khê |
 | Công vụ - Công chức | Hộ tịch | 4 | Hải Châu |</script>
                 </div>
-                  </li>
-                </ul>
+                </div>
+              </div>
               </div>
             </div>
           </div>
@@ -1120,7 +1179,7 @@ Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản
       </div>
     </div>
 
-    <!-- SLIDE 5: Nổi cộm — Văn phong -->
+    <!-- SLIDE 6: Nổi cộm — Văn phong -->
     <div class="slide">
       <div class="slide-header">
         <h4>Vấn đề nổi cộm</h4>
@@ -1152,7 +1211,7 @@ Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản
               </div>
               <div class="compare-pair-cell positive" data-side="dat">
                 <div class="evidence-item positive">
-<p class="eval-point">Tổng quan nêu số liệu quản trị (đã bớt meta kỹ thuật so bản trước)</p>
+<p class="eval-point">Tổng quan nêu số liệu quản trị</p>
                 <div class="cite-block">
                   <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-prominent_issue-2026-07-13-2026-07-17.md</code></div>
                   <div class="cite-md-render"></div>
@@ -1167,9 +1226,9 @@ Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản
             <div class="compare-pair-row">
               <div class="compare-pair-topic">Nguyên nhân</div>
               <div class="compare-pair-grid">
-              <div class="compare-pair-cell gap" data-side="tuan">
-                <div class="evidence-item gap">
-<p class="eval-point">Có diễn giải địa bàn, nhưng còn suy diễn thời tiết («mùa nắng nóng»)</p>
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">Có diễn giải địa bàn, suy luận liên quan đến thời tiết («mùa nắng nóng»)</p>
                 <div class="cite-block">
                   <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>1_van-de-noi-com.md</code></div>
                   <div class="cite-md-render"></div>
@@ -1179,9 +1238,9 @@ Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản
                 </div>
                 </div>
               </div>
-              <div class="compare-pair-cell gap" data-side="dat">
-                <div class="evidence-item gap">
-<p class="eval-point">Nguyên nhân gắn nhãn kỹ thuật và liệt kê vụ việc lẻ, thiếu tóm lược theo ý quản trị</p>
+              <div class="compare-pair-cell positive" data-side="dat">
+                <div class="evidence-item positive">
+<p class="eval-point">Nguyên nhân cụ thể rõ ràng theo nội dung của phản ánh</p>
                 <div class="cite-block">
                   <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-prominent_issue-2026-07-13-2026-07-17.md</code></div>
                   <div class="cite-md-render"></div>
@@ -1234,7 +1293,112 @@ Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản
     </div>
 
 
-    <!-- SLIDE 6: Tồn đọng · Nghiệp vụ -->
+    <!-- SLIDE 7: Số liệu · Tồn đọng -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Tồn đọng lặp lại</h4>
+        <span class="tag">Mục 2 · Số liệu</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Tính chính xác số liệu</h2>
+        <p class="method-note" style="margin-top:0;margin-bottom:0.75rem;">Nguồn xác nhận: <strong>kết quả kiểm tra nghiệp vụ</strong> — danh sách Anh Tuấn là chuẩn gom cùng chủ đề / đối tượng.</p>
+        <div class="compare-layout">
+          <div class="compare-layout-head">
+            <div class="compare-head-cell"><h3>Anh Tuấn</h3><span class="badge pass">Đạt</span></div>
+            <div class="compare-head-cell"><h3>Đạt</h3><span class="badge partial">Đạt một phần</span></div>
+          </div>
+          <div class="compare-section compare-section-paired">
+            <div class="compare-section-label">Đối chiếu</div>
+            <div class="compare-pair-row">
+              <div class="compare-pair-topic">Số liệu chính</div>
+              <div class="compare-pair-grid">
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">13 điểm lặp — gom đúng cùng chủ đề tại địa điểm (chuẩn số liệu)</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">**Tổng quan**
+- 13 địa điểm cụ thể đã xử lý nhiều lần từ đầu năm nhưng vẫn còn phản ánh đang xử lý.
+
+| Tóm tắt nội dung vấn đề | Địa điểm cụ thể | Số lần lặp |
+|---|---|---:|
+| Gây ồn ào (karaoke, nhạc, loa) | 42 Ngô Thì Sỹ | 10 |
+| Vỉa hè | 70 Phạm Hữu Kính | 7 |
+| Gây ồn ào (karaoke, nhạc, loa) | 428 Hai Bà Trưng | 6 |
+| Điện chiếu sáng | Vương Thừa Vũ | 6 |
+| Thu gom rác | Mỹ Khê 7 | 4 |</script>
+                </div>
+                </div>
+              </div>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">10 vấn đề / 15 đang xử lý — một phần chuỗi không cùng chủ đề → số liệu đầu ra lệch</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Tồn đọng lặp lại - Đạt.md</code></div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">## Tổng quan
+…phát hiện 10 vấn đề chưa được xử lý triệt để, với 15 phản ánh đang xử lý…
+
+| Vấn đề | Đối tượng/vị trí | Số lần |
+|---|---|---|
+| Ô nhiễm tiếng ồn | 42, Ngô Thì Sĩ… | 10 |
+| Thi công hạ tầng | 70, Phạm Hữu Kính… | 8 |
+| Ô nhiễm tiếng ồn | 01, An Thượng 36… | 8 |
+| Lấn chiếm vỉa hè | 211, Nguyễn Chích… | 7 |
+| Mùi hôi | 08, Trần Phú | 6 |
+| Tranh chấp đất đai | 32, Liêm Lạc 6… | 4 |</script>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="compare-pair-row">
+              <div class="compare-pair-topic">Nguyên nhân lệch / dẫn chứng sai gom</div>
+              <div class="compare-pair-grid">
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">Cùng vị trí vẫn tách đúng đối tượng (vd. 70 Phạm Hữu Kính = «Vỉa hè», không gộp thi công)</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Đối chiếu chuẩn · <strong>Anh Tuấn</strong> vs Đạt</div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">**Ví dụ cùng địa điểm, nhãn khác nhau**
+| Địa điểm | Anh Tuấn (chuẩn) | Đạt |
+|---|---|---|
+| 70 Phạm Hữu Kính | Vỉa hè (7 lần) | Thi công hạ tầng (8 lần) |
+| 49A Nguyễn Thái Bình | Ô nhiễm tiếng ồn công trường (5) | Khói bụi (6) |
+
+→ Số lần lặp và danh sách điểm của Anh Tuấn được dùng làm chuẩn kiểm tra.</script>
+                </div>
+                </div>
+              </div>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">Với các phản ánh tương ứng với ị trí dưới đây đang không cùng chung 1 đối tượng bị phản ánh </p>
+                <div class="cite-block">
+                  <div class="cite-meta">Dẫn chứng lệch · <strong>Đạt</strong></div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">**Các nhóm bị loại khỏi chuẩn đối chiếu (không cùng chủ đề)**
+| Nhóm trong báo cáo Đạt | Ghi chú kiểm tra |
+|---|---|
+| An Thượng 36 — ồn (8 lần) | Không cùng chuỗi đối tượng chuẩn |
+| 211 Nguyễn Chích — vỉa hè (7) | Gom theo vị trí, không cùng đối tượng |
+| 08 Trần Phú — mùi (6) | Không cùng chủ đề chuỗi chuẩn |
+| 32 Liêm Lạc 6 — đất (4) | Không cùng chủ đề chuỗi chuẩn |
+
+→ Chấm **Đạt một phần** cho tính chính xác số liệu mục tồn đọng.</script>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Tồn đọng · Nghiệp vụ -->
     <div class="slide">
       <div class="slide-header">
         <h4>Tồn đọng lặp lại</h4>
@@ -1246,38 +1410,50 @@ Trong kỳ báo cáo 13/07/2026 - 17/07/2026, hệ thống ghi nhận 282 phản
                 <div class="compare-layout">
           <div class="compare-layout-head">
             <div class="compare-head-cell"><h3>Anh Tuấn</h3><span class="badge pass">Đạt</span></div>
-            <div class="compare-head-cell"><h3>Đạt</h3><span class="badge pass">Đạt</span></div>
+            <div class="compare-head-cell"><h3>Đạt</h3><span class="badge partial">Đạt một phần</span></div>
           </div>
           <div class="compare-section compare-section-paired">
             <div class="compare-section-label">Đối chiếu</div>
             <div class="compare-pair-row">
-              <div class="compare-pair-topic">Điều kiện ≥3 lần / còn chưa xử lý triệt để</div>
+              <div class="compare-pair-topic">Điều kiện ≥4 lần / còn đang xử lý / theo đối tượng</div>
               <div class="compare-pair-grid">
               <div class="compare-pair-cell positive" data-side="tuan">
                 <div class="evidence-item positive">
-<p class="eval-point">Lấy điểm đã xử lý ≥3 lần từ đầu năm nhưng vẫn còn phản ánh đang xử lý</p>
+<p class="eval-point">Chuẩn nghiệp vụ: gom đúng cùng đối tượng tại địa điểm; ngưỡng ≥4; còn phản ánh đang xử lý; liệt kê đủ</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>2_ton-dong-lap-lai.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
                   <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">**Kỳ phân tích:** từ đầu năm — đã xử lý nhiều lần nhưng còn đang xử lý dở
-
-**Tổng quan**
-- 7 địa điểm cụ thể đã xử lý ≥3 lần từ đầu năm nhưng vẫn còn phản ánh đang xử lý.
+                  <script type="text/markdown" class="cite-md-source">**Tổng quan**
+- 13 địa điểm cụ thể đã xử lý ≥3 lần từ đầu năm nhưng vẫn còn phản ánh đang xử lý.
 
 **Vấn đề**
-- …đã được xử lý từ 3 lần trở lên kể từ đầu năm nhưng vẫn còn ít nhất 1 phản ánh đang được xử lý — cho thấy chưa giải quyết triệt để.</script>
+- Danh sách dưới đây gồm các vấn đề tại từng địa điểm cụ thể đã được xử lý từ 3 lần trở lên kể từ đầu năm nhưng vẫn còn ít nhất 1 phản ánh đang được xử lý — cho thấy chưa giải quyết triệt để.
+
+| Tóm tắt nội dung vấn đề | Địa điểm cụ thể | Số lần lặp |
+|---|---|---:|
+| Gây ồn ào (karaoke, nhạc, loa) | 42 Ngô Thì Sỹ | 10 |
+| Vỉa hè | 70 Phạm Hữu Kính | 7 |
+| Điện chiếu sáng | Vương Thừa Vũ | 6 |</script>
                 </div>
                 </div>
               </div>
-              <div class="compare-pair-cell positive" data-side="dat">
-                <div class="evidence-item positive">
-<p class="eval-point">Phát hiện chuỗi tái diễn còn phản ánh đang xử lý; có ngưỡng lặp và vị trí cụ thể</p>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">Có khung ≥4 / còn đang xử lý, nhưng gom sai: cùng vị trí nhưng không cùng đối tượng</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-recurring_backlog-2026-07-13-2026-07-17.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Tồn đọng lặp lại - Đạt.md</code></div>
                   <div class="cite-md-render"></div>
                   <script type="text/markdown" class="cite-md-source">## Tổng quan
 
-Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa được xử lý triệt để, với 15 phản ánh đang xử lý có ngày tạo sau 49 phản ánh hiện có trạng thái đã xử lý về cùng đối tượng hoặc vị trí.</script>
+Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa được xử lý triệt để…
+
+| Vấn đề | Đối tượng/vị trí | Số lần phản ánh |
+|---|---|---|
+| Thi công hạ tầng | 70, Phạm Hữu Kính, Ngũ Hành Sơn | 8 |
+| Khói bụi | 49, Nguyễn Thái Bình, Hòa Khánh | 6 |
+| Ô nhiễm tiếng ồn | 01, An Thượng 36, Ngũ Hành Sơn | 8 |
+
+*(Cùng vị trí với Anh Tuấn nhưng nhãn/đối tượng lệch — ví dụ 70 Phạm Hữu Kính: «Thi công hạ tầng» vs «Vỉa hè».)* </script>
                 </div>
                 </div>
               </div>
@@ -1288,33 +1464,33 @@ Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa đư�
               <div class="compare-pair-grid">
               <div class="compare-pair-cell positive" data-side="tuan">
                 <div class="evidence-item positive">
-<p class="eval-point">Có danh sách theo địa điểm cụ thể, số lần lặp và trạng thái đang xử lý</p>
+<p class="eval-point">Danh sách chuẩn theo đối tượng + địa điểm; có mã và trạng thái đang xử lý</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>2_ton-dong-lap-lai.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
                   <div class="cite-md-render"></div>
                   <script type="text/markdown" class="cite-md-source">| Tóm tắt nội dung vấn đề | Địa điểm cụ thể | Số lần lặp |
 |---|---|---:|
-| Quán bar/karaoke gây ồn | 42 Ngô Thì Sỹ, phường Ngũ Hành Sơn | 10 |
-| Lấn chiếm vỉa hè | 70 Phạm Hữu Kính, phường Ngũ Hành Sơn | 7 |
-| Điện chiếu sáng chưa bảo đảm | Đường Vương Thừa Vũ, phường Sơn Trà | 6 |
-| Nhà hàng/quán mở nhạc gây ồn | 428 Hai Bà Trưng, phường Hội An Tây | 6 |
-| Không thu gom rác | Đường Mỹ Khê 7, phường An Hải | 5 |</script>
+| Gây ồn ào (karaoke, nhạc, loa) | 42 Ngô Thì Sỹ | 10 |
+| Vỉa hè | 70 Phạm Hữu Kính | 7 |
+| Điện chiếu sáng | Vương Thừa Vũ | 6 |
+| Gây ồn ào (karaoke, nhạc, loa) | 428 Hai Bà Trưng | 6 |
+| Thu gom rác | Mỹ Khê 7 | 4 |</script>
                 </div>
                 </div>
               </div>
-              <div class="compare-pair-cell positive" data-side="dat">
-                <div class="evidence-item positive">
-<p class="eval-point">Nhóm theo cùng đối tượng/vị trí, có số lần phản ánh và mã đang xử lý</p>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">Danh sách lệch chuẩn: thêm/bớt chuỗi do gom theo vị trí thay vì cùng đối tượng</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-recurring_backlog-2026-07-13-2026-07-17.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Tồn đọng lặp lại - Đạt.md</code></div>
                   <div class="cite-md-render"></div>
                   <script type="text/markdown" class="cite-md-source">| Vấn đề | Đối tượng/vị trí | Số lần phản ánh |
 |---|---|---|
 | Ô nhiễm tiếng ồn | 42, Ngô Thì Sĩ, phường Ngũ Hành Sơn | 10 |
-| Thi công hạ tầng | 70, Phạm Hữu Kính, Ngũ Hành Sơn | 8 |
 | Ô nhiễm tiếng ồn | 01, An Thượng 36, Ngũ Hành Sơn | 8 |
 | Lấn chiếm vỉa hè | 211, Nguyễn Chích, Hòa Khánh | 7 |
-| Ô nhiễm tiếng ồn | 428, Hai Bà Trưng, Hội An Tây | 7 |</script>
+| Mùi hôi | 08, Trần Phú | 6 |
+| Tranh chấp đất đai | 32, Liêm Lạc 6, Hòa Xuân | 4 |</script>
                 </div>
                 </div>
               </div>
@@ -1326,7 +1502,7 @@ Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa đư�
       </div>
     </div>
 
-    <!-- SLIDE 7: Tồn đọng — Văn phong -->
+    <!-- SLIDE 9: Tồn đọng — Văn phong -->
     <div class="slide">
       <div class="slide-header">
         <h4>Tồn đọng lặp lại</h4>
@@ -1345,9 +1521,9 @@ Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa đư�
             <div class="compare-pair-row">
               <div class="compare-pair-topic">Bảng vấn đề</div>
               <div class="compare-pair-grid">
-              <div class="compare-pair-cell gap" data-side="tuan">
-                <div class="evidence-item gap">
-<p class="eval-point">Bảng có cột mã phản ánh dài — nặng cho báo cáo lãnh đạo</p>
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">Bảng có có đầy đủ nội dung theo yêu cầu của khách hàng</p>
                 <div class="cite-block">
                   <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>2_ton-dong-lap-lai.md</code></div>
                   <div class="cite-md-render"></div>
@@ -1358,9 +1534,9 @@ Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa đư�
                 </div>
                 </div>
               </div>
-              <div class="compare-pair-cell gap" data-side="dat">
-                <div class="evidence-item gap">
-<p class="eval-point">Bảng vấn đề hơi dài, đưa ra mã phản ánh không cần thiết trên báo cáo quản trị</p>
+              <div class="compare-pair-cell positive" data-side="dat">
+                <div class="evidence-item positive">
+<p class="eval-point">Bảng có có đầy đủ nội dung theo yêu cầu của khách hàng</p>
                 <div class="cite-block">
                   <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-recurring_backlog-2026-07-13-2026-07-17.md</code></div>
                   <div class="cite-md-render"></div>
@@ -1463,10 +1639,111 @@ Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa đư�
     </div>
 
 
-    <!-- SLIDE 8: Thủ tục · Nghiệp vụ -->
+    <!-- SLIDE 10: Số liệu · Đạo đức -->
     <div class="slide">
       <div class="slide-header">
-        <h4>Thủ tục &amp; đạo đức công vụ</h4>
+        <h4>Đạo đức công vụ</h4>
+        <span class="tag">Mục 4 · Số liệu</span>
+      </div>
+      <div class="slide-content">
+        <div class="accent-line"></div>
+        <h2>Tính chính xác số liệu</h2>
+        <p class="method-note" style="margin-top:0;margin-bottom:0.75rem;">Nguồn xác nhận: <strong>kết quả kiểm tra nghiệp vụ</strong> — chuẩn phân loại = 7 phản ánh của Anh Tuấn.</p>
+        <div class="compare-layout">
+          <div class="compare-layout-head">
+            <div class="compare-head-cell"><h3>Anh Tuấn</h3><span class="badge pass">Đạt</span></div>
+            <div class="compare-head-cell"><h3>Đạt</h3><span class="badge partial">Đạt một phần</span></div>
+          </div>
+          <div class="compare-section compare-section-paired">
+            <div class="compare-section-label">Đối chiếu</div>
+            <div class="compare-pair-row">
+              <div class="compare-pair-topic">Số liệu chính</div>
+              <div class="compare-pair-grid">
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">7 phản ánh đúng trọng tâm thái độ–hành vi; tách riêng case cốt lõi thủ tục</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">**Tổng quan**
+- 7 phản ánh về hành vi, thái độ, ứng xử cán bộ khi tiếp công dân; thêm 3 phản ánh có yếu tố thái độ nhưng cốt lõi là thủ tục/chế độ (liệt kê riêng).
+
+| Mã | Nội dung tóm tắt (đúng đạo đức) |
+|---|---|
+| 105854 | Để dân chờ 1 tiếng, không thông báo |
+| 105765 | Thái độ nhăn nhó tại một cửa Thanh Khê |
+| 105768 | Trưởng thôn lời lẽ thô tục, lạm quyền |
+| 105340 | Bấm qua lượt, không tiếp dân |
+| 104519 | Thái độ cán bộ Thuế |
+| 105124 | Thái độ CSGT khi nộp phạt |
+| 103828 | Thái độ BHXH Thanh Khê |</script>
+                </div>
+                </div>
+              </div>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">Công bố 36 phản ánh «đạo đức» — số liệu bị phình vì lẫn thủ tục hành chính</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Đạo đức công vụ - Đạt.md</code></div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">## Tổng quan
+Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 đang xử lý trên toàn bộ thời gian và 18 đã xử lý trong kỳ…
+
+→ So với chuẩn 7 phản ánh, chênh **+29** chủ yếu do lẫn nhóm thủ tục / quy trình.</script>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="compare-pair-row">
+              <div class="compare-pair-topic">Nguyên nhân lệch / dẫn chứng lẫn TTHC</div>
+              <div class="compare-pair-grid">
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">Đã tách 3 case «có thái độ nhưng cốt lõi thủ tục» khỏi số 7 — số liệu đầu ra sạch</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · nhóm tham khảo (không tính)</div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">**Không tính vào 7 (cốt lõi thủ tục/chế độ)**
+| Mã | Tóm tắt |
+|---|---|
+| 105663 | Hồ sơ đất đai quá hẹn &gt;1 năm |
+| 105666 | Chưa nhận tiền hỗ trợ lũ lụt |
+| 105452 | Xét duyệt chế độ dạy học khuyết tật |
+
+→ Cách tách này giữ số liệu đạo đức đúng trọng tâm «con người thực thi công vụ».</script>
+                </div>
+                </div>
+              </div>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">Ví dụ mã lẫn thủ tục — làm sai số lượng «đạo đức công vụ»</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Dẫn chứng lẫn loại · <strong>Đạt</strong></div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">| Mã | Nội dung cốt lõi (thủ tục / quy trình) |
+|---|---|
+| 100568 | Thuế cưỡng chế / phong tỏa tài khoản khi vụ đang Tòa thụ lý |
+| 105893 | Hộ tịch áp dụng Điều 15 NĐ 123 cho hồ sơ khai sinh đã có cha mẹ |
+| 102685 | eTax thiếu thông tin thửa đất — hướng dẫn đến trực tiếp cơ quan thuế |
+| 105435 | Yêu cầu kê khai lại thuế đất dù đã nộp ổn định hàng năm |
+| 105391 | Tách thửa kéo dài &gt;4 năm do không thống nhất hiện trạng đường |
+
+→ Chấm **Đạt một phần** cho tính chính xác số liệu mục đạo đức.</script>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: Đạo đức · Nghiệp vụ -->
+    <div class="slide">
+      <div class="slide-header">
+        <h4>Đạo đức công vụ</h4>
         <span class="tag">Mục 4 · Nghiệp vụ</span>
       </div>
       <div class="slide-content">
@@ -1474,158 +1751,90 @@ Trong phạm vi 01/01/2026 - 17/07/2026, phát hiện 10 vấn đề chưa đư�
         <h2>Điều kiện nghiệp vụ</h2>
                 <div class="compare-layout">
           <div class="compare-layout-head">
-            <div class="compare-head-cell"><h3>Anh Tuấn</h3><span class="badge partial">Đạt một phần</span></div>
+            <div class="compare-head-cell"><h3>Anh Tuấn</h3><span class="badge pass">Đạt</span></div>
             <div class="compare-head-cell"><h3>Đạt</h3><span class="badge partial">Đạt một phần</span></div>
           </div>
           <div class="compare-section compare-section-paired">
             <div class="compare-section-label">Đối chiếu</div>
             <div class="compare-pair-row">
-              <div class="compare-pair-topic">Hai nhóm · chưa xử lý</div>
-              <div class="compare-pair-grid">
-              <div class="compare-pair-cell gap" data-side="tuan">
-                <div class="evidence-item gap">
-<p class="eval-point">Chỉ phủ đạo đức công vụ; kỳ gồm cả đã xử lý trong tuần — thiếu nhóm thủ tục hành chính và điều kiện «chỉ chưa xử lý»</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>4_thu-tuc-dao-duc.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">**Vấn đề:** 4. Đạo đức công vụ
-**Kỳ phân tích:** đã xử lý trong tuần báo cáo hoặc đang xử lý
-
-**Tổng quan**
-- 10 phản ánh liên quan đạo đức công vụ; nổi bật ở phường Thanh Khê (2).
-
-*(Không có bảng tách «Thủ tục hành chính» / «Đạo đức công vụ».)*</script>
-                </div>
-                </div>
-              </div>
-              <div class="compare-pair-cell gap" data-side="dat">
-                <div class="evidence-item gap">
-<p class="eval-point">Chỉ đạo đức công vụ; gồm cả đã xử lý trong kỳ — thiếu nhóm thủ tục hành chính và lọc «chỉ chưa xử lý»</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-public_service_ethics-2026-07-13-2026-07-17.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source"># 3. Đạo đức công vụ
-
-## Tổng quan
-Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 phản ánh đang xử lý trên toàn bộ thời gian và 18 phản ánh đã xử lý trong kỳ 13/07/2026 - 17/07/2026.
-
-*(Không có mục nhóm Thủ tục hành chính.)*</script>
-                </div>
-                </div>
-              </div>
-              </div>
-            </div>
-            <div class="compare-pair-row">
-              <div class="compare-pair-topic">Trong hạn / trễ hạn</div>
-              <div class="compare-pair-grid">
-              <div class="compare-pair-cell gap" data-side="tuan">
-                <div class="evidence-item gap">
-<p class="eval-point">Chưa phân tách số lượng trong hạn và trễ hạn</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>4_thu-tuc-dao-duc.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">**Tổng quan**
-- 10 phản ánh liên quan đạo đức công vụ; nổi bật ở phường Thanh Khê (2).
-
-*(Không thống kê trong hạn / trễ hạn.)*</script>
-                </div>
-                </div>
-              </div>
-              <div class="compare-pair-cell gap" data-side="dat">
-                <div class="evidence-item gap">
-<p class="eval-point">Có đang xử lý / đã xử lý, nhưng chưa nêu trong hạn và trễ hạn</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-public_service_ethics-2026-07-13-2026-07-17.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">## Tổng quan
-…gồm 18 phản ánh đang xử lý trên toàn bộ thời gian và 18 phản ánh đã xử lý trong kỳ…
-
-*(Không có chỉ số «chưa xử lý trong hạn» / «đã trễ hạn».)*</script>
-                </div>
-                </div>
-              </div>
-              </div>
-            </div>
-            <div class="compare-pair-row">
-              <div class="compare-pair-topic">Danh sách đạo đức công vụ</div>
+              <div class="compare-pair-topic">Phân loại đạo đức công vụ</div>
               <div class="compare-pair-grid">
               <div class="compare-pair-cell positive" data-side="tuan">
                 <div class="evidence-item positive">
-<p class="eval-point">Có danh sách chi tiết phản ánh đạo đức công vụ (tiêu đề · tóm tắt · mã)</p>
+<p class="eval-point">7 phản ánh đúng trọng tâm con người thực thi công vụ; tách riêng 3 case cốt lõi là thủ tục — dùng làm chuẩn phân loại</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>4_thu-tuc-dao-duc.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
                   <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">| Tiêu đề phản ánh cụ thể | Nội dung tóm tắt | Mã phản ánh |
+                  <script type="text/markdown" class="cite-md-source">**Tổng quan**
+- 7 phản ánh về hành vi, thái độ, ứng xử cán bộ khi tiếp công dân; thêm 3 phản ánh có yếu tố thái độ nhưng cốt lõi là thủ tục/chế độ (liệt kê riêng bên dưới).
+
+| Tiêu đề phản ánh cụ thể | Nội dung tóm tắt | Mã phản ánh |
 |---|---|---|
-| Thái độ cán bộ Thuế cơ sở 7 | Cán bộ thuế thiếu nhiệt tình, không hỗ trợ khi tiếp dân — Thuế cơ sở 7 | 104519 (Đang xử lý) |
-| Cách làm việc trưởng thôn Châu Hiệp | Trưởng thôn bị phản ánh lạm quyền, ứng xử chưa chuẩn mực — UBND xã Nam Phước | 105768 (Đang xử lý) |
-| Thái độ cán bộ một cửa Thanh Khê | Cán bộ một cửa chưa hỗ trợ người lớn tuổi làm hồ sơ — UBND phường Thanh Khê | 105765 (Đang xử lý) |</script>
+| Thái độ khi tiếp công dân của cán bộ Thuế | Cán bộ thuế trả lời bận, yêu cầu dân tự về xã xác nhận… | 104519 (Đang xử lý) |
+| Cách làm việc của trưởng thôn Châu Hiệp | Trưởng thôn lạm quyền, dùng lời lẽ thô tục… | 105768 (Đang xử lý) |
+| Thái độ cán bộ một cửa phường Thanh Khê | Cán bộ một cửa có thái độ nhăn nhó, không hỗ trợ dân… | 105765 (Đang xử lý) |</script>
+                </div>
+                </div>
+              </div>
+              <div class="compare-pair-cell gap" data-side="dat">
+                <div class="evidence-item gap">
+<p class="eval-point">36 phản ánh — không phân biệt chính xác đạo đức công vụ vs thủ tục hành chính</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Đạo đức công vụ - Đạt.md</code></div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">## Tổng quan
+
+Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 phản ánh đang xử lý trên toàn bộ thời gian và 18 phản ánh đã xử lý trong kỳ…
+
+| Tóm tắt vấn đề | Đối tượng bị phản ánh | Mã góp ý |
+|---|---|---|
+| …phải đi lại nhiều lần (04 lần) để thực hiện thủ tục hưởng BHXH… | Cơ sở BHXH Thanh Khê | 103828 |
+| …hỏi tại sao cán bộ hộ tịch áp dụng Điều 15 Nghị định 123… | Cán bộ hộ tịch UBND phường Hải Châu | 105893 |
+| …dữ liệu thuế đất phi nông nghiệp hiển thị sai trên eTax… | Thuế cơ sở 3 | 105813 |
+
+*(Nhiều dòng mang đặc trưng thủ tục / quy trình, không phải trọng tâm thái độ–hành vi cán bộ.)*</script>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="compare-pair-row">
+              <div class="compare-pair-topic">Phạm vi trạng thái &amp; danh sách</div>
+              <div class="compare-pair-grid">
+              <div class="compare-pair-cell positive" data-side="tuan">
+                <div class="evidence-item positive">
+<p class="eval-point">Có danh sách chi tiết + bảng theo đơn vị; phân loại đúng chuẩn đã chốt</p>
+                <div class="cite-block">
+                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · báo cáo full</div>
+                  <div class="cite-md-render"></div>
+                  <script type="text/markdown" class="cite-md-source">| Đơn vị xử lý | Quận/Huyện | Số phản ánh đạo đức công vụ |
+|---|---|---:|
+| UBND phường Hội An Tây | Phường Hội An Tây | 1 |
+| UBND Phường Thanh Khê | Phường Thanh Khê | 1 |
+| Thuế cơ sở 7 | — | 1 |
+| Phòng Cảnh sát giao thông… | — | 1 |
+| BHXH cơ sở Thanh Khê | Phường Thanh Khê | 1 |</script>
                 </div>
                 </div>
               </div>
               <div class="compare-pair-cell positive" data-side="dat">
                 <div class="evidence-item positive">
-<p class="eval-point">Có danh sách chi tiết phản ánh liên quan đạo đức công vụ</p>
+<p class="eval-point">Đúng khung trạng thái (đã xử lý trong kỳ + đang xử lý toàn thời gian); có danh sách và bảng đơn vị — nhưng đầu ra bị lẫn loại</p>
                 <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-public_service_ethics-2026-07-13-2026-07-17.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">### Danh sách chi tiết phản ánh liên quan đến đạo đức công vụ
-
-| Tóm tắt vấn đề | Đối tượng bị phản ánh | Mã góp ý |
-|---|---|---|
-| …Công an phường chậm trễ, hời hợt trong tiếp nhận… | Công an phường Ngũ Hành Sơn | 104225 |
-| …phải đi lại nhiều lần (04 lần) để thực hiện thủ tục hưởng BHXH… | Cơ sở Bảo hiểm xã hội quận Thanh Khê | 103828 |</script>
-                </div>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="compare-section compare-section-solo">
-            <div class="compare-section-label">Riêng từng bên</div>
-            <div class="compare-solo-grid">
-              <div class="compare-solo-col">
-                <div class="compare-solo-head">Anh Tuấn</div>
-                <ul class="evidence-list">
-                  <li class="positive">
-<p class="eval-point">Có bảng tổng hợp theo đơn vị xử lý (đã loại Trung tâm IOC)</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>4_thu-tuc-dao-duc.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">| Đơn vị xử lý | Quận/Huyện | Số phản ánh đạo đức công vụ |
-|---|---|---:|
-| UBND phường Thanh Khê | Thanh Khê | 2 |
-| UBND phường Hội An Tây | Hội An Tây | 1 |
-| Sở Nông nghiệp và Môi trường | Hòa Khánh | 1 |</script>
-                </div>
-                  </li>
-                  <li class="gap">
-<p class="eval-point">Chưa có cảnh báo khi phát hiện vấn đề nhạy cảm</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Anh Tuấn</strong> · <code>4_thu-tuc-dao-duc.md</code></div>
-                  <div class="cite-md-render"></div>
-                  <script type="text/markdown" class="cite-md-source">**Tổng quan**
-- 10 phản ánh liên quan đạo đức công vụ; nổi bật ở phường Thanh Khê (2).
-
-*(Không có nhãn «Cảnh báo».)*</script>
-                </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="compare-solo-col">
-                <div class="compare-solo-head">Đạt</div>
-                <ul class="evidence-list">
-                  <li class="positive">
-<p class="eval-point">Có cảnh báo khi phát hiện vấn đề đạo đức công vụ cần theo dõi</p>
-                <div class="cite-block">
-                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-public_service_ethics-2026-07-13-2026-07-17.md</code></div>
+                  <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>Đạo đức công vụ - Đạt.md</code></div>
                   <div class="cite-md-render"></div>
                   <script type="text/markdown" class="cite-md-source">## Tổng quan
+…18 phản ánh đang xử lý trên toàn bộ thời gian và 18 phản ánh đã xử lý trong kỳ 13/07/2026 - 17/07/2026.
 
-…**Cảnh báo:** Phát hiện 14 vấn đề đạo đức công vụ cần theo dõi và xác minh.</script>
+| Đơn vị xử lý | Quận/Huyện | Số phản ánh đạo đức công vụ |
+|---|---|---|
+| Bảo hiểm xã hội Tp Đà Nẵng | Hải Châu | 4 |
+| UBND Phường Hải Châu | — | 4 |
+| Công an Thành phố | Ngũ Hành Sơn | 3 |
+| UBND Phường Thanh Khê | Thanh Khê | 3 |</script>
                 </div>
-                  </li>
-                </ul>
+                </div>
+              </div>
               </div>
             </div>
           </div>
@@ -1634,10 +1843,10 @@ Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 
       </div>
     </div>
 
-    <!-- SLIDE 9: Thủ tục — Văn phong -->
+    <!-- SLIDE 12: Đạo đức — Văn phong -->
     <div class="slide">
       <div class="slide-header">
-        <h4>Thủ tục &amp; đạo đức công vụ</h4>
+        <h4>Đạo đức công vụ</h4>
         <span class="tag">Mục 4 · Văn phong</span>
       </div>
       <div class="slide-content">
@@ -1669,9 +1878,9 @@ Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 
                 </div>
                 </div>
               </div>
-              <div class="compare-pair-cell gap" data-side="dat">
-                <div class="evidence-item gap">
-                <p class="eval-point">Danh sách chi tiết quá dài, nhiều thông tin nhận dạng cá nhân — khó đọc ở cấp lãnh đạo</p>
+              <div class="compare-pair-cell positive" data-side="dat">
+                <div class="evidence-item positive">
+                <p class="eval-point">Danh sách chi tiết nhưng hơi dài</p>
                 <div class="cite-block">
                   <div class="cite-meta">Trích từ báo cáo <strong>Đạt</strong> · <code>bao-cao-public_service_ethics-2026-07-13-2026-07-17.md</code></div>
                   <div class="cite-md-render"></div>
@@ -1757,7 +1966,7 @@ Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 
     </div>
 
 
-    <!-- SLIDE 10: Phương án triển khai -->
+    <!-- SLIDE 13: Phương án triển khai -->
     <div class="slide">
       <div class="slide-header">
         <h4>Phương án triển khai</h4>
@@ -1849,7 +2058,7 @@ Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 
       </div>
     </div>
 
-    <!-- SLIDE 11: Chi phí thực tế -->
+    <!-- SLIDE 14: Chi phí thực tế -->
     <div class="slide">
       <div class="slide-header">
         <h4>Chi phí thực tế</h4>
@@ -1872,7 +2081,7 @@ Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 
                 <td class="fact-row-label">Phạm vi / giả định</td>
                 <td>
                   <ul>
-                    <li>Có khung hạng mục; PDF đánh giá <span class="fact-strong">không kèm số tiền</span></li>
+                    <li>Có <span class="fact-strong">khung phí dịch vụ</span> (3 lớp bên dưới); CapEx phần cứng chưa kèm số</li>
                     <li>Đơn giá dịch vụ đã nêu: 42.000.000 ₫/MM</li>
                   </ul>
                 </td>
@@ -1889,9 +2098,34 @@ Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 
                 <td><span class="fact-muted">Không tách dòng license trong PDF (stack nguồn mở / nội bộ)</span></td>
               </tr>
               <tr>
-                <td class="fact-row-label">Dịch vụ triển khai</td>
-                <td><span class="fact-muted">Dịch vụ chuyên môn theo MM (42 triệu ₫/MM) — số MM / thành tiền: Chưa công bố</span></td>
-                <td><span class="fact-muted">Không nêu dòng dịch vụ chuyên môn trong PDF chi phí</span></td>
+                <td class="fact-row-label">Triển khai phần mềm cơ bản</td>
+                <td>
+                  <ul>
+                    <li><span class="fact-strong">Không tính phí</span>: triển khai phần mềm, đồng bộ dữ liệu, xử lý dữ liệu cơ bản… (theo list trong file báo giá)</li>
+                  </ul>
+                </td>
+                <td><span class="fact-muted">Không tách dòng tương ứng trong PDF</span></td>
+              </tr>
+              <tr>
+                <td class="fact-row-label">Harness / usecase báo cáo</td>
+                <td>
+                  <ul>
+                    <li><span class="fact-strong">Tính phí dự án</span>: tạo luồng harness cho LLM chạy kịch bản (usecase) ra đúng báo cáo KH</li>
+                    <li><span class="fact-strong">26–120</span> triệu/usecase tùy độ phức tạp</li>
+                    <li>Kịch bản phức tạp cho lãnh đạo TP: dự trù ~<span class="fact-strong">40–60</span> triệu</li>
+                  </ul>
+                </td>
+                <td><span class="fact-muted">Không tách dòng tương ứng trong PDF</span></td>
+              </tr>
+              <tr>
+                <td class="fact-row-label">Làm giàu / phân tích từng phản ánh</td>
+                <td>
+                  <ul>
+                    <li><span class="fact-strong">Tính phí giai đoạn này</span>: bổ sung, làm giàu dữ liệu KH; tập trung tự động phân tích từng phản ánh (tốn nhiều token)</li>
+                    <li>~<span class="fact-strong">100–150</span> triệu · thời gian <span class="fact-strong">4–6 tháng</span> (~25 triệu/tháng)</li>
+                  </ul>
+                </td>
+                <td><span class="fact-muted">Không tách dòng tương ứng trong PDF</span></td>
               </tr>
               <tr>
                 <td class="fact-row-label">CapEx Platform / máy</td>
@@ -1916,7 +2150,8 @@ Có 36 phản ánh được phân loại là đạo đức công vụ; gồm 18 
                 <td class="fact-row-label">Tổng hợp</td>
                 <td>
                   <ul>
-                    <li><span class="fact-strong">Chưa xác định</span> — thiếu bảng báo giá số trong tài liệu được cung cấp</li>
+                    <li>Đã có <span class="fact-strong">khung phí dịch vụ</span>: triển khai cơ bản (0đ) + harness 26–120 tr/usecase + làm giàu dữ liệu 100–150 tr (4–6 tháng)</li>
+                    <li><span class="fact-strong">Chưa khóa tổng</span> — còn thiếu CapEx phần cứng và số usecase harness chưa chốt</li>
                   </ul>
                 </td>
                 <td>
