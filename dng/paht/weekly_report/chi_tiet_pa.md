@@ -69,7 +69,7 @@ Nội dung tóm tắt cần đưa đơn vị
 
 ### Vấn đề
 
-| Mã phản ánh | Đơn vị hành chính | Số phản ánh quá hạn (đang xử lý)
+| Mã phản ánh | Đơn vị xử lý | Số phản ánh quá hạn (đang xử lý)
 |------|----------------|------------------|
 | ... | ... | ... |
 | ... | ... | ... |
