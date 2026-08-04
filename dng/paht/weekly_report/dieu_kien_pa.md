@@ -48,7 +48,7 @@ Lấy toàn bộ phản ánh **(Trừ phản ánh chưa xử lý)** trong **1 tu
 
 **Mục tiêu:** 
 
-- Cảnh báo các phản ánh có thời gian xử lý vượt quá ngưỡng cho phép. Thống kê theo đơn vị hành chính để thấy rõ tồn ở đơn vị nào.
+- Cảnh báo các phản ánh có thời gian xử lý vượt quá ngưỡng cho phép. Thống kê theo đơn vị xử lý để thấy rõ tồn ở đơn vị nào.
 
 **Điều kiện:**
 
