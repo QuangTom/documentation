@@ -1,21 +1,41 @@
-## Trường hợp thấp hơn bình quân cả nước
+# Cập nhật cấu trúc nội dung báo cáo
+**Ngày cập nhật:** 14/08/2026
 
-🔴 **Áp lực:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), thấp hơn mức bình quân cả nước ([bình quân]%) và chưa đạt mục tiêu [mục tiêu]% theo Chỉ thị 04. Thành phố cần tập trung tháo gỡ khó khăn, đẩy nhanh giải phóng mặt bằng, hoàn thiện thủ tục đầu tư và tăng tốc giải ngân trong thời gian tới.
+## Cấu trúc trình bày chung
 
-## Trường hợp đã vượt mục tiêu
+Mỗi nội dung phân tích cần tuân theo cấu trúc:
 
-🟢 **Điểm sáng:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), cao hơn mức bình quân cả nước ([bình quân]%) và vượt mục tiêu [mục tiêu]% theo Chỉ thị 04.
+1. **Điểm sáng**
+2. **Áp lực**
+3. **Nhận định**
+**Ghi chú: Cần đưa ra so sánh và đề xuất đối với nhóm quản lý dự án có tỷ lệ giải ngân còn thấp**
 
-🟠 **Áp lực:** Thành phố cần duy trì tiến độ, tập trung xử lý các dự án còn chậm để hoàn thành 100% kế hoạch năm.
+------------------------------------------------------------------------------------------
+
+### Trường hợp thấp hơn bình quân cả nước
+
+**Áp lực:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), thấp hơn mức bình quân cả nước ([bình quân]%) và chưa đạt mục tiêu [mục tiêu]% theo Chỉ thị 04. Thành phố cần tập trung tháo gỡ khó khăn, đẩy nhanh giải phóng mặt bằng, hoàn thiện thủ tục đầu tư và tăng tốc giải ngân trong thời gian tới.
+
+------------------------------------------------------------------------------------------
+
+### Trường hợp đã vượt mục tiêu
+
+**Điểm sáng:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), cao hơn mức bình quân cả nước ([bình quân]%) và vượt mục tiêu [mục tiêu]% theo Chỉ thị 04.
+
+**Áp lực:** Thành phố cần duy trì tiến độ, tập trung xử lý các dự án còn chậm để hoàn thành 100% kế hoạch năm.
+
+------------------------------------------------------------------------------------------
 
 ## Trường hợp sắp đạt mục tiêu
 
-🟢 **Điểm sáng:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), cao hơn mức bình quân cả nước ([bình quân]%) và chỉ còn cách mục tiêu [mục tiêu]% không quá 2 điểm %.
+**Điểm sáng:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), cao hơn mức bình quân cả nước ([bình quân]%) và chỉ còn cách mục tiêu [mục tiêu]% không quá 2 điểm %.
 
-🟠 **Áp lực:** Thành phố cần đẩy nhanh giải ngân các dự án đã đủ điều kiện để sớm hoàn thành mục tiêu.
+**Áp lực:** Thành phố cần đẩy nhanh giải ngân các dự án đã đủ điều kiện để sớm hoàn thành mục tiêu.
 
-## Trường hợp chưa đạt mục tiêu
+------------------------------------------------------------------------------------------
 
-🟢 **Điểm sáng:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), cao hơn mức bình quân cả nước ([bình quân]%).
+###  Trường hợp chưa đạt mục tiêu
 
-🟠 **Áp lực:** Tỷ lệ giải ngân chưa đạt mục tiêu [mục tiêu]% theo Chỉ thị 04. Thành phố cần tập trung tháo gỡ vướng mắc và đẩy nhanh tiến độ các dự án trọng điểm.
+**Điểm sáng:** Tỷ lệ giải ngân đạt [TTCP]% (TTCP) và [UBND TP]% (UBND TP), cao hơn mức bình quân cả nước ([bình quân]%).
+
+**Áp lực:** Tỷ lệ giải ngân chưa đạt mục tiêu [mục tiêu]% theo Chỉ thị 04. Thành phố cần tập trung tháo gỡ vướng mắc và đẩy nhanh tiến độ các dự án trọng điểm.
