@@ -3,6 +3,7 @@
 
 ## 1. Điều kiện
 ### 1.1. Điều kiện so sánh
+#### 1.1.1. Đối với thành phố
 - Nếu chưa có mục tiêu CT04: Không hiển thị nhận định.
 
 - Nếu tỷ lệ TTCP < bình quân cả nước: Thấp hơn bình quân cả nước.
@@ -12,6 +13,9 @@
 - Nếu tỷ lệ TTCP <= mục tiêu CT04 và mục tiêu CT04 - tỷ lệ TTCP <= 2%: Sắp đạt mục tiêu.
 
 - Các trường hợp còn lại: Chưa đạt mục tiêu.
+
+#### 1.1.2. Đối với nhóm quản lý dự án
+- So sánh với Mục tiêu theo CT04
 
 ### 1.2. Query 
 - Lấy dữ liệu kế hoạch vốn
@@ -57,8 +61,3 @@ SELECT
 
 FROM khobac_giangantheonguonvon t
 WHERE t.updatetime = '{{getMaxTimeNguonVon.data[0].max_time}}';
-
-### 1.3.
-- Đối với tỷ lệ giải ngân theo nhóm quản lý dự án:
-  + Cần cảnh báo các nhóm có tỷ lệ tăng thấp hơn mức trung bình của nhóm đó từ trước đến nay hoặc bao nhiêu ngày nhưng không thay đổi.
-  + 
